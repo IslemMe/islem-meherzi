@@ -1,0 +1,275 @@
+[
+  {
+    "objectID": "Blogs/b2_test.html",
+    "href": "Blogs/b2_test.html",
+    "title": "Data Visualization Workshop",
+    "section": "",
+    "text": "In this workshop, I guided participants through…\n\nBasics of ggplot2\nBuilding layered charts\nStorytelling with data"
+  },
+  {
+    "objectID": "Blogs/b2_test.html#workshop-highlights",
+    "href": "Blogs/b2_test.html#workshop-highlights",
+    "title": "Data Visualization Workshop",
+    "section": "",
+    "text": "In this workshop, I guided participants through…\n\nBasics of ggplot2\nBuilding layered charts\nStorytelling with data"
+  },
+  {
+    "objectID": "Blogs/b2_quarto_manuscript.html",
+    "href": "Blogs/b2_quarto_manuscript.html",
+    "title": "From RStudio to Published Paper: Writing Manuscripts with Quarto",
+    "section": "",
+    "text": "Most researchers today already use R and RStudio for their data analysis. We run models, generate tables, and produce figures, all within the same environment.\nBut when it comes to writing the actual manuscript, we often switch tools: exporting results to Word, formatting references in citation managers, or handing over LaTeX code to journals. This adds friction, duplication, and errors.\nThe question is: why leave RStudio when you can write your manuscript there too?\nWith Quarto, you can now write your entire paper in RStudio, combining:\n\nYour text and manuscript structure.\n\nYour code chunks (R, Python, Julia, etc).\n\nFigures and tables, perfectly placed and automatically updated.\n\nReferences and citations handled automatically.\n\nMultiple output formats (Word, PDF, HTML) in one click.\n\nIt’s a single, reproducible workflow: from data to manuscript."
+  },
+  {
+    "objectID": "Blogs/b2_quarto_manuscript.html#why-write-papers-in-rstudio",
+    "href": "Blogs/b2_quarto_manuscript.html#why-write-papers-in-rstudio",
+    "title": "From RStudio to Published Paper: Writing Manuscripts with Quarto",
+    "section": "",
+    "text": "Most researchers today already use R and RStudio for their data analysis. We run models, generate tables, and produce figures, all within the same environment.\nBut when it comes to writing the actual manuscript, we often switch tools: exporting results to Word, formatting references in citation managers, or handing over LaTeX code to journals. This adds friction, duplication, and errors.\nThe question is: why leave RStudio when you can write your manuscript there too?\nWith Quarto, you can now write your entire paper in RStudio, combining:\n\nYour text and manuscript structure.\n\nYour code chunks (R, Python, Julia, etc).\n\nFigures and tables, perfectly placed and automatically updated.\n\nReferences and citations handled automatically.\n\nMultiple output formats (Word, PDF, HTML) in one click.\n\nIt’s a single, reproducible workflow: from data to manuscript."
+  },
+  {
+    "objectID": "Blogs/b2_quarto_manuscript.html#getting-started-with-quarto-in-rstudio",
+    "href": "Blogs/b2_quarto_manuscript.html#getting-started-with-quarto-in-rstudio",
+    "title": "From RStudio to Published Paper: Writing Manuscripts with Quarto",
+    "section": "Getting Started with Quarto in RStudio",
+    "text": "Getting Started with Quarto in RStudio\nYou don’t need a new tool. Quarto comes as part of RStudio (Posit IDE).\nTo create a manuscript:\n\nIn RStudio, go to: File → New Project.\n\nSelect New Directory → Quarto Manuscript.\n\nGive your project a name (e.g., my-paper) and choose where to save it.\n\nRStudio will create a dedicated project folder containing all the necessary Quarto files for your manuscript.\n\nYour project will have:\nmy-paper/\n├── index.qmd        # Main manuscript file\n├── references.bib   # Bibliography file\n├── _quarto.yml      # Project settings\n└── figures/         # Store your figures here"
+  },
+  {
+    "objectID": "Blogs/b2_quarto_manuscript.html#writing-your-manuscript",
+    "href": "Blogs/b2_quarto_manuscript.html#writing-your-manuscript",
+    "title": "From RStudio to Published Paper: Writing Manuscripts with Quarto",
+    "section": "Writing Your Manuscript",
+    "text": "Writing Your Manuscript\nThe index.qmd file is where you write your paper. It looks like this:\n---\ntitle: \"My Research Paper\"\nauthor: \"Your Name\"\ndate: \"2025-09-20\"\nformat:\n  pdf: default\n  docx: default\n  html: default\nbibliography: references.bib\n---\n\n# Abstract\n\nA short summary of your work.\n\n# Introduction\n\nWhy this research matters...\n\n# Methods\n\n\n::: {.cell}\n\n```{.r .cell-code}\n# Example R code included in the paper\nlibrary(ggplot2)\nggplot(mtcars, aes(wt, mpg)) + geom_point()\n```\n:::\n\n\n# Results\n\nHere is where the code-generated figure will appear.\n\n# Discussion\n\nInterpret your findings.\n\n# References\n👉 Notice how code and narrative are written side by side. When you render the manuscript, the figure produced by ggplot2 is automatically inserted, formatted, and captioned."
+  },
+  {
+    "objectID": "Blogs/b2_quarto_manuscript.html#adding-references",
+    "href": "Blogs/b2_quarto_manuscript.html#adding-references",
+    "title": "From RStudio to Published Paper: Writing Manuscripts with Quarto",
+    "section": "Adding References",
+    "text": "Adding References\nQuarto uses a references.bib file (BibTeX format). Example entry:\n@article{smith2020,\n  title={Data Science in Healthcare},\n  author={Smith, John and Doe, Jane},\n  journal={Journal of Health Analytics},\n  year={2020},\n  volume={12},\n  number={3},\n  pages={123-135}\n}\nIn your manuscript, cite it like this:\nResearch in this field is expanding rapidly [@smith2020].\nAt the end, Quarto automatically generates the bibliography.\nWant APA style? Add this to the YAML:\ncsl: apa.csl\n(Download styles from Zotero’s style repository)."
+  },
+  {
+    "objectID": "Blogs/b2_quarto_manuscript.html#rendering-your-paper",
+    "href": "Blogs/b2_quarto_manuscript.html#rendering-your-paper",
+    "title": "From RStudio to Published Paper: Writing Manuscripts with Quarto",
+    "section": "Rendering Your Paper",
+    "text": "Rendering Your Paper\nIn RStudio, click the Render button (or run quarto render in the terminal).\nThis generates:\n\nWord document (index.docx) — ready to share with supervisors or collaborators.\n\nPDF (index.pdf) — beautifully typeset.\n\nHTML (index.html) — great for online publishing or lab websites.\n\nAll from the same source file."
+  },
+  {
+    "objectID": "Blogs/b2_quarto_manuscript.html#why-this-method-matters",
+    "href": "Blogs/b2_quarto_manuscript.html#why-this-method-matters",
+    "title": "From RStudio to Published Paper: Writing Manuscripts with Quarto",
+    "section": "Why This Method Matters",
+    "text": "Why This Method Matters\nHere’s why you’ll never want to go back once you try it:\n\nStay in RStudio, where your data, code, and writing already live.\n\nOne source = many outputs: Word for co-authors, PDF for journals, HTML for web.\n\nCode and figures update automatically: no more broken copy-paste.\n\nReferences are automatic: stop fighting citation managers.\n\nReproducibility built in: others can rerun your analysis and regenerate the manuscript."
+  },
+  {
+    "objectID": "Blogs/b2_quarto_manuscript.html#in-summary",
+    "href": "Blogs/b2_quarto_manuscript.html#in-summary",
+    "title": "From RStudio to Published Paper: Writing Manuscripts with Quarto",
+    "section": "In Summary",
+    "text": "In Summary\nMost research is already done in R and RStudio — so why not finish the journey there too?\nWith Quarto Manuscript, you can analyze, write, and publish all in one place. Your papers become reproducible, polished, and effortless to export into any format required by journals.\nStart with your next section, add your figures inline, and let Quarto handle the formatting and references. Writing a paper will feel less like a formatting chore, and more like a natural extension of your research.\n\nThanks for stopping by! Hope you found something useful :)"
+  },
+  {
+    "objectID": "about1_for_linkedin.html",
+    "href": "about1_for_linkedin.html",
+    "title": "Islem Meherzi",
+    "section": "",
+    "text": "Hello! I’m Islem Meherzi, a Data Science Engineer with 8+ years of experience helping organizations and research teams bring order to messy, scattered data and turn it into clear, trusted insights.\n\n\nI currently work as an Independent Data Consultant, Instructor, and Researcher. My focus is on automation, reconciliation, and reporting workflows that save time, reduce errors, and accelerate decision-making. I specialize in:\n\n\n\n✓ Automating data workflows — from collection and cleaning to reconciliation, validation, and reporting\n\n\n✓ Healthcare & research analytics — designing workflows that ensure reliable results from complex medical and clinical datasets\n\n\n✓ Reporting & publishing automation — building reproducible Quarto reports, dashboards, and manuscripts for fast, polished outputs\n\n\n\nI believe that messy data leads to inaccurate results. My mission is to create reliable, automated, and scalable solutions that bring clarity to data and impact to research and decision-making."
+  },
+  {
+    "objectID": "about1_for_linkedin.html#professional-highlights",
+    "href": "about1_for_linkedin.html#professional-highlights",
+    "title": "Islem Meherzi",
+    "section": "Professional Highlights",
+    "text": "Professional Highlights\n\n\n\n2024 – Present\n\n\nIndependent Data Consultant & Researcher\n\n\n\nLeading international research projects that leverage global health data to empower innovation and help researchers produce stronger, more reliable insights.\n\n\nProviding R training & consulting to empower researchers and professionals with automated workflows and reproducible results.\n\n\nHelping organizations achieve less manual work, more reliable insights, and faster decisions through automation.\n\n\nCreating clean, automated Quarto reports, dashboards, and books for publication, research, and stakeholder communication.\n\n\n\n\n\n2017 – 2024\n\n\nPrincipal Data Scientist – Synodis\n\n\n\nBuilt and maintained automated pipelines for data migration and integration across 50+ clinical and medical establishments, ensuring efficient migration of patient, doctor, and practitioner data from outdated databases to modern systems.\n\n\nEnhanced data quality by reconciling 10+ diverse data sources per establishment (text files, APIs, Excel, databases, OCR, and more), delivering clean, reliable, and actionable datasets for decision-making and reporting.\n\n\nDeveloped Data reconciliation pipelines that matched global research databases (e.g., PubMed) with local client records, resolving issues like homonyms and incomplete metadata. This enabled thousands of doctors and researchers to receive fair recognition and remuneration for their contributions, while strengthening clients’ reputation as champions of research and innovation.\n\n\nImplemented and contributed to projects involving data extraction, cleaning, and automated correction across diverse, complex datasets, transforming them into reliable, actionable insights that reduced manual work and improved accuracy.\n\n\nDeveloped R Shiny dashboards, deployed with Docker & ShinyProxy on Azure, for interactive data visualization.\n\n\nImplemented ML models predicting medical acts from EHR data, improving forecasting accuracy.\n\n\nCreated NLP solutions for document preprocessing and clinical text analysis.\n\n\nWorked cross-functionally to resolve data challenges, applying DevOps practices and automated testing for reliable operations."
+  },
+  {
+    "objectID": "about1_for_linkedin.html#what-i-do-best",
+    "href": "about1_for_linkedin.html#what-i-do-best",
+    "title": "Islem Meherzi",
+    "section": "What I Do Best",
+    "text": "What I Do Best\n\n\nR Quarto R Shiny Data Migration & ETL Machine Learning NLP & Text Mining Social Network analysis Docker & CI/CD Azure SQL Python Statistical Analysis Data Visualization Healthcare Analytics"
+  },
+  {
+    "objectID": "about1_for_linkedin.html#certifications",
+    "href": "about1_for_linkedin.html#certifications",
+    "title": "Islem Meherzi",
+    "section": "Certifications",
+    "text": "Certifications\n\n\n Project Management Professional (PMP) \n\nPMI, 2023\n\n\n\n Scrum Master Certified (SMC) \n\nScrumStudy, 2023"
+  },
+  {
+    "objectID": "about1_for_linkedin.html#languages",
+    "href": "about1_for_linkedin.html#languages",
+    "title": "Islem Meherzi",
+    "section": "Languages",
+    "text": "Languages\n\n\nArabic: Native\n\n\nEnglish: Fluent\n\n\nFrench: Fluent"
+  },
+  {
+    "objectID": "research.html",
+    "href": "research.html",
+    "title": "Islem Meherzi",
+    "section": "",
+    "text": "My research focuses on leveraging health data and advanced analytical methods to address critical questions in global health research and policy. I apply bibliometric and scientometric approaches to understand research patterns, collaboration networks, and evidence gaps in healthcare.\n\n\nCurrent projects examine research-burden alignment, international collaboration patterns, and methodological innovations in health data analysis.\n\n\n\nResearch Directions\n\n\n\n\n\nBibliometric Analysis – applying quantitative methods to analyze research output patterns and impact\n\n\nScientometric Research – measuring and analyzing scientific literature and research productivity\n\n\nGlobal Health Research – examining research priorities and their alignment with disease burden\n\n\n\n\n\n\nResearch Collaboration Networks – mapping and analyzing international research partnerships\n\n\nHealth Data Analytics – utilizing large-scale health datasets for research insights\n\n\nEvidence-Based Policy – supporting health policy decisions through data-driven research\n\n\n\n\n\n\nPublic Health Data Science – applying advanced analytics to population health challenges\n\n\nResearch Methodology Innovation – developing new approaches for health research analysis\n\n\nHealth Research Equity – investigating disparities and gaps in global health research\n\n\n\n\n\nCurrent Research Projects\n\n\n\n\nResearch Project 1\n\nUnder Peer Review\n\nDetails are confidential while under double-blind peer review\n\n\nThis research explores how scientific output aligns with public health priorities, revealing gaps that can guide smarter research investments.\n\n\nBibliometrics Network Analysis Global Health Research Collaboration Scientometrics\n\n\n\n\nResearch Project 2\n\nIn Progress\n\nThis ongoing research examines the alignment between scientific research output and public health priorities, utilizing large-scale health datasets and mortality data to identify research gaps and inform strategic research investment decisions.\n\n\nPublic Health Data Research Assessment Health Policy Evidence Gaps Data Analytics\n\n\n\n\n\nInterested in research collaboration or learning more about my work?\n\n\nI welcome discussions about potential collaborations, methodological questions, or opportunities to contribute to health research initiatives.\n\n\n Get in Touch"
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "Islem Meherzi",
+    "section": "",
+    "text": "Hi, I’m Islem.\n\n\nI specialize in turning complex, multi-format datasets into clean, actionable insights. From automating data management workflows and reporting to providing R assistance and supporting researchers, I help people, teams and organizations gain clarity and control throughout the entire data process. With 8+ years of experience, from Principal Data Scientist at Synodis to independent Data Specialist and Researcher, I build systems that make your data reliable, insightful, and ready to drive decisions.\n\n\nI’m passionate about data science, teaching, and writing: from reports to research papers and books. What I do best: eliminate the manual work that slows you down and fix the data quality issues that hold you back, so you can focus on what matters most.\n\n\n\n\nWhat I Bring\n\n\n8+ years solving complex data challenges in healthcare and research, with deep R expertise and a track record of transforming manual, error-prone processes into automated, reliable systems that save time and improve outcomes.\n\n\n\nExpertise\n\n\n\n\nData Engineering & Automation\n\n\nBuilding robust pipelines that handle the heavy lifting – from data collection and cleaning to validation and reporting – so your team can trust the results.\n\n\nR ETL Pipelines Data Migration API Integration Automation\n\n\n\n\nAnalytics & Insights\n\n\nTransforming complex datasets into clear, actionable insights through advanced analytics, machine learning, and interactive visualizations.\n\n\nStatistical Analysis Machine Learning NLP Network Analysis Data Visualization\n\n\n\n\nReporting & Publishing\n\n\nCreating reproducible, professional reports and manuscripts that automatically update and maintain consistency across all your communications.\n\n\nQuarto R Shiny Interactive Dashboards Reproducible Research Docker\n\n\n\n\nImpact Stories\n\n\n\n\nResearch Workflow Automation\n\n\nAutomated Research Data Collection and Accelerated Insights\n\n\nAutomated the collection, preprocessing, and centralization of multi-source datasets from online literature and research databases. Built a domain-specific database and implemented analysis workflows using network graphs and unsupervised learning, enabling faster, more reliable research insights and streamlined reporting.\n\n\n\n\nWebsite Redesign with Quarto\n\n\nMigrated a Community Website to R and Quarto, Enabling Simple Updates by Non-Technical Users\n\n\nRedesigned a dynamic website using Quarto and R to create a structured, low-maintenance platform. Implemented a YML-driven system for easy content updates, allowing non-technical users to maintain and update the site efficiently while keeping it modern and scalable.\n\n\n\n\nHealthcare Data Transformation\n\n\nStreamlined Clinical Data Across 50+ Establishments\n\n\nBuilt automated migration pipelines reconciling patient, doctor, and practitioner data from diverse sources (Excel, databases, APIs, OCR) for 50+ medical establishments. The system transformed a labor-intensive manual process into a fast, reliable workflow, dramatically reducing preparation time while ensuring highly accurate data.\n\n\n\n\nResearch Acceleration\n\n\nAutomated Global Health Research Workflows\n\n\nDeveloped intelligent data reconciliation systems aligning global research databases with local records, resolving issues like author homonyms and incomplete metadata, empowering researchers with proper recognition, enhancing clients’ research credibility, and providing clear, actionable reports for fast database verification and correction.\n\n\n\n\nScalable Solutions\n\n\nEnterprise-Grade R Shiny Applications\n\n\nCreated Azure-hosted, containerized Shiny apps using Docker and ShinyProxy, transforming enterprise document management by enabling smart search, faster classification, and reduced manual workload.\n\n\n\n\nLeadership & Community\n\n\n\nBeyond technical expertise, I believe in building strong professional communities and continuous learning.\n\n\n\n\n🎤\n\n\nToastmasters Officer\n\n\nExecutive Committee Member at Tunis Toastmasters, serving in Secretary and VP of Membership roles, developing leadership and communication skills.\n\n\n\n\n🏥\n\n\nR-HTA Scientific Member\n\n\nScientific Committee Member for R for Health Technology Assessment in LMICs, promoting open-source tools for health research and leading training workshops.\n\n\n\n\n📚\n\n\nResearch & Training\n\n\nActive researcher in global health equity and bibliometrics, while providing R training to empower teams with automation and reproducible research practices.\n\n\n\n\n\n\nCredentials & Background\n\n\n\n\nEducation\n\n\nB.Sc. in Networks and Telecommunications,INSAT  Software Engineering (BI), ESPRIT\n\n\n\n\nCertifications\n\n\nPMP (PMI, 2023) Scrum Master Certified\n\n\n\n\nLanguages\n\n\nArabic (Native)English (Fluent)French (Fluent)\n\n\n\n\n\n\n\nPhilosophy\n\n\n“Reliable data leads to confident decisions. Automation leads to sustainable success.”"
+  },
+  {
+    "objectID": "services.html",
+    "href": "services.html",
+    "title": "Islem Meherzi",
+    "section": "",
+    "text": "I deliver data solutions that save time, reduce errors, and unlock insights. Whether you’re a researcher, a data team, or a tech department, I help you get more value from your data.\n\n\n\n\n\nResearch & Publication Support\n\n\nFaster insights, publication-ready outputs, automated workflows.\n\n\nLearn More\n\n\n\n\nData Engineering & Migration\n\n\nClean data, reliable pipelines, seamless system transitions.\n\n\nLearn More\n\n\n\n\nApplication Development & Deployment\n\n\nFrom concept to production: dashboards, reports, and scalable solutions.\n\n\nLearn More\n\n\n\n\nTraining & Strategic Consulting\n\n\nWorkshops, talks, and strategic guidance to level up your team.\n\n\nLearn More\n\n\n\n\n\n\n\n\n×\n\nData Engineering & Migration\n\n\n\n\n\nWhat I Can Help You With\n\n\n\nData reconciliation, automated correction, and transformation from multiple sources, delivering clean, reliable datasets\n\n\nBuild & automate customized ETL pipelines in R\n\n\nComplex data transformation & reconciliation across systems\n\n\nSeamless transitions from Excel/SAS to automated workflows\n\n\nAI-powered ingestion, parsing, and extraction from unstructured data sources (web, PDFs, documents, text, etc.)\n\n\nData gathering from APIs & online sources\n\n\nText mining, NLP, feature engineering & clustering\n\n\nAutomated reporting pipelines with quality assurance\n\n\n\n\nExample: I implemented end-to-end data pipelines across 50+ clinical and medical establishments that:\n\n\nExtracted, cleaned, reconciled, and migrated data from outdated systems to modern databases, handling 15+ diverse sources (text files, Excel, APIs, databases, OCR) and delivering clean, accurate, and ready-to-use datasets\n\n\nReconciled data for patients, doctors, and practitioners across all sites, ensuring alignment with national reference databases to reduce discrepancies and enable automated correction\n\n\nImplemented validation and correction algorithms that resolved over 70% of data issues and generated clear reports on discrepancies, remaining manual checks, and overall data quality\n\n\n\n\n\nKey Technologies\n\n\nR, Dplyr, APIs, ETL, Data Validation, NLP, Web Scraping, OCR, Database Migration\n\n\n\n\n\nNeed reliable data pipelines or system migration support?\n\nLet’s Discuss Your Project\n\n\n\n\n\n\n\n×\n\nResearch & Publication Support\n\n\n\n\n\nWhat I Can Help You With\n\n\n\nAutomate data collection from PubMed, OpenAlex, APIs, and web sources (WHO, geo, etc.)\n\n\nCreation and review of graphs for scientific publications\n\n\nData reconciliation with trusted databases (WHO, geographical datasets, and more)\n\n\nData cleaning, preprocessing, and transformation into analysis-ready formats\n\n\nAdvanced visualizations: clustering, Sankey diagrams, and geographic maps\n\n\nAutomated, reproducible reporting using R and Quarto\n\n\nPublication-ready manuscripts with Quarto\n\n\n\n\nExample: I supported a research team by designing and implementing a fully automated workflow that:\n\n\nCollected thousands of research papers from PubMed and OpenAlex — on demand\n\n\nReconciled key fields (authors, affiliations, disease codes, geography) with trusted databases\n\n\nBuilt advanced visualizations including clustering, Sankey flows, and maps\n\n\nIntegrated everything into Quarto manuscripts for publication-ready outputs\n\n\n\n\n\nKey Technologies\n\n\nR, Quarto, Zotero, APIs, WHO databases, Web Scraping, Statistical Analysis, Data Visualization\n\n\n\n\n\nReady to streamline your research workflow?\n\nStart a Conversation\n\n\n\n\n\n\n\n×\n\nApplication Development & Deployment\n\n\n\n\n\nWhat I Can Help You With\n\n\n\nBuild interactive R Shiny dashboards for data visualization and analytics\n\n\nCreate professional websites, reports, and publishable books with Quarto\n\n\nPackage & containerize applications with Docker for consistent deployment\n\n\nDeploy production-ready applications using ShinyProxy on Azure\n\n\nWeb scraping & large-scale data collection automation\n\n\nCI/CD workflows for automated testing and deployment\n\n\nTransform prototypes into scalable, enterprise-grade solutions\n\n\n\n\nExample: I built a comprehensive health insurance analytics dashboard:\n\n\nDeveloped an interactive R Shiny dashboard visualizing public health insurance expenditure data\n\n\nIntegrated geographical mapping and key performance indicators for data-driven insights\n\n\nDeployed using Docker and ShinyProxy on Azure cloud infrastructure\n\n\nImplemented automated data updates and ensured data privacy with anonymized datasets\n\n\n\n\n\nKey Technologies\n\n\nR Shiny, Quarto, Docker, ShinyProxy, Azure, CI/CD, APIs, Web Scraping, Cloud Deployment\n\n\n\n\n\nReady to build and scale your data applications?\n\nGet Technical Support\n\n\n\n\n\n\n\n×\n\nTraining & Strategic Consulting\n\n\n\n\n\nWhat I Can Help You With\n\n\n\nTechnical Workshops: Hands-on training in R, Quarto, Docker, Shiny deployment, and data engineering best practices\n\n\nConference Speaking: Expert presentations on data science, software engineering, and industrializing R workflows\n\n\nStrategic Consulting: Design efficient data workflows, quality assurance frameworks, and data modeling for decision support\n\n\nCustom Corporate Training: Tailored programs for your organization’s specific technical needs\n\n\nTeam Transformation: Guide teams transitioning from legacy tools to modern automated workflows\n\n\nWorkflow Design: Architecture and implementation strategy for scalable data systems\n\n\n\n\nExample: I deliver expert-led sessions that transform how teams work with data:\n\n\nPublic Workshops: Led RHTA in LMICs Workshop on data manipulation & web scraping in R\n\n\nDocker & R Production: Workshop series teaching teams to containerize and deploy R applications at enterprise scale\n\n\nShiny Production Deployment: From prototype to production-ready dashboards with real-world implementation strategies\n\n\nQuarto for Reproducible Analytics: Training on building automated, professional reports and publication-ready documentation\n\n\nStrategic Workflow Design: Consulting engagements helping organizations design efficient, scalable data processes\n\n\n\n\n\nKey Topics\n\n\nR & Quarto, Docker & Deployment, Shiny Production, Data Engineering, Workflow Automation, DevOps for Data Science, Strategic Planning, Quality Assurance\n\n\n\n\n\nReady to upskill your team or speak at your event?\n\nDiscuss Training & Speaking Opportunities\n\n\n\n\n\nReady to Transform Your Data Workflow?\n\n\nLet’s discuss how I can help streamline your processes, automate repetitive tasks, and empower your team with reliable, actionable data.\n\n\nStart a Conversation View My Contributions"
+  },
+  {
+    "objectID": "blog.html",
+    "href": "blog.html",
+    "title": "Islem Meherzi",
+    "section": "",
+    "text": "Welcome to my blog where I share insights on data science, R programming, healthcare analytics, and research methodologies. Explore practical tutorials, industry insights, and lessons learned from real-world projects.\n\n\n\n\n\n\n–&gt;        \n\n\n\n\n\n\n\n\n\n\n\n\n\n\nFrom RStudio to Published Paper: Writing Manuscripts with Quarto\n\n\nLearn how to use Quarto directly inside RStudio to draft, format, and publish your manuscript with code, figures, and references all in one place.\n\n\n\n\n\nSep 20, 2025\n\n\nIslem Meherzi\n\n\n\n\n\n\n\n\n\n\n\n\nBeat Procrastination and Write Research Papers Faster\n\n\nPractical strategies to draft research papers efficiently and avoid perfectionism traps. Learn how Version 0, quick planning, and Quarto Manuscript can speed up your writing.\n\n\n\n\n\nSep 18, 2024\n\n\nIslem Meherzi\n\n\n\n\n\n\n\n\n\n\n\n\nData Visualization Workshop\n\n\nA hands-on session on R and ggplot2, helping participants turn raw data into compelling visual stories.\n\n\n\n\n\nJun 12, 2024\n\n\nIslem Meherzi\n\n\n\n\n\n\n\n\n\n\n\n\nVolunteering with Data for Good\n\n\nSupporting a nonprofit group with data cleaning and automation, saving hours of repetitive work each month.\n\n\n\n\n\nMar 8, 2024\n\n\nIslem Meherzi\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "contact.html",
+    "href": "contact.html",
+    "title": "Islem Meherzi",
+    "section": "",
+    "text": "Every project begins with a conversation. Whether you’re facing data challenges, dealing with messy datasets, need automated reporting, or seeking R training – share a few details, and let’s explore the best solution together.\n\n\nUse the form below or reach out directly via  LinkedIn \n\n\n\n\nYour Name \n\n\nYour Email \n\n\nYou are interested in… (optional)  Select a service Automated Data Workflows & ETL Healthcare & Research Analytics Automated Reporting & Publishing Training & Workshops Custom Development & Integration Other (please specify in your message) \n\n\nEstimated Budget Range (optional) \n\n\nYour Message\n\n\n\nSend Message\n\n\nI usually reply within 48 hours. If urgent, please mention it in your message."
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "\nTransforming Complex Data Into Confident Decisions\n",
+    "section": "",
+    "text": "Welcome, I’m glad you’re here!\n\n\n\nI’m Islem Meherzi, a Data Science Engineer and researcher who helps individuals and organizations turn challenging data into reliable insights.\nI specialize in automation, data reconciliation, and research analytics: delivering solutions that save time, eliminate errors, and accelerate decision-making.\n\n\nAbout Me My Services Get in Touch"
+  },
+  {
+    "objectID": "index.html#how-i-can-help",
+    "href": "index.html#how-i-can-help",
+    "title": "\nTransforming Complex Data Into Confident Decisions\n",
+    "section": "How I Can Help",
+    "text": "How I Can Help\n\n\n\n\n\n\nData Engineering & Automation\n\n\nAutomate your entire data workflow: from collection and cleaning to reconciliation, validation, and reporting.\nBuilt for healthcare, research, and business teams who need reliable, production-ready pipelines that scale.\n\n\n\n\n\n\n\nResearch & Analytics Support\n\n\nAccelerate your research with automated data collection from scientific databases, publication-ready visualizations, and reproducible reports.\nFrom hypothesis to manuscript: faster, cleaner, more impactful.\n\n\n\n\n\n\n\nTraining & Consulting\n\n\nMaster R programming, workflow automation, and deployment strategies through customized training.\nOr get strategic guidance to design and implement data solutions that deliver results.\n\n\n\n\n\n\n\nData Workflow Diagnostic\n\n\nUnsure if your data processes are optimized? Get a diagnostic report identifying:\nQuality issues, manual bottlenecks, automation wins, and a prioritized roadmap for improvement.\n\n\n\n\n\n\n\nReady to Turn Data Challenges Into Strategic Clarity?\n\n\nWhether you’re managing complex healthcare research, automating repetitive workflows, or migrating legacy systems. I help transform your data challenges into reliable, actionable solutions.\nLet’s discuss how I can support your next project.\n\n\n Services  Research  Training  Start a Conversation"
+  },
+  {
+    "objectID": "work.html",
+    "href": "work.html",
+    "title": "Islem Meherzi",
+    "section": "",
+    "text": "Over the years, I’ve worked on impactful projects and taken on leadership roles that promote open science, health technology assessment, and community growth. Explore some of my key contributions below.\n\n\n\n\n\n\n\nR HTA in LMICs : (add link to the new website and r consortium….)\n\n\nAs a scientific committee member, I promote the use of R for health technology assessment in low-resource settings.\n\n\n\nLed workshops on data automation and drug price monitoring using R.\n\n\nAdvocated open-source tools for health research.\n\n\nWorkshops: Part 1, Part 2\n\n\n\nWebsite Development\n\n\nRedesigned the R-HTA in LMICs website as the principal Quarto developer, achieving a modular, low-maintenance structure with scalable components management using Quarto, R, and GitHub workflows.\n\n\n\n\n\nR-Ladies Data Challenge 2024\n\n\nProject: “Analyzing Women’s Contributions in Data Science Research”.\n\n\n\nGender detection via APIs.\n\n\nText analysis using NLP.\n\n\nInteractive Shiny dashboards.\n\n\n\n View Full Project → \n\n\n\n\n\nLeadership & Community\n\n\nServing as an Executive Committee Member at Tunis Toastmasters Club.\n\n\n\nSecretary and VP of Membership roles.\n\n\nStrengthened leadership and communication skills.\n\n\nContributed to club growth and engagement.\n\n\n\n\n\n\nOpen-Source & Side Projects\n\n\nPassionate about contributing to the data science ecosystem.\nComing soon: Highlights of open-source tools and GitHub contributions."
+  },
+  {
+    "objectID": "contct.html",
+    "href": "contct.html",
+    "title": "\nGet in Touch\n",
+    "section": "",
+    "text": "Need clarity on your data challenges or R programming projects? Let’s connect and discuss how I can support your goals.\nUse the form below or reach out directly via  LinkedIn \n\n\nYour Name \nYour Email \nMessage\n\n\nSend Message"
+  },
+  {
+    "objectID": "contact0.html",
+    "href": "contact0.html",
+    "title": "\nWork With Me\n",
+    "section": "",
+    "text": "Every project begins with a conversation. Whether you’re facing data challenges, dealing with messy datasets, automated reporting needs, or R training goals. Share a few details, and let’s explore the best solution together..\nUse the form below or reach out directly via  LinkedIn \n\n\nYour Name \nYour Email \nYou are interested in…  Select a service  Automated Data Workflows & ETL   Healthcare & Research Analytics   Automated Reporting & Publishing   Training & Workshops   Custom Development & Integration  Other (please specify in your message) \nEstimated Budget Range  Select a budget range Less than $500 $1,000 – $3,000 $3,000 – $5,000 $5,000 – $10,000 More than $10,000 \nYour Message\n\nSend Message\n\n💡 I usually reply within 48 hours. if urgent, please mention it in your message."
+  },
+  {
+    "objectID": "contact2.html",
+    "href": "contact2.html",
+    "title": "\nGet in Touch\n",
+    "section": "",
+    "text": "Need clarity on your data challenges or R programming projects? I help transform complex data problems into clear, actionable solutions.\nIf you’re looking to:\nSolve a specific challenge with your data\nExplore an idea or opportunity with expert support\nEnsure accuracy, efficiency, and impact in your workflows\nLet’s connect and discuss how I can support your goals. Use the form below or reach out directly via  LinkedIn \n\nYour Name \nYour Email \nMessage\n\n\nSend Message"
+  },
+  {
+    "objectID": "contributions.html",
+    "href": "contributions.html",
+    "title": "Islem Meherzi",
+    "section": "",
+    "text": "Over the years, I’ve worked on impactful projects and taken on leadership roles that promote open science, health technology assessment, and community growth. Explore some of my contributions below.\n\n\n\n\n\nR HTA in LMICs\n\n\nAs a scientific committee member, I contribute in promoting the use of R for health technology assessment in low-resource settings.\n\n\n\nDeliver data science workshops on Health Technology Assessment (HTA), using R as the primary tool\n\n\nAdvocated open-source tools for health research\n\n\nDeveloped comprehensive training materials and resources\n\n\n\nWorkshop 1: Introduction to R  Workshop 2: Data Manipulation & Web Scraping in R\n\n\n\n\n\n\nInternational Women’s Day Data Challenge 2024\n\n\nProject: “Analyzing Women’s Contributions in Data Science Research”\n\n\n\nGender detection via APIs\n\n\nText analysis using NLP techniques\n\n\nInteractive Shiny dashboards for data visualization\n\n\nComprehensive analysis of gender disparities in research\n\n\nView Project Presentation\n\n\n\nLeadership & Community\n\n\nServing as an Executive Committee Member at Tunis Toastmasters Club.\n\n\n\nSecretary and VP of Membership roles\n\n\nStrengthened leadership and communication skills\n\n\nContributed to club growth and engagement\n\n\nMentored new members in public speaking and leadership\n\n\n\n\n\nOpen-Source & Side Projects\n\n\nPassionate about contributing to the data science ecosystem through open-source development and community engagement.\n\n\n\nContributing to R packages and tools\n\n\nSharing knowledge through blog posts and tutorials\n\n\nParticipating in hackathons and coding challenges"
+  },
+  {
+    "objectID": "publications.html",
+    "href": "publications.html",
+    "title": "Publications",
+    "section": "",
+    "text": "My research work is dedicated to advancing healthcare innovation by leveraging health data in creative, impactful ways.\n\n\nSeveral projects are currently in peer review and will be published soon. Stay tuned for updates.\n\n\n\n\n\n\nGlobal research–burden alignment – matching research output with disease mortality patterns at global and national levels.\nNon-communicable diseases (NCDs) – focus on leading causes of death and under-researched top killers.\nMental health research – as a major health and policy priority, linked to overall disease burden.\nInternational collaboration networks – mapping global co-authorship patterns and hidden research clusters.\nInternational collaboration patterns – mapping how researchers work together across borders.\nResearcher mobility and talent flows – identifying origin and destination countries for researchers.\n\n\n\nBrain drain and talent retention – understanding how countries lose or retain researchers.\nResearcher mobility and talent flows – identifying origin/destination countries and understanding brain drain/retention.\nAdvanced bibliometric methods – integrating origin data, network analysis, keyword mapping, and clustering.\nPolicy and funding alignment – using evidence to guide equitable resource allocation and strategic research investment.\n\n\n\n\n\n\n\n\n\nStatus: Under peer review\n\n\nThis project explores global researcher mobility and collaboration in mental health by combining author origin data with advanced bibliometric and network analysis. It reveals hidden collaboration clusters, key talent flows, and patterns of brain drain and retention to inform equitable talent policies and strengthen international research partnerships.\n\n\n\n\n\nStatus:\n\n\nThis project examines how national research activity corresponds to the leading causes of death from non-communicable diseases in the UN countries. By creating informative metrics to assess whether research volume aligns with mortality data, it identifies gaps and mismatches, highlighting where research priorities diverge from health needs and informing strategic funding and global health planning.\n\n\n\n\n\n\nInterested in my latest research and publications?\n\n\nStay informed and explore more insights — feel free to reach out!\n\n\n Contact Me"
+  },
+  {
+    "objectID": "publications.html#research-areas",
+    "href": "publications.html#research-areas",
+    "title": "Publications",
+    "section": "",
+    "text": "Global research–burden alignment – matching research output with disease mortality patterns at global and national levels.\nNon-communicable diseases (NCDs) – focus on leading causes of death and under-researched top killers.\nMental health research – as a major health and policy priority, linked to overall disease burden.\nInternational collaboration networks – mapping global co-authorship patterns and hidden research clusters.\nInternational collaboration patterns – mapping how researchers work together across borders.\nResearcher mobility and talent flows – identifying origin and destination countries for researchers.\n\n\n\nBrain drain and talent retention – understanding how countries lose or retain researchers.\nResearcher mobility and talent flows – identifying origin/destination countries and understanding brain drain/retention.\nAdvanced bibliometric methods – integrating origin data, network analysis, keyword mapping, and clustering.\nPolicy and funding alignment – using evidence to guide equitable resource allocation and strategic research investment."
+  },
+  {
+    "objectID": "publications.html#publications-in-progress",
+    "href": "publications.html#publications-in-progress",
+    "title": "Publications",
+    "section": "",
+    "text": "Status: Under peer review\n\n\nThis project explores global researcher mobility and collaboration in mental health by combining author origin data with advanced bibliometric and network analysis. It reveals hidden collaboration clusters, key talent flows, and patterns of brain drain and retention to inform equitable talent policies and strengthen international research partnerships.\n\n\n\n\n\nStatus:\n\n\nThis project examines how national research activity corresponds to the leading causes of death from non-communicable diseases in the UN countries. By creating informative metrics to assess whether research volume aligns with mortality data, it identifies gaps and mismatches, highlighting where research priorities diverge from health needs and informing strategic funding and global health planning.\n\n\n\n\n\n\nInterested in my latest research and publications?\n\n\nStay informed and explore more insights — feel free to reach out!\n\n\n Contact Me"
+  },
+  {
+    "objectID": "blog0.html",
+    "href": "blog0.html",
+    "title": "Islem Meherzi",
+    "section": "",
+    "text": "Welcome to my blog where I share insights on data science, R programming, healthcare analytics, and research methodologies. Explore practical tutorials, industry insights, and lessons learned from real-world projects.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nFrom RStudio to Published Paper: Writing Manuscripts with Quarto\n\n\n\nResearch\n\nRStudio\n\nQuarto\n\nProductivity\n\n\n\nLearn how to use Quarto directly inside RStudio to draft, format, and publish your manuscript with code, figures, and references all in one place.\n\n\n\n\n\nSep 20, 2025\n\n\nIslem Meherzi\n\n\n\n\n\n\n\n\n\n\n\n\nBeat Procrastination and Write Research Papers Faster\n\n\n\nProductivity\n\nResearch\n\nWriting\n\n\n\nPractical strategies to draft research papers efficiently and avoid perfectionism traps. Learn how Version 0, quick planning, and Quarto Manuscript can speed up your writing.\n\n\n\n\n\nSep 18, 2024\n\n\nIslem Meherzi\n\n\n\n\n\n\n\n\n\n\n\n\nData Visualization Workshop\n\n\n\nWorkshop\n\nData Visualization\n\n\n\nA hands-on session on R and ggplot2, helping participants turn raw data into compelling visual stories.\n\n\n\n\n\nJun 12, 2024\n\n\nIslem Meherzi\n\n\n\n\n\n\n\n\n\n\n\n\nVolunteering with Data for Good\n\n\n\nCommunity\n\nProject\n\n\n\nSupporting a nonprofit group with data cleaning and automation, saving hours of repetitive work each month.\n\n\n\n\n\nMar 8, 2024\n\n\nIslem Meherzi\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "index0.html",
+    "href": "index0.html",
+    "title": "\nTurning Complex Data Into Intelligent Solutions\n",
+    "section": "",
+    "text": "Hi 👋 , It’s nice to meet you!\n\n\n\nI’m Islem Meherzi, a Data Science Engineer and researcher passionate about transforming complex healthcare data into impactful insights.\nI help organizations leverage automation, advanced analytics, and innovative technologies to drive efficiency and better decision-making.\n\nAbout Me View My Work Get in Touch"
+  },
+  {
+    "objectID": "index0.html#what-i-offer",
+    "href": "index0.html#what-i-offer",
+    "title": "\nTurning Complex Data Into Intelligent Solutions\n",
+    "section": "What I Offer",
+    "text": "What I Offer\n\n\nData Automation\nStreamline workflows with custom pipelines for data migration, transformation, and integration.\n\n\nHealthcare Analytics\nLeverage advanced statistical models and ML to extract actionable insights from clinical data.\n\n\nR Training & Consulting\nEmpowering professionals and teams to master R for automation, visualization, and reporting."
+  },
+  {
+    "objectID": "index0.html#quick-links",
+    "href": "index0.html#quick-links",
+    "title": "\nTurning Complex Data Into Intelligent Solutions\n",
+    "section": "Quick Links",
+    "text": "Quick Links\n\nPublications Services\n\n\n\n\nLet’s connect and build something impactful together."
+  },
+  {
+    "objectID": "expertise.html",
+    "href": "expertise.html",
+    "title": "\nHow I Can Help\n",
+    "section": "",
+    "text": "Empowering you with data-driven solutions\n\n\n\n\nI deliver data solutions that save time, reduce errors, and unlock insights.\nWhether you’re a researcher, a data team, or a tech department, I help turn complex datasets into clear, actionable outcomes.\n\n\n\n\n\n\n For Researchers & Analysts\n\n\nFaster publications, cleaner data, less manual work.\n\n+ More details\n\n&lt;ul&gt;\n  &lt;li&gt;Automated data collection from APIs, databases, and online sources&lt;/li&gt;\n  &lt;li&gt;Cleaning, correction, and transformation into publication-ready datasets&lt;/li&gt;\n  &lt;li&gt;Bibliometric & scientometric analysis for research evaluation&lt;/li&gt;\n  &lt;li&gt;Automated manuscript writing with &lt;strong&gt;R + Quarto&lt;/strong&gt; (Zotero integration, reproducible workflows)&lt;/li&gt;\n  &lt;li&gt;Examples: Assisted researchers with automated PubMed data extraction and created reproducible Quarto manuscripts ready for submission&lt;/li&gt;\n&lt;/ul&gt;\n\n\n\n\n\n\n For Data Professionals\n\n\nReliable pipelines, accurate migrations, better decisions.\n\n+ More details\n\n&lt;ul&gt;\n  &lt;li&gt;ETL pipelines for healthcare and pharma data&lt;/li&gt;\n  &lt;li&gt;Migration from outdated databases to modern systems&lt;/li&gt;\n  &lt;li&gt;Data reconciliation across patients, doctors, and practitioners&lt;/li&gt;\n  &lt;li&gt;Automated correction & enhancement of messy datasets&lt;/li&gt;\n  &lt;li&gt;Example: Migrated and reconciled data from 50+ medical establishments, ensuring accuracy and consistency&lt;/li&gt;\n&lt;/ul&gt;\n\n\n\n\n\n\n For Tech Teams & Developers\n\n\nFrom prototypes to scalable production systems.\n\n+ More details\n\n&lt;ul&gt;\n  &lt;li&gt;Deploy R Shiny apps with Docker & ShinyProxy&lt;/li&gt;\n  &lt;li&gt;Automated dashboards & reports using Quarto&lt;/li&gt;\n  &lt;li&gt;CI/CD workflows for data processes&lt;/li&gt;\n  &lt;li&gt;Cloud setup & API development for data integration&lt;/li&gt;\n  &lt;li&gt;Example: Built Dockerized R Shiny dashboards deployed on Azure for real-time healthcare reporting&lt;/li&gt;\n&lt;/ul&gt;\n\n\n\n\n\n\n Cross-Domain Expertise\n\n\nTraining, strategy, and scalable solutions across industries.\n\n+ More details\n\n&lt;ul&gt;\n  &lt;li&gt;Custom training in R, Shiny, and Quarto for teams&lt;/li&gt;\n  &lt;li&gt;Strategic consulting to design efficient data workflows&lt;/li&gt;\n  &lt;li&gt;Validation and quality assurance frameworks&lt;/li&gt;\n  &lt;li&gt;Support for transitioning from Excel/SAS to automated R workflows&lt;/li&gt;\n  &lt;li&gt;Example: Trained research teams to automate reporting pipelines, cutting preparation time from days to hours&lt;/li&gt;\n&lt;/ul&gt;\n\n\n\n\n\n\nReady to Transform Your Data Workflow?\n\n\nLet’s discuss how I can help streamline your processes, automate repetitive tasks, and empower your team with reliable, actionable data.\n\n\nStart a Conversation View My Work"
+  },
+  {
+    "objectID": "Blogs/b1_post-research-writing.html",
+    "href": "Blogs/b1_post-research-writing.html",
+    "title": "Beat Procrastination and Write Research Papers Faster",
+    "section": "",
+    "text": "Want to beat procrastination and draft faster?\nHere are some of the most effective tips I’ve gathered that truly work.\n\n\n\nStop editing as you write! Your first draft is about getting ideas down, not grammar or polish.\n\nEditing too early wastes time and fuels procrastination.\n\nSave grammar, clarity, and formatting for later rounds.\n\n✅ Perfectionism = procrastination. A rough draft builds clarity and momentum.\n\n\n\n\nHere’s a plan that simplifies writing and saves time:\n\nStructure first: Outline using your target journal’s template.\n\nWrite key sections first (Methods, Results).\n\nIntro/Abstract last: they’ll be sharper once your content is final.\n\nDraft fast: Aim for 1 section/day. Quarto’s dynamic formatting/code tools remove friction.\n\nRevise after drafting: Polishing a full draft is faster and more motivating than fixing fragments.\n\n\n\n\n\n\nPerfectionism slows you down — draft first, polish later.\n\nWriting a rough Version 0 clears mental blocks and creates momentum.\n\nQuarto Manuscript helps you stay focused on ideas, not formatting.\n\n\n💡 Want to try these methods? Start with your next project: create a Quarto outline, commit to Version 0, and watch how much faster your draft grows.\n\nThanks for stopping by! Hope you found something useful :)"
+  },
+  {
+    "objectID": "Blogs/b1_post-research-writing.html#struggling-to-finish-your-research-paper",
+    "href": "Blogs/b1_post-research-writing.html#struggling-to-finish-your-research-paper",
+    "title": "Beat Procrastination and Write Research Papers Faster",
+    "section": "",
+    "text": "Want to beat procrastination and draft faster?\nHere are some of the most effective tips I’ve gathered that truly work.\n\n\n\nStop editing as you write! Your first draft is about getting ideas down, not grammar or polish.\n\nEditing too early wastes time and fuels procrastination.\n\nSave grammar, clarity, and formatting for later rounds.\n\n✅ Perfectionism = procrastination. A rough draft builds clarity and momentum.\n\n\n\n\nHere’s a plan that simplifies writing and saves time:\n\nStructure first: Outline using your target journal’s template.\n\nWrite key sections first (Methods, Results).\n\nIntro/Abstract last: they’ll be sharper once your content is final.\n\nDraft fast: Aim for 1 section/day. Quarto’s dynamic formatting/code tools remove friction.\n\nRevise after drafting: Polishing a full draft is faster and more motivating than fixing fragments.\n\n\n\n\n\n\nPerfectionism slows you down — draft first, polish later.\n\nWriting a rough Version 0 clears mental blocks and creates momentum.\n\nQuarto Manuscript helps you stay focused on ideas, not formatting.\n\n\n💡 Want to try these methods? Start with your next project: create a Quarto outline, commit to Version 0, and watch how much faster your draft grows.\n\nThanks for stopping by! Hope you found something useful :)"
+  },
+  {
+    "objectID": "Blogs/b3.html",
+    "href": "Blogs/b3.html",
+    "title": "Volunteering with Data for Good",
+    "section": "",
+    "text": "Volunteering with a Data for Good initiative taught me…\n\nCleaning messy datasets\nAutomating reports\nDelivering practical insights"
+  },
+  {
+    "objectID": "Blogs/b3.html#making-an-impact-with-data",
+    "href": "Blogs/b3.html#making-an-impact-with-data",
+    "title": "Volunteering with Data for Good",
+    "section": "",
+    "text": "Volunteering with a Data for Good initiative taught me…\n\nCleaning messy datasets\nAutomating reports\nDelivering practical insights"
+  }
+]
