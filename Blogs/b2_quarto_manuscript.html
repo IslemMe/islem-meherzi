@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Islem Meherzi">
-<meta name="dcterms.date" content="2025-09-20">
+<meta name="dcterms.date" content="2025-10-03">
 <meta name="description" content="Learn how to use Quarto directly inside RStudio to draft, format, and publish your manuscript with code, figures, and references all in one place.">
 
 <title>From RStudio to Published Paper: Writing Manuscripts with Quarto – Islem Meherzi</title>
@@ -114,7 +114,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link rel="stylesheet" href="../styles.css">
 </head>
 
-<body class="nav-fixed fullcontent quarto-light">
+<body class="nav-fixed quarto-light">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -184,7 +184,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+    </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
@@ -218,7 +219,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">September 20, 2025</p>
+      <p class="date">October 3, 2025</p>
     </div>
   </div>
   
@@ -230,155 +231,391 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
+<style>
+.link-teal a {
+  color: #18bc9c;
+  }
+</style>
+<div class="link-teal">
+<div class="callout callout-style-default callout-tip no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>What You’ll Learn
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>By the end of this post, you’ll know how to write an entire research paper inside RStudio - complete with live code, auto-generated figures, formatted references, and multiple output formats (Word, PDF, HTML)- all from a single source file.</p>
+<p><strong>Time to read:</strong> ~8 minutes</p>
+</div>
+</div>
 <section id="why-write-papers-in-rstudio" class="level2">
 <h2 class="anchored" data-anchor-id="why-write-papers-in-rstudio">Why Write Papers in RStudio?</h2>
-<p>Most researchers today already use <strong>R and RStudio</strong> for their data analysis. We run models, generate tables, and produce figures, all within the same environment.</p>
-<p>But when it comes to writing the actual manuscript, we often switch tools: exporting results to Word, formatting references in citation managers, or handing over LaTeX code to journals. This adds friction, duplication, and errors.</p>
-<p>The question is: <strong>why leave RStudio when you can write your manuscript there too?</strong></p>
-<p>With <strong>Quarto</strong>, you can now write your <strong>entire paper</strong> in RStudio, combining:</p>
+<p>If you’re a researcher using <strong>R and RStudio</strong>, you probably spend hours there every day: cleaning data, running analyses, creating visualizations, and building statistical models.</p>
+<p>But then comes the hard part: <strong>writing the actual paper</strong>.</p>
+<p>Suddenly, you’re juggling</p>
 <ul>
-<li>Your <strong>text</strong> and manuscript structure.<br>
-</li>
-<li>Your <strong>code chunks</strong> (R, Python, Julia, etc).<br>
-</li>
-<li><strong>Figures and tables</strong>, perfectly placed and automatically updated.<br>
-</li>
-<li><strong>References and citations</strong> handled automatically.<br>
-</li>
-<li>Multiple output formats (Word, PDF, HTML) in one click.</li>
+<li>Exporting figures to PNG files</li>
+<li>Copy-pasting results into Word</li>
+<li>Managing citations in Zotero or Mendeley</li>
+<li>Updating figures when your data changes (again!)</li>
+<li>Dealing with formatting chaos before journal submission</li>
 </ul>
-<p>It’s a single, reproducible workflow: from data to manuscript.</p>
-<hr>
+<p><strong>What if you could skip all of that?</strong></p>
+<p>With <strong>Quarto</strong>, your entire manuscript lives in RStudio alongside your code. When you update your analysis, your paper updates too—automatically. No more switching between tools. No more broken workflows.</p>
 </section>
-<section id="getting-started-with-quarto-in-rstudio" class="level2">
-<h2 class="anchored" data-anchor-id="getting-started-with-quarto-in-rstudio">Getting Started with Quarto in RStudio</h2>
-<p>You don’t need a new tool. Quarto comes as part of RStudio (Posit IDE).</p>
-<p>To create a manuscript:</p>
+<section id="what-is-quarto-exactly" class="level2">
+<h2 class="anchored" data-anchor-id="what-is-quarto-exactly">What is Quarto, Exactly?</h2>
+<p>Think of Quarto as the <strong>next generation of R Markdown</strong>, but supercharged:</p>
+<p>✅ Works with <strong>R, Python, Julia, and Observable</strong><br>
+✅ Creates <strong>Word docs, PDFs, HTML pages, and even journal-ready formats</strong><br>
+✅ Handles <strong>citations, cross-references, and figure numbering</strong> automatically<br>
+✅ Already built into <strong>modern versions of RStudio</strong> (no extra installation needed!)</p>
+<p>It’s designed for exactly what you’re trying to do: turn your research into a publication-ready document.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>New to R Markdown?</strong> Don’t worry! Quarto is beginner-friendly. If you can write in Word and copy-paste code, you can write with Quarto.</p>
+</div>
+</div>
+</section>
+<section id="getting-started-create-your-first-manuscript-project" class="level2">
+<h2 class="anchored" data-anchor-id="getting-started-create-your-first-manuscript-project">Getting Started: Create Your First Manuscript Project</h2>
+<p>Let’s create a manuscript project in RStudio. It takes about 30 seconds:</p>
+<section id="step-1-create-a-new-quarto-manuscript" class="level3">
+<h3 class="anchored" data-anchor-id="step-1-create-a-new-quarto-manuscript">Step 1: Create a New Quarto Manuscript</h3>
 <ol type="1">
-<li>In RStudio, go to: <strong>File → New Project</strong>.<br>
-</li>
-<li>Select <strong>New Directory → Quarto Manuscript</strong>.<br>
-</li>
-<li>Give your project a name (e.g., <code>my-paper</code>) and choose where to save it.<br>
-</li>
-<li>RStudio will create a dedicated project folder containing all the necessary Quarto files for your manuscript.</li>
+<li>In RStudio, go to: <strong>File → New Project</strong></li>
+<li>Choose: <strong>New Directory → Quarto Manuscript</strong></li>
+<li>Name your project (e.g., <code>my-paper</code>)</li>
+<li>Click <strong>Create Project</strong></li>
 </ol>
-<p>Your project will have:</p>
+<p>RStudio creates a complete manuscript structure for you:</p>
 <pre><code>my-paper/
-├── index.qmd        # Main manuscript file
-├── references.bib   # Bibliography file
-├── _quarto.yml      # Project settings
-└── figures/         # Store your figures here</code></pre>
-<hr>
+├── index.qmd          # Your main manuscript file (text + code)
+├── references.bib     # Bibliography file (citations go here)
+├── _quarto.yml        # Project settings (formats, styles, etc.)
+└── my-paper.Rproj     # RStudio project file</code></pre>
 </section>
-<section id="writing-your-manuscript" class="level2">
-<h2 class="anchored" data-anchor-id="writing-your-manuscript">Writing Your Manuscript</h2>
-<p>The <code>index.qmd</code> file is where you write your paper. It looks like this:</p>
+<section id="step-2-explore-the-template" class="level3">
+<h3 class="anchored" data-anchor-id="step-2-explore-the-template">Step 2: Explore the Template</h3>
+<p>Open <code>index.qmd</code> and click <strong>Render</strong>. You’ll see a beautifully formatted manuscript with:</p>
+<ul>
+<li>Title and author information</li>
+<li>Sections (Introduction, Methods, Results, etc.)</li>
+<li>Example code chunks</li>
+<li>Auto-generated bibliography</li>
+</ul>
+<p>That’s it! You now have a working manuscript template.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>💡 Prefer to Start with a Complete Example?
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>I’ve created a <strong>ready-to-use template</strong> with a demo research paper example (including plots, tables, and references).</p>
+<p><strong>Download:</strong> <a href="https://github.com/IslemMe/quarto-manuscript-demo">quarto-manuscript-demo on GitHub</a></p>
+<p>Just download, open in RStudio, and click Render. Follow the README for required instructions.</p>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="writing-your-manuscript-the-basics" class="level2">
+<h2 class="anchored" data-anchor-id="writing-your-manuscript-the-basics">Writing Your Manuscript: The Basics</h2>
+<p>The <code>index.qmd</code> file is where your paper lives. Here’s what a simple manuscript looks like:</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Click to view complete example manuscript code
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "My Research Paper"</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Impact of Exercise on Sleep Quality"</span></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="an">author:</span><span class="co"> "Your Name"</span></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="an">date:</span><span class="co"> "2025-09-20"</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="an">date:</span><span class="co"> "2025-10-03"</span></span>
 <span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="an">format:</span></span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="co">  pdf: default</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="co">  html: default</span></span>
 <span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="co">  docx: default</span></span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="co">  html: default</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="co">  pdf: default</span></span>
 <span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="an">bibliography:</span><span class="co"> references.bib</span></span>
 <span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
 <span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="fu"># Abstract</span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="fu">## Abstract</span></span>
 <span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>A short summary of your work.</span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>We investigated the relationship between exercise frequency and sleep quality in 200 participants over 12 weeks.</span>
 <span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a><span class="fu"># Introduction</span></span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a><span class="fu">## Introduction</span></span>
 <span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>Why this research matters...</span>
-<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a><span class="fu"># Methods</span></span>
-<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>Sleep disorders affect millions of people worldwide <span class="co">[</span><span class="ot">@smith2020</span><span class="co">]</span>. </span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>Recent evidence suggests physical activity may improve sleep outcomes...</span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a><span class="fu">## Methods</span></span>
 <span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a>::: {.cell}</span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a><span class="fu">### Data Collection</span></span>
 <span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a><span class="in">```{.r .cell-code}</span></span>
-<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a><span class="co"># Example R code included in the paper</span></span>
-<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(mtcars, <span class="fu">aes</span>(wt, mpg)) <span class="sc">+</span> <span class="fu">geom_point</span>()</span>
-<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a>We recruited participants aged 25-65 and tracked their exercise habits using wearable devices.</span>
+<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a>::: {.cell}</span>
+<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a>:::</span>
 <span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a><span class="fu"># Results</span></span>
+<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a><span class="fu">## Results</span></span>
 <span id="cb2-34"><a href="#cb2-34" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-35"><a href="#cb2-35" aria-hidden="true" tabindex="-1"></a>Here is where the code-generated figure will appear.</span>
+<span id="cb2-35"><a href="#cb2-35" aria-hidden="true" tabindex="-1"></a>As shown in Figure 1, we found a positive correlation between exercise and sleep quality (r = 0.45, p &lt; 0.001).</span>
 <span id="cb2-36"><a href="#cb2-36" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-37"><a href="#cb2-37" aria-hidden="true" tabindex="-1"></a><span class="fu"># Discussion</span></span>
-<span id="cb2-38"><a href="#cb2-38" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-39"><a href="#cb2-39" aria-hidden="true" tabindex="-1"></a>Interpret your findings.</span>
-<span id="cb2-40"><a href="#cb2-40" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-41"><a href="#cb2-41" aria-hidden="true" tabindex="-1"></a><span class="fu"># References</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>👉 Notice how <strong>code and narrative are written side by side</strong>. When you render the manuscript, the figure produced by <code>ggplot2</code> is automatically inserted, formatted, and captioned.</p>
-<hr>
+<span id="cb2-37"><a href="#cb2-37" aria-hidden="true" tabindex="-1"></a><span class="fu">## References</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div>
+</div>
+<section id="key-features-to-notice" class="level3">
+<h3 class="anchored" data-anchor-id="key-features-to-notice">Key Features to Notice:</h3>
+<ol type="1">
+<li><strong>YAML Header</strong> (the <code>---</code> section at top): Contains your paper’s metadata</li>
+<li><strong>Markdown Sections</strong>: Use <code>##</code> for main sections, <code>###</code> for subsections</li>
+<li><strong>Code Chunks</strong>: Wrapped in <code>```{r} ... ```</code> — runs when you render</li>
+<li><strong>Citations</strong>: Use <code>[@smith2020]</code> to cite references from your <code>.bib</code> file</li>
+<li><strong>Figure Labels</strong>: <code>#| label: fig-name</code> creates numbered, cross-referenceable figures</li>
+</ol>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Important
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Pro Tip:</strong> Use <code>echo: false</code> in code chunks to hide the code and show only the output (like the figure). Perfect for final manuscripts!</p>
+</div>
+</div>
 </section>
-<section id="adding-references" class="level2">
-<h2 class="anchored" data-anchor-id="adding-references">Adding References</h2>
-<p>Quarto uses a <code>references.bib</code> file (BibTeX format). Example entry:</p>
+</section>
+<section id="managing-references-easier-than-you-think" class="level2">
+<h2 class="anchored" data-anchor-id="managing-references-easier-than-you-think">Managing References: Easier Than You Think</h2>
+<p>One of the biggest pain points in academic writing is <strong>citation management</strong>. Quarto makes it surprisingly simple.</p>
+<section id="how-it-works" class="level3">
+<h3 class="anchored" data-anchor-id="how-it-works">How It Works</h3>
+<ol type="1">
+<li><strong>Create a <code>.bib</code> file</strong> (already done if you used the template!)</li>
+<li><strong>Add references</strong> in BibTeX format</li>
+<li><strong>Cite them</strong> in your text using <code>[@citationkey]</code></li>
+<li><strong>Render</strong> → Quarto generates a formatted bibliography automatically</li>
+</ol>
+</section>
+<section id="example-bibtex-entry" class="level3">
+<h3 class="anchored" data-anchor-id="example-bibtex-entry">Example BibTeX Entry</h3>
+<p>In <code>references.bib</code>:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode bibtex code-with-copy"><code class="sourceCode bibtex"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="va">@article</span>{<span class="ot">smith2020</span>,</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">title</span>={Data Science in Healthcare},</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="dt">author</span>={Smith, John and Doe, Jane},</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="dt">journal</span>={Journal of Health Analytics},</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">title</span>={The Science of Sleep and Exercise},</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="dt">author</span>={Smith, Jane and Johnson, Mark},</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="dt">journal</span>={Journal of Health Research},</span>
 <span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>  <span class="dt">year</span>={2020},</span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>  <span class="dt">volume</span>={12},</span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>  <span class="dt">number</span>={3},</span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>  <span class="dt">pages</span>={123-135}</span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>In your manuscript, cite it like this:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>Research in this field is expanding rapidly <span class="co">[</span><span class="ot">@smith2020</span><span class="co">]</span>.</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>At the end, Quarto automatically generates the bibliography.</p>
-<p>Want APA style? Add this to the YAML:</p>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>  <span class="dt">volume</span>={15},</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>  <span class="dt">pages</span>={234-245}</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>In your manuscript:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>Recent research shows strong correlations <span class="co">[</span><span class="ot">@smith2020</span><span class="co">]</span>.</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Result:</strong> “Recent research shows strong correlations (Smith &amp; Johnson, 2020).”</p>
+</section>
+<section id="changing-citation-styles" class="level3">
+<h3 class="anchored" data-anchor-id="changing-citation-styles">Changing Citation Styles</h3>
+<p>Want APA? MLA? Nature? Just add one line to your YAML:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">csl</span><span class="kw">:</span><span class="at"> apa.csl</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>(Download styles from <a href="https://www.zotero.org/styles">Zotero’s style repository</a>).</p>
-<hr>
-</section>
-<section id="rendering-your-paper" class="level2">
-<h2 class="anchored" data-anchor-id="rendering-your-paper">Rendering Your Paper</h2>
-<p>In RStudio, click the <strong>Render</strong> button (or run <code>quarto render</code> in the terminal).</p>
-<p>This generates:</p>
+<p>Download any citation style from <a href="https://www.zotero.org/styles" target="_blank">Zotero’s style repository</a>(16,000+ styles available!).</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>💡 My Personal Workflow: Building References with Zotero
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-6" class="callout-6-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Here’s how I build my <code>.bib</code> files in under 5 minutes:</p>
+<ol type="1">
+<li><strong>Install <a href="https://www.zotero.org/download/" target="_blank">Zotero desktop app</a> </strong> (free reference manager)</li>
+<li><strong>Install <a href="https://www.zotero.org/download/connectors" target="_blank">Zotero browser connector</a></strong> to save papers with one click</li>
+<li><strong>While browsing</strong> a paper online, click the Zotero extension → automatically saved!</li>
+<li><strong>Export your library</strong> as BibTeX:
 <ul>
-<li><strong>Word document</strong> (<code>index.docx</code>) — ready to share with supervisors or collaborators.<br>
-</li>
-<li><strong>PDF</strong> (<code>index.pdf</code>) — beautifully typeset.<br>
-</li>
-<li><strong>HTML</strong> (<code>index.html</code>) — great for online publishing or lab websites.</li>
-</ul>
-<p>All from the same source file.</p>
-<hr>
+<li>Right-click your library → Export Library → Choose “BibTeX (.bib)”</li>
+<li>Save as <code>references.bib</code> in your manuscript folder</li>
+</ul></li>
+</ol>
+<p>Done! Quarto will read it automatically. No manual typing of citations needed.</p>
+<p><strong>Why Zotero?</strong> It’s free, cross-platform, syncs across devices, and integrates beautifully with Quarto, Word, and LaTeX.</p>
+</div>
+</div>
+</div>
 </section>
-<section id="why-this-method-matters" class="level2">
-<h2 class="anchored" data-anchor-id="why-this-method-matters">Why This Method Matters</h2>
-<p>Here’s why you’ll never want to go back once you try it:</p>
+</section>
+<section id="rendering-your-paper-one-click-three-formats" class="level2">
+<h2 class="anchored" data-anchor-id="rendering-your-paper-one-click-three-formats">Rendering Your Paper: One Click, Three Formats</h2>
+<p>The magic moment: turning your manuscript into a finished document.</p>
+<section id="how-to-render" class="level3">
+<h3 class="anchored" data-anchor-id="how-to-render">How to Render</h3>
+<p><strong>Option 1:</strong> Click the <strong>Render</strong> button in RStudio (top of editor)<br>
+<strong>Option 2:</strong> Run in terminal: <code>quarto render</code></p>
+</section>
+<section id="what-you-get" class="level3">
+<h3 class="anchored" data-anchor-id="what-you-get">What You Get</h3>
+<p>After rendering, check your project folder. You’ll find:</p>
+<pre><code>_manuscript/
+├── index.html          # Beautiful HTML version
+├── index.docx          # Microsoft Word document
+├── index.pdf           # Professional PDF
+└── index_files/        # Supporting files (figures, etc.)</code></pre>
+<p><strong>All three formats generated from the exact same source file.</strong></p>
+</section>
+<section id="viewing-your-outputs" class="level3">
+<h3 class="anchored" data-anchor-id="viewing-your-outputs">Viewing Your Outputs</h3>
+<p>Open <code>index.html</code> in a browser. In the top-right corner, you’ll see an <strong>“Other Formats”</strong> section:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="imgs/manuscript_htmt_output.png" class="img-fluid figure-img"></p>
+<figcaption>The “Other Formats” menu lets readers download your paper as Word or PDF with one click.</figcaption>
+</figure>
+</div>
+<p>This means:</p>
 <ul>
-<li>Stay in <strong>RStudio</strong>, where your data, code, and writing already live.<br>
-</li>
-<li><strong>One source = many outputs</strong>: Word for co-authors, PDF for journals, HTML for web.<br>
-</li>
-<li><strong>Code and figures update automatically</strong>: no more broken copy-paste.<br>
-</li>
-<li><strong>References are automatic</strong>: stop fighting citation managers.<br>
-</li>
-<li><strong>Reproducibility built in</strong>: others can rerun your analysis and regenerate the manuscript.</li>
+<li>🌐 <strong>HTML</strong> for sharing online (blogs, lab websites)</li>
+<li>📄 <strong>Word</strong> for co-authors and supervisors who prefer track changes</li>
+<li>📕 <strong>PDF</strong> for journal submissions</li>
 </ul>
-<hr>
 </section>
-<section id="in-summary" class="level2">
-<h2 class="anchored" data-anchor-id="in-summary">In Summary</h2>
-<p>Most research is already done in R and RStudio — so why not finish the journey there too?</p>
-<p>With Quarto Manuscript, you can <strong>analyze, write, and publish</strong> all in one place. Your papers become reproducible, polished, and effortless to export into any format required by journals.</p>
-<p>Start with your next section, add your figures inline, and let Quarto handle the formatting and references. Writing a paper will feel less like a formatting chore, and more like a natural extension of your research.</p>
+</section>
+<section id="the-real-benefits" class="level2">
+<h2 class="anchored" data-anchor-id="the-real-benefits">The Real Benefits</h2>
+<p>Let me tell you why researchers who switch to Quarto never go back:</p>
+<section id="everything-lives-in-one-place" class="level3">
+<h3 class="anchored" data-anchor-id="everything-lives-in-one-place">1. <strong>Everything Lives in One Place</strong></h3>
+<p>No more: “Wait, which version of Figure 3 did I send to my co-author?”<br>
+Your code, analysis, figures, text, and references are all in one file.</p>
+</section>
+<section id="automatic-updates" class="level3">
+<h3 class="anchored" data-anchor-id="automatic-updates">2. <strong>Automatic Updates</strong></h3>
+<p>Changed your data? Re-run the analysis. Render again. Every figure, table, and statistic updates instantly.</p>
+</section>
+<section id="perfect-for-collaboration" class="level3">
+<h3 class="anchored" data-anchor-id="perfect-for-collaboration">3. <strong>Perfect for Collaboration</strong></h3>
+<ul>
+<li>Send collaborators the <strong>Word file</strong> for comments</li>
+<li>Keep the <strong><code>.qmd</code> source</strong> as your master version</li>
+<li>Incorporate feedback and re-render</li>
+</ul>
+</section>
+<section id="reproducibility-by-default" class="level3">
+<h3 class="anchored" data-anchor-id="reproducibility-by-default">4. <strong>Reproducibility by Default</strong></h3>
+<p>Other researchers can download your project, run <code>quarto render</code>, and recreate your entire paper—figures, tables, statistics, everything.</p>
+</section>
+<section id="future-proof" class="level3">
+<h3 class="anchored" data-anchor-id="future-proof">5. <strong>Future-Proof</strong></h3>
+<p>Quarto is plain text. It’ll open in 20 years. Try opening a Word 2003 <code>.doc</code> file today. Good luck. ==&gt; Quarto’s use of plain text makes it future-proof, unlike closed, proprietary formats that may become obsolete.</p>
+</section>
+<section id="journal-ready-formats" class="level3">
+<h3 class="anchored" data-anchor-id="journal-ready-formats">6. <strong>Journal-Ready Formats</strong></h3>
+<p>Quarto can output to:</p>
+<ul>
+<li><strong>JATS XML</strong> (for journal submissions)</li>
+<li><strong>LaTeX</strong> (for traditional publishers)</li>
+<li><strong>Jupyter notebooks</strong> (for teaching)</li>
+</ul>
+</section>
+</section>
+<section id="real-world-example-what-you-can-build" class="level2">
+<h2 class="anchored" data-anchor-id="real-world-example-what-you-can-build">Real-World Example: What You Can Build</h2>
+<p>Here’s what a complete Quarto manuscript looks like in practice:</p>
+<ul>
+<li><strong>Title &amp; Authors</strong> with affiliations and ORCID IDs</li>
+<li><strong>Abstract</strong> with keywords</li>
+<li><strong>Introduction</strong> with citations</li>
+<li><strong>Methods</strong> section with inline code showing your analysis</li>
+<li><strong>Results</strong> with auto-numbered figures and tables</li>
+<li><strong>Discussion</strong> interpreting findings</li>
+<li><strong>References</strong> automatically formatted in your chosen style</li>
+<li><strong>Supplementary Materials</strong> (appendices, extra figures)</li>
+</ul>
+<p>All of this renders to professional HTML, Word, and PDF formats.</p>
+<p><strong>See it in action:</strong> Download my <a href="https://github.com/IslemMe/quarto-manuscript-demo" target="_blank">complete example manuscript</a> to explore the full structure.</p>
+</section>
+<section id="getting-started-checklist" class="level2">
+<h2 class="anchored" data-anchor-id="getting-started-checklist">Getting Started Checklist</h2>
+<p>Ready to write your next paper in RStudio? Here’s your roadmap:</p>
+<ul class="task-list">
+<li><label><input type="checkbox">Install/update RStudio (Quarto comes built-in)</label></li>
+<li><label><input type="checkbox">Create a new Quarto Manuscript project</label></li>
+<li><label><input type="checkbox">Explore the template structure</label></li>
+<li><label><input type="checkbox">Add your data and analysis code</label></li>
+<li><label><input type="checkbox">Write your manuscript sections</label></li>
+<li><label><input type="checkbox">Add references to <code>references.bib</code></label></li>
+<li><label><input type="checkbox">Cite them in your text with <code>[@key]</code></label></li>
+<li><label><input type="checkbox">Render to HTML, Word, and PDF</label></li>
+<li><label><input type="checkbox">Share with collaborators!</label></li>
+</ul>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Stuck or want to learn more?</strong><br>
+Check out the official <a href="https://quarto.org/docs/manuscripts/" target="_blank">Quarto documentation</a>, it’s excellent and beginner-friendly!</p>
+</div>
+</div>
+</section>
+<section id="final-thoughts" class="level2">
+<h2 class="anchored" data-anchor-id="final-thoughts">Final Thoughts</h2>
+<p>Most researchers already live in RStudio for their analysis. Why not stay there for writing too?</p>
+<p>With Quarto Manuscript, you can:</p>
+<ul>
+<li>Write your paper where your code lives</li>
+<li>Update figures and results automatically</li>
+<li>Manage citations effortlessly<br>
+</li>
+<li>Export to any format your journal requires</li>
+<li>Make your research fully reproducible</li>
+</ul>
+<p><strong>The best part?</strong> Once you set it up, writing becomes <em>easier</em>. No more juggling tools. No more version control nightmares. Just research, writing, and results: all in one place.</p>
+<p>Start small: take one section of your current paper and try writing it in Quarto. You’ll immediately see why this approach is the future of academic writing.</p>
 <div class="blog-conclusion fade-in-up">
-<p>Thanks for stopping by! Hope you found something useful :)</p>
+<p>Thanks for reading! If you found this helpful, download the <a href="https://github.com/IslemMe/quarto-manuscript-demo" target="_blank">demo template</a> and give it a try. Feel free to reach out if you have questions, happy to help!</p>
+</div>
+</section>
 </div>
 
 
-</section>
 
 </main> <!-- /main -->
 <!-- footer.html -->
