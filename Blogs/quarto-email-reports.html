@@ -6,8 +6,11 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Islem Meherzi">
+<meta name="dcterms.date" content="2025-10-07">
+<meta name="description" content="Automate sending Quarto reports to a restricted audience via email using R, Gmail App Passwords, and the blastula package, with a ready-to-use script and alternatives like Netlify and GitHub Actions.">
 
-<title>blog – Islem Meherzi</title>
+<title>A Quick and Safe Way to Share Quarto Reports with Restricted Users – Islem Meherzi</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,30 +23,63 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<link href="./images/favicon.ico" rel="icon">
-<script src="site_libs/quarto-listing/list.min.js"></script>
-<script src="site_libs/quarto-listing/quarto-listing.js"></script>
-<script src="site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-a074b3e8914223beb79d52c55ba55bce.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../images/favicon.ico" rel="icon">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-a074b3e8914223beb79d52c55ba55bce.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -71,69 +107,11 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<script>
-
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-blog-listing .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
-
-    const options = {
-      valueNames: ['listing-date','listing-title','listing-author','listing-image','listing-description',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
-      
-      searchColumns: ["listing-date","listing-title","listing-author","listing-image","listing-description"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-blog-listing'] = new List('listing-blog-listing', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  </script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
-
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="../styles.css">
 </head>
 
 <body class="nav-fixed fullcontent quarto-light">
@@ -143,9 +121,9 @@ window.Quarto = {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a href="./index.html" class="navbar-brand navbar-brand-logo">
+    <a href="../index.html" class="navbar-brand navbar-brand-logo">
     </a>
-    <a class="navbar-brand" href="./index.html">
+    <a class="navbar-brand" href="../index.html">
     <span class="navbar-title">Islem Meherzi</span>
     </a>
   </div>
@@ -168,31 +146,31 @@ window.Quarto = {
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./index.html"> 
+    <a class="nav-link" href="../index.html"> 
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./about.html"> 
+    <a class="nav-link" href="../about.html"> 
 <span class="menu-text">About</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./services.html"> 
+    <a class="nav-link" href="../services.html"> 
 <span class="menu-text">Services</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./research.html"> 
+    <a class="nav-link" href="../research.html"> 
 <span class="menu-text">Research</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./community.html"> 
+    <a class="nav-link" href="../community.html"> 
 <span class="menu-text">Community</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="./blog.html" aria-current="page"> 
+    <a class="nav-link" href="../blog.html"> 
 <span class="menu-text">Blog</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./contact.html"> 
+    <a class="nav-link" href="../contact.html"> 
 <span class="menu-text">Contact</span></a>
   </li>  
 </ul>
@@ -208,652 +186,153 @@ window.Quarto = {
 <!-- margin-sidebar -->
     
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">A Quick and Safe Way to Share Quarto Reports with Restricted Users</h1>
+  <div class="quarto-categories">
+    <div class="quarto-category">Quarto</div>
+    <div class="quarto-category">R</div>
+    <div class="quarto-category">Automation</div>
+  </div>
+  </div>
+
+<div>
+  <div class="description">
+    Automate sending Quarto reports to a restricted audience via email using R, Gmail App Passwords, and the blastula package, with a ready-to-use script and alternatives like Netlify and GitHub Actions.
+  </div>
+</div>
 
 
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Islem Meherzi </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">October 7, 2025</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
 
 
 <style>
-/* Enhanced Blog Page Styles - Cohesive with Website Design */
-body {
-  font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
-  color: #2c3e50;
-  background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
-  line-height: 1.7;
-}
-
-/* Enhanced Header Design */
-.page-header {
-  background: linear-gradient(135deg, #18bc9c 0%, #15a589 100%);
-  color: #fff;
-  text-align: center;
-  padding: 3.5rem 2rem;
-  border-radius: 18px;
-  margin-bottom: 3rem;
-  box-shadow: 0 8px 25px rgba(24, 188, 156, 0.2);
-  position: relative;
-  overflow: hidden;
-}
-
-.page-header::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: url("data:image/svg+xml,%3Csvg width='50' height='50' viewBox='0 0 50 50' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.1'%3E%3Cpath d='M25 30a5 5 0 1 1 0-10 5 5 0 0 1 0 10zm0-25a20 20 0 1 1 0 40 20 20 0 0 1 0-40z'/%3E%3C/g%3E%3C/svg%3E");
-  animation: float 12s ease-in-out infinite;
-}
-
-@keyframes float {
-  0%, 100% { transform: translateY(0px) rotate(0deg); }
-  50% { transform: translateY(-20px) rotate(5deg); }
-}
-
-.page-header h1 {
-  font-family: 'Poppins', sans-serif;
-  font-size: 2.6rem;
-  font-weight: 800;
-  color: #fff;
-  margin: 0;
-  position: relative;
-  z-index: 2;
-}
-
-.page-header-subtitle {
-  font-size: 1.2rem;
-  opacity: 0.95;
-  margin-top: 1rem;
-  position: relative;
-  z-index: 2;
-  color: #fff;
-}
-
-/* Enhanced Blog Intro */
-.blog-intro {
-  background: linear-gradient(145deg, #ffffff, #fdfdfd);
-  border: 1px solid rgba(24, 188, 156, 0.1);
-  border-radius: 16px;
-  padding: 2.5rem;
-  margin-bottom: 3rem;
-  text-align: center;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-  position: relative;
-  overflow: hidden;
-  max-width: 900px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.blog-intro::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 4px;
-  background: linear-gradient(90deg, #18bc9c, #f39c12);
-}
-
-.blog-intro p {
-  font-size: 1.2rem;
-  color: #34495e;
-  line-height: 1.7;
-  margin: 0;
-}
-
-/* Enhanced Blog Categories */
-.quarto-listing .listing-categories {
-  margin-bottom: 2rem;
-  text-align: center;
-}
-
-
-.quarto-listing .listing-categories .category {
-  display: inline-block;
-  background: linear-gradient(135deg, rgba(24, 188, 156, 0.1), rgba(248, 193, 28, 0.1));
+.link-teal a {
   color: #18bc9c;
-  font-size: 0.9rem;
-  font-weight: 500;
-  padding: 8px 16px;
-  border-radius: 20px;
-  margin: 0 0.5rem 0.5rem 0;
-  border: 1px solid rgba(24, 188, 156, 0.2);
-  text-decoration: none;
-  transition: all 0.3s ease;
-}
-
-.quarto-listing .listing-categories .category:hover {
-  background: linear-gradient(135deg, rgba(24, 188, 156, 0.2), rgba(248, 193, 28, 0.2));
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(24, 188, 156, 0.2);
-}
-
-/* Enhanced Blog Grid */
-.quarto-listing .listing-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-  gap: 2rem;
-  margin-top: 3rem;
-  padding: 0;
-}
-
-/* Enhanced Blog Cards */
-.quarto-listing .listing-item {
-  background: linear-gradient(145deg, #ffffff, #fdfdfd);
-  border: 1px solid rgba(24, 188, 156, 0.12);
-  border-radius: 18px;
-  overflow: hidden;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.06);
-  transition: all 0.4s ease;
-  position: relative;
-  display: flex;
-  flex-direction: column;
-}
-
-.quarto-listing .listing-item::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 4px;
-  background: linear-gradient(90deg, #18bc9c, #f39c12);
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform 0.4s ease;
-}
-
-.quarto-listing .listing-item:hover::before {
-  transform: scaleX(1);
-}
-
-.quarto-listing .listing-item:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 15px 30px rgba(24, 188, 156, 0.15);
-  border-color: rgba(24, 188, 156, 0.3);
-}
-
-/* Enhanced Image Container */
-.quarto-listing .listing-image {
-  position: relative;
-  overflow: hidden;
-  height: 200px;
-}
-
-.quarto-listing .listing-item img {
-  width: 100%;
-  height: 200px;
-  object-fit: cover;
-  transition: transform 0.4s ease;
-}
-
-.quarto-listing .listing-item:hover img {
-  transform: scale(1.05);
-}
-
-.quarto-listing .listing-image::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(135deg, transparent 0%, rgba(24, 188, 156, 0.1) 100%);
-  opacity: 0;
-  transition: opacity 0.4s ease;
-}
-
-.quarto-listing .listing-item:hover .listing-image::after {
-  opacity: 1;
-}
-
-/* Enhanced Content Area */
-.quarto-listing .listing-item-content {
-  padding: 2rem;
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-}
-
-/* Enhanced Title */
-.quarto-listing .listing-title {
-  font-family: 'Poppins', sans-serif;
-  font-size: 1.3rem;
-  font-weight: 600;
-  margin-bottom: 1rem;
-  color: #2c3e50;
-  transition: color 0.3s ease;
-  line-height: 1.4;
-}
-
-.quarto-listing .listing-item:hover .listing-title {
-  color: #18bc9c;
-}
-
-.quarto-listing .listing-title a {
-  color: inherit;
-  text-decoration: none;
-}
-
-/* Enhanced Meta Information */
-.quarto-listing .listing-meta {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 1rem;
-  font-size: 0.9rem;
-}
-
-.quarto-listing .listing-date {
-  background: linear-gradient(135deg, #f39c12, #e67e22);
-  color: #fff;
-  padding: 4px 12px;
-  border-radius: 12px;
-  font-weight: 500;
-  font-size: 0.85rem;
-}
-
-.quarto-listing .listing-categories-item {
-  background: linear-gradient(135deg, #18bc9c, #15a589);
-  color: #fff;
-  padding: 4px 12px;
-  border-radius: 12px;
-  font-weight: 500;
-  font-size: 0.85rem;
-  text-decoration: none;
-  transition: all 0.3s ease;
-}
-
-.quarto-listing .listing-categories-item:hover {
-  transform: translateY(-1px);
-  box-shadow: 0 2px 8px rgba(24, 188, 156, 0.3);
-  color: #fff;
-  text-decoration: none;
-}
-
-/* Enhanced Description */
-.quarto-listing .listing-description {
-  font-size: 1rem;
-  color: #34495e;
-  line-height: 1.6;
-  margin-top: auto;
-  margin-bottom: 1.5rem;
-}
-
-/* Read More Button */
-.quarto-listing .listing-item::after {
-  content: 'Read More →';
-  display: block;
-  background: linear-gradient(135deg, #18bc9c, #15a589);
-  color: #fff;
-  font-family: 'Poppins', sans-serif;
-  font-weight: 600;
-  font-size: 0.9rem;
-  padding: 10px 20px;
-  border-radius: 25px;
-  text-align: center;
-  margin: 0 2rem 2rem;
-  box-shadow: 0 4px 12px rgba(24, 188, 156, 0.3);
-  transition: all 0.3s ease;
-  opacity: 0;
-  transform: translateY(20px);
-}
-
-.quarto-listing .listing-item:hover::after {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* Newsletter Signup Section */
-.newsletter-cta {
-  background: linear-gradient(135deg, #2c3e50, #34495e);
-  color: #fff;
-  text-align: center;
-  padding: 3rem 2rem;
-  border-radius: 18px;
-  margin: 4rem 0 2rem;
-  box-shadow: 0 8px 25px rgba(44, 62, 80, 0.2);
-  position: relative;
-  overflow: hidden;
-}
-
-.newsletter-cta::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Ccircle cx='20' cy='20' r='4'/%3E%3C/g%3E%3C/svg%3E");
-  animation: float 10s ease-in-out infinite reverse;
-}
-
-.newsletter-cta h2 {
-  font-family: 'Poppins', sans-serif;
-  font-size: 2rem;
-  font-weight: 700;
-  color: #fff;
-  margin-bottom: 1rem;
-  position: relative;
-  z-index: 2;
-}
-
-.newsletter-cta p {
-  font-size: 1.1rem;
-  margin-bottom: 2rem;
-  opacity: 0.95;
-  position: relative;
-  z-index: 2;
-}
-
-.newsletter-form {
-  display: flex;
-  gap: 1rem;
-  justify-content: center;
-  flex-wrap: wrap;
-  position: relative;
-  z-index: 2;
-}
-
-.newsletter-input {
-  flex: 1;
-  max-width: 300px;
-  padding: 12px 18px;
-  border: 2px solid rgba(255,255,255,0.2);
-  border-radius: 25px;
-  background: rgba(255,255,255,0.1);
-  color: #fff;
-  font-size: 1rem;
-  outline: none;
-  transition: all 0.3s ease;
-}
-
-.newsletter-input::placeholder {
-  color: rgba(255,255,255,0.7);
-}
-
-.newsletter-input:focus {
-  border-color: #18bc9c;
-  background: rgba(255,255,255,0.15);
-}
-
-.newsletter-btn {
-  background: linear-gradient(135deg, #18bc9c, #15a589);
-  color: #fff;
-  font-family: 'Poppins', sans-serif;
-  font-weight: 600;
-  padding: 12px 24px;
-  border: none;
-  border-radius: 25px;
-  font-size: 1rem;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 12px rgba(24, 188, 156, 0.3);
-}
-
-.newsletter-btn:hover {
-  transform: translateY(-2px) scale(1.05);
-  box-shadow: 0 8px 20px rgba(24, 188, 156, 0.4);
-}
-
-/* Animation Classes */
-.fade-in-up {
-  opacity: 0;
-  transform: translateY(30px);
-  transition: all 0.6s ease;
-}
-
-.fade-in-up.animate {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* Responsive Design */
-@media (max-width: 768px) {
-  .page-header {
-    padding: 2.5rem 1rem;
   }
-  
-  .page-header h1 {
-    font-size: 2.2rem;
-  }
-  
-  .quarto-listing .listing-grid {
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
-  }
-  
-  .newsletter-form {
-    flex-direction: column;
-    align-items: center;
-  }
-  
-  .newsletter-input {
-    width: 100%;
-    max-width: none;
-  }
-  
-  .newsletter-btn {
-    width: 100%;
-    max-width: 200px;
-  }
+ .link-teal a:hover {
+  color: #15a589 !important;
+  text-decoration: underline;
 }
-
-@media (max-width: 480px) {
-  .quarto-listing .listing-item-content {
-    padding: 1.5rem;
-  }
-  
-  .quarto-listing .listing-item::after {
-    margin: 0 1.5rem 1.5rem;
-  }
-}
-
-
 </style>
-<!-- Enhanced Header -->
-<!-- <div class="page-header fade-in-up"> -->
-<!--   <h1>Blog</h1> -->
-<!--   <div class="page-header-subtitle">Insights, tutorials, and thoughts on data science</div> -->
-<!-- </div> -->
-<!-- Enhanced Intro -->
-<div class="blog-intro fade-in-up">
-<p>
-Welcome to my blog where I share insights on data science, R programming, healthcare analytics, and research methodologies. Explore practical tutorials, industry insights, and lessons learned from real-world projects.
-</p>
+<div class="link-teal">
+<section id="introduction" class="level2">
+<h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
+<p>Sometimes you need to share your updated reports with a restricted group of people instead of publishing them openly. A practical and secure way is to <strong>automate sending your reports by email</strong>. With Quarto and R, you can render your reports, attach them as PDF or HTML, and deliver them directly to your recipients’ inboxes.</p>
+<p>In this post, I will show you how to achieve this with R and Quarto, using Gmail as an example.</p>
+</section>
+<section id="step-1.-generate-a-gmail-app-password" class="level2">
+<h2 class="anchored" data-anchor-id="step-1.-generate-a-gmail-app-password">Step 1. Generate a Gmail App Password</h2>
+<p>To allow R to send emails from your Gmail account, you must create a Gmail App Password. This is safer than using your main password.</p>
+<ol type="1">
+<li>Enable <strong>2-Step Verification</strong> in your <a href="https://myaccount.google.com/security" target="_blank">Google Account Security</a> settings.<br>
+</li>
+<li>Go to the <a href="https://myaccount.google.com/apppasswords" target="_blank">App Passwords page</a>.</li>
+<li>Choose the app and device (e.g., Mail → Other → “R script”).</li>
+<li>Click <strong>Generate</strong>. Google will display a <strong>16-character password</strong>.</li>
+<li>Copy and save this password immediately, as it cannot be viewed again later.</li>
+</ol>
+<p>This password is what you will use in your R script instead of your usual Gmail password.</p>
+</section>
+<section id="step-2.-ready-to-use-r-script" class="level2">
+<h2 class="anchored" data-anchor-id="step-2.-ready-to-use-r-script">Step 2. Ready-to-Use R Script</h2>
+<p>Below is a complete R script that renders your Quarto report (<code>report.qmd</code>), produces PDF and HTML versions, and sends them as email attachments. You only need to replace the email addresses and the Gmail App Password.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># --- Load packages ---</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(quarto)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(blastula)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co"># --- Step 1: Render your Quarto report into PDF and HTML ---</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">quarto_render</span>(<span class="st">"report.qmd"</span>, <span class="at">output_format =</span> <span class="st">"pdf"</span>)</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu">quarto_render</span>(<span class="st">"report.qmd"</span>, <span class="at">output_format =</span> <span class="st">"html"</span>)</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="co"># --- Step 2: Create the email body ---</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>email <span class="ot">&lt;-</span> <span class="fu">compose_email</span>(</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">body =</span> <span class="fu">md</span>(<span class="st">"</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="st">  Hello,  </span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="st">  The updated Quarto report is ready.  </span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="st">  Please find both PDF and HTML versions attached.  </span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="st">  Best regards,  </span></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="st">  Islem</span></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="st">  "</span>)</span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a><span class="co"># --- Step 3: Attach the reports ---</span></span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>email <span class="ot">&lt;-</span> <span class="fu">add_attachment</span>(email, <span class="at">file =</span> <span class="st">"report.pdf"</span>)</span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>email <span class="ot">&lt;-</span> <span class="fu">add_attachment</span>(email, <span class="at">file =</span> <span class="st">"report.html"</span>)</span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a><span class="co"># --- Step 4: Send the email ---</span></span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a><span class="fu">smtp_send</span>(</span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>  email,</span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>  <span class="at">from =</span> <span class="st">"your_email@gmail.com"</span>,</span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>  <span class="at">to =</span> <span class="fu">c</span>(<span class="st">"recipient1@example.com"</span>, <span class="st">"recipient2@example.com"</span>),</span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>  <span class="at">subject =</span> <span class="fu">paste0</span>(<span class="st">"Updated Report - "</span>, <span class="fu">Sys.Date</span>()),</span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>  <span class="at">credentials =</span> <span class="fu">creds</span>(</span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>    <span class="at">host =</span> <span class="st">"smtp.gmail.com"</span>,</span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a>    <span class="at">port =</span> <span class="dv">587</span>,</span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a>    <span class="at">user =</span> <span class="st">"your_email@gmail.com"</span>,</span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a>    <span class="at">use_ssl =</span> <span class="cn">TRUE</span></span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a><span class="co"># The app password will be requested interactively in a popup after running, no need to hard-code it</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<!-- Quarto will auto-generate the blog listing here -->
-<script>
-document.addEventListener("DOMContentLoaded", function() {
-  // Enhanced scroll animations
-  const observerOptions = {
-    threshold: 0.1,
-    rootMargin: '0px 0px -30px 0px'
-  };
-
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('animate');
-      }
-    });
-  }, observerOptions);
-
-  // Observe fade-in elements
-  const fadeElements = document.querySelectorAll('.fade-in-up');
-  fadeElements.forEach((element, index) => {
-    element.style.transitionDelay = `${index * 0.2}s`;
-    observer.observe(element);
-  });
-
-  // Enhanced blog card interactions
-  const listingItems = document.querySelectorAll('.listing-item');
-  listingItems.forEach((item, index) => {
-    // Add staggered animation
-    item.style.opacity = '0';
-    item.style.transform = 'translateY(30px)';
-    item.style.transition = 'all 0.6s ease';
-    item.style.transitionDelay = `${index * 0.1}s`;
-    
-    // Animate on load
-    setTimeout(() => {
-      item.style.opacity = '1';
-      item.style.transform = 'translateY(0)';
-    }, 500 + (index * 100));
-
-    // Enhanced hover effects
-    item.addEventListener('mouseenter', function() {
-      const rotation = index % 2 === 0 ? '2deg' : '-2deg';
-      this.style.transform = `translateY(-8px) rotateX(3deg) rotateY(${rotation})`;
-      this.style.transition = 'all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275)';
-    });
-    
-    item.addEventListener('mouseleave', function() {
-      this.style.transform = 'translateY(0) rotateX(0deg) rotateY(0deg)';
-      this.style.transition = 'all 0.4s ease';
-    });
-  });
-
-  // Newsletter form handling
-  const newsletterForm = document.querySelector('.newsletter-form');
-  if (newsletterForm) {
-    newsletterForm.addEventListener('submit', function(e) {
-      e.preventDefault();
-      const button = this.querySelector('.newsletter-btn');
-      const input = this.querySelector('.newsletter-input');
-      const originalText = button.textContent;
-      
-      button.textContent = 'Subscribed!';
-      button.style.background = 'linear-gradient(135deg, #27ae60, #2ecc71)';
-      input.value = '';
-      
-      setTimeout(() => {
-        button.textContent = originalText;
-        button.style.background = 'linear-gradient(135deg, #18bc9c, #15a589)';
-      }, 2000);
-    });
-  }
-
-  // Add reading time estimation to blog cards
-  const descriptions = document.querySelectorAll('.listing-description');
-  descriptions.forEach(desc => {
-    if (desc.textContent) {
-      const wordCount = desc.textContent.split(' ').length;
-      const readingTime = Math.ceil(wordCount / 200);
-      
-      // Create reading time element
-      const timeElement = document.createElement('span');
-      timeElement.textContent = `${readingTime} min read`;
-      timeElement.style.cssText = `
-        position: absolute;
-        top: 1rem;
-        right: 1rem;
-        background: rgba(0,0,0,0.7);
-        color: white;
-        padding: 4px 8px;
-        border-radius: 12px;
-        font-size: 0.75rem;
-        font-weight: 500;
-      `;
-      
-      // Add to image container
-      const imageContainer = desc.closest('.listing-item').querySelector('.listing-image');
-      if (imageContainer) {
-        imageContainer.style.position = 'relative';
-        imageContainer.appendChild(timeElement);
-      }
-    }
-  });
-});
-</script>
-<!-- <!-- Newsletter Signup -->
-<p>–&gt; <!-- <div class="newsletter-cta fade-in-up"> --> <!--   <h2>Stay Updated</h2> --> <!--   <p>Get the latest insights on data science, R programming, and healthcare analytics delivered to your inbox.</p> --> <!--   <form class="newsletter-form"> --> <!--     <input type="email" class="newsletter-input" placeholder="Enter your email address" required> --> <!--     <button type="submit" class="newsletter-btn">Subscribe</button> --> <!--   </form> --> <!-- </div> --></p>
+</section>
+<section id="step-3.-automate-the-process" class="level2">
+<h2 class="anchored" data-anchor-id="step-3.-automate-the-process">Step 3. Automate the Process</h2>
+<p>To make this fully automated:</p>
+<ul>
+<li>On <strong>Windows</strong>, schedule the script with <code>taskscheduleR</code>.</li>
+<li>On <strong>Linux/macOS</strong>, use <code>cronR</code> or add it to your system cron jobs.</li>
+<li>Every time the script runs, your Quarto report will be rendered and sent to the selected users automatically.</li>
+</ul>
+</section>
+<section id="other-options" class="level2">
+<h2 class="anchored" data-anchor-id="other-options">Other Options</h2>
+<p>Email automation is not the only way to share Quarto reports with restricted users:</p>
+<ul>
+<li><strong>Netlify with password protection</strong>: host your Quarto site and restrict access with a password.</li>
+<li><strong>GitHub Actions or GitLab CI</strong>: automate report rendering and emailing or publishing.</li>
+<li><strong>Posit Connect</strong>: enterprise solution that provides user access control, scheduling, and automatic email notifications out of the box.</li>
+</ul>
+<p>Choose the approach that best fits your context and your audience’s needs.</p>
+</section>
+<section id="conclusion" class="level2">
+<h2 class="anchored" data-anchor-id="conclusion">Conclusion</h2>
+<p>For many small teams or individuals, automating email delivery is a quick, safe, and effective way to share Quarto reports with a limited group of users. By combining Quarto, R, and the <code>blastula</code> package, you can render, attach, and distribute updated reports with minimal effort.</p>
+</section>
+</div>
+<div class="blog-conclusion fade-in-up">
+<p>Thanks for stopping by! Hope you found something useful :)</p>
+</div>
 
 
 
-
-<div class="quarto-listing quarto-listing-container-default" id="listing-blog-listing">
-<div class="list quarto-listing-default">
-<div class="quarto-post image-right" data-index="0" data-categories="UXVhcnRvJTJDUiUyQ0F1dG9tYXRpb24=" data-listing-date-sort="1759795200000" data-listing-file-modified-sort="1759836616352" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="587">
-<div class="thumbnail"><a href="./Blogs/quarto-email-reports.html" class="no-external">
-
-<img loading="lazy" src="./Blogs/imgs/quarto_share.png" class="thumbnail-image" style="height: 200px;">
-
-</a></div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./Blogs/quarto-email-reports.html" class="no-external">A Quick and Safe Way to Share Quarto Reports with Restricted Users</a>
-</h3>
-<div class="delink listing-description"><a href="./Blogs/quarto-email-reports.html" class="no-external">
-<p>Automate sending Quarto reports to a restricted audience via email using R, Gmail App Passwords, and the blastula package, with a ready-to-use script and alternatives like Netlify and GitHub Actions.</p>
-</a></div>
-</div>
-<div class="metadata">
-<a href="./Blogs/quarto-email-reports.html" class="no-external">
-<div class="listing-date">
-Oct 7, 2025
-</div>
-<div class="listing-author">
-Islem Meherzi
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="1" data-categories="UiUyQ1Jlc2VhcmNoJTJDUlN0dWRpbyUyQ1F1YXJ0byUyQ1Byb2R1Y3Rpdml0eQ==" data-listing-date-sort="1759449600000" data-listing-file-modified-sort="1759836616342" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="8" data-listing-word-count-sort="1594">
-<div class="thumbnail"><a href="./Blogs/b2_quarto_manuscript.html" class="no-external">
-
-<img loading="lazy" src="./Blogs/imgs/b2.png" class="thumbnail-image" style="height: 200px;">
-
-</a></div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./Blogs/b2_quarto_manuscript.html" class="no-external">From RStudio to Published Paper: Writing Manuscripts with Quarto</a>
-</h3>
-<div class="delink listing-description"><a href="./Blogs/b2_quarto_manuscript.html" class="no-external">
-<p>Learn how to use Quarto directly inside RStudio to draft, format, and publish your manuscript with code, figures, and references all in one place.</p>
-</a></div>
-</div>
-<div class="metadata">
-<a href="./Blogs/b2_quarto_manuscript.html" class="no-external">
-<div class="listing-date">
-Oct 3, 2025
-</div>
-<div class="listing-author">
-Islem Meherzi
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="2" data-categories="UHJvZHVjdGl2aXR5JTJDUmVzZWFyY2glMkNXcml0aW5n" data-listing-date-sort="1726617600000" data-listing-file-modified-sort="1759836616342" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="237">
-<div class="thumbnail"><a href="./Blogs/b1_post-research-writing.html" class="no-external">
-
-<img loading="lazy" src="./Blogs/imgs/b1.jpg" class="thumbnail-image" style="height: 200px;">
-
-</a></div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./Blogs/b1_post-research-writing.html" class="no-external">Beat Procrastination and Write Research Papers Faster</a>
-</h3>
-<div class="delink listing-description"><a href="./Blogs/b1_post-research-writing.html" class="no-external">
-<p>Practical strategies to draft research papers efficiently and avoid perfectionism traps. Learn how Version 0, quick planning, and Quarto Manuscript can speed up your writing.</p>
-</a></div>
-</div>
-<div class="metadata">
-<a href="./Blogs/b1_post-research-writing.html" class="no-external">
-<div class="listing-date">
-Sep 18, 2024
-</div>
-<div class="listing-author">
-Islem Meherzi
-</div>
-</a>
-</div>
-</div>
-</div>
-<div class="listing-no-matching d-none">No matching items</div>
-</div></main> <!-- /main -->
+</main> <!-- /main -->
 <!-- footer.html -->
   <style>
   /* Main Footer Styles */
