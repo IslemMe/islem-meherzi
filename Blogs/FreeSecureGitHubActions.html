@@ -7,10 +7,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Islem Meherzi">
-<meta name="dcterms.date" content="2025-10-07">
-<meta name="description" content="Automate sending Quarto reports to a restricted audience via email using R, Gmail App Passwords, and the blastula package, with a ready-to-use script and alternatives like Netlify and GitHub Actions.">
+<meta name="dcterms.date" content="2025-10-23">
+<meta name="description" content="The Smart Way to Automate Securely with Private Repositories">
 
-<title>A Quick and Safe Way to Share Quarto Reports with Restricted Users – Islem Meherzi</title>
+<title>How to Use GitHub Actions Without Exposing Your Code – Islem Meherzi</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -190,17 +190,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">A Quick and Safe Way to Share Quarto Reports with Restricted Users</h1>
+<h1 class="title">How to Use GitHub Actions Without Exposing Your Code</h1>
   <div class="quarto-categories">
-    <div class="quarto-category">Quarto</div>
-    <div class="quarto-category">R</div>
+    <div class="quarto-category">GitHub</div>
     <div class="quarto-category">Automation</div>
+    <div class="quarto-category">R</div>
+    <div class="quarto-category">Data Science</div>
+    <div class="quarto-category">DevOps</div>
   </div>
   </div>
 
 <div>
   <div class="description">
-    Automate sending Quarto reports to a restricted audience via email using R, Gmail App Passwords, and the blastula package, with a ready-to-use script and alternatives like Netlify and GitHub Actions.
+    The Smart Way to Automate Securely with Private Repositories
   </div>
 </div>
 
@@ -217,7 +219,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">October 7, 2025</p>
+      <p class="date">October 23, 2025</p>
     </div>
   </div>
   
@@ -229,108 +231,370 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<style>
-.link-teal a {
-  color: #18bc9c;
-  }
- .link-teal a:hover {
-  color: #15a589 !important;
-  text-decoration: underline;
-}
-</style>
-<div class="link-teal">
-<section id="introduction" class="level2">
-<h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
-<p>Sometimes you need to share your updated reports with a restricted group of people instead of publishing them openly. A practical and secure way is to <strong>automate sending your reports by email</strong>. With Quarto and R, you can render your reports, attach them as PDF or HTML, and deliver them directly to your recipients’ inboxes.</p>
-<p>In this post, I will show you how to achieve this with R and Quarto, using Gmail as an example.</p>
-</section>
-<section id="step-1.-generate-a-gmail-app-password" class="level2">
-<h2 class="anchored" data-anchor-id="step-1.-generate-a-gmail-app-password">Step 1. Generate a Gmail App Password</h2>
-<p>To allow R to send emails from your Gmail account, you must create a Gmail App Password. This is safer than using your main password.</p>
+<section id="the-problem-many-developers-face" class="level2">
+<h2 class="anchored" data-anchor-id="the-problem-many-developers-face">The Problem Many Developers Face</h2>
+<p>GitHub Actions has become the go-to tool for automating workflows—whether you’re running tests, building reports, or deploying applications. It’s powerful, integrated, and for public repositories, <strong>completely free</strong>.</p>
+<p>But here’s the catch:</p>
+<p><strong>GitHub Actions free tier only works for public repositories.</strong></p>
+<p>If your repository is private, you’re limited to about 2,000 minutes per month on the Free plan. Public repositories? Unlimited minutes. The same applies to GitHub Pages—deploying a website from a public repo is free, but deploying from a private repo requires upgrading your account.</p>
+<p>So what do you do when your code contains:</p>
+<ul>
+<li>Proprietary algorithms?</li>
+<li>Client data that can’t be exposed?</li>
+<li>Research methods not ready for publication?</li>
+<li>API keys or sensitive configurations?</li>
+</ul>
+<p>Most people think they have two choices:</p>
 <ol type="1">
-<li>Enable <strong>2-Step Verification</strong> in your <a href="https://myaccount.google.com/security" target="_blank">Google Account Security</a> settings.<br>
-</li>
-<li>Go to the <a href="https://myaccount.google.com/apppasswords" target="_blank">App Passwords page</a>.</li>
-<li>Choose the app and device (e.g., Mail → Other → “R script”).</li>
-<li>Click <strong>Generate</strong>. Google will display a <strong>16-character password</strong>.</li>
-<li>Copy and save this password immediately, as it cannot be viewed again later.</li>
+<li>Make the repository public (and risk exposing everything)</li>
+<li>Pay for private repo minutes</li>
 </ol>
-<p>This password is what you will use in your R script instead of your usual Gmail password.</p>
+<p><strong>But there’s a third way—and it’s smarter than both.</strong></p>
+<hr>
 </section>
-<section id="step-2.-ready-to-use-r-script" class="level2">
-<h2 class="anchored" data-anchor-id="step-2.-ready-to-use-r-script">Step 2. Ready-to-Use R Script</h2>
-<p>Below is a complete R script that renders your Quarto report (<code>report.qmd</code>), produces PDF and HTML versions, and sends them as email attachments. You only need to replace the email addresses and the Gmail App Password.</p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># --- Load packages ---</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(quarto)</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(blastula)</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co"># --- Step 1: Render your Quarto report into PDF and HTML ---</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">quarto_render</span>(<span class="st">"report.qmd"</span>, <span class="at">output_format =</span> <span class="st">"pdf"</span>)</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu">quarto_render</span>(<span class="st">"report.qmd"</span>, <span class="at">output_format =</span> <span class="st">"html"</span>)</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="co"># --- Step 2: Create the email body ---</span></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>email <span class="ot">&lt;-</span> <span class="fu">compose_email</span>(</span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">body =</span> <span class="fu">md</span>(<span class="st">"</span></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="st">  Hello,  </span></span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="st">  The updated Quarto report is ready.  </span></span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="st">  Please find both PDF and HTML versions attached.  </span></span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="st">  Best regards,  </span></span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="st">  Islem</span></span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="st">  "</span>)</span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a><span class="co"># --- Step 3: Attach the reports ---</span></span>
-<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>email <span class="ot">&lt;-</span> <span class="fu">add_attachment</span>(email, <span class="at">file =</span> <span class="st">"report.pdf"</span>)</span>
-<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>email <span class="ot">&lt;-</span> <span class="fu">add_attachment</span>(email, <span class="at">file =</span> <span class="st">"report.html"</span>)</span>
-<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a><span class="co"># --- Step 4: Send the email ---</span></span>
-<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a><span class="fu">smtp_send</span>(</span>
-<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>  email,</span>
-<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>  <span class="at">from =</span> <span class="st">"your_email@gmail.com"</span>,</span>
-<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>  <span class="at">to =</span> <span class="fu">c</span>(<span class="st">"recipient1@example.com"</span>, <span class="st">"recipient2@example.com"</span>),</span>
-<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>  <span class="at">subject =</span> <span class="fu">paste0</span>(<span class="st">"Updated Report - "</span>, <span class="fu">Sys.Date</span>()),</span>
-<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>  <span class="at">credentials =</span> <span class="fu">creds</span>(</span>
-<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>    <span class="at">host =</span> <span class="st">"smtp.gmail.com"</span>,</span>
-<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a>    <span class="at">port =</span> <span class="dv">587</span>,</span>
-<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a>    <span class="at">user =</span> <span class="st">"your_email@gmail.com"</span>,</span>
-<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a>    <span class="at">use_ssl =</span> <span class="cn">TRUE</span></span>
-<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a><span class="co"># The app password will be requested interactively in a popup after running, no need to hard-code it</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
+<section id="the-solution-public-workflow-private-code" class="level2">
+<h2 class="anchored" data-anchor-id="the-solution-public-workflow-private-code">The Solution: Public Workflow, Private Code</h2>
+<p>Here’s the key insight: <strong>Your workflow configuration doesn’t need to live in the same repository as your code.</strong></p>
+<p>You can create a <strong>public repository</strong> that hosts only your GitHub Actions workflows, while your actual code stays locked in a <strong>private repository</strong>. The two communicate securely using Personal Access Tokens (PATs).</p>
+<section id="why-this-works" class="level3">
+<h3 class="anchored" data-anchor-id="why-this-works">Why This Works</h3>
+<p>✅ Your proprietary code stays private<br>
+✅ You get unlimited free GitHub Actions minutes<br>
+✅ You can showcase your automation process<br>
+✅ Outputs (reports, dashboards) can be published without exposing source code<br>
+✅ Perfect for reproducible research where methods are confidential but results should be shared</p>
+<hr>
 </section>
-<section id="step-3.-automate-the-process" class="level2">
-<h2 class="anchored" data-anchor-id="step-3.-automate-the-process">Step 3. Automate the Process</h2>
-<p>To make this fully automated:</p>
+</section>
+<section id="real-world-example-automated-weekly-reports" class="level2">
+<h2 class="anchored" data-anchor-id="real-world-example-automated-weekly-reports">Real-World Example: Automated Weekly Reports</h2>
+<p>Let me show you how this works with a concrete scenario.</p>
+<section id="the-challenge" class="level3">
+<h3 class="anchored" data-anchor-id="the-challenge">The Challenge</h3>
+<p>A healthcare organization needed weekly automated reports. The workflow required:</p>
 <ul>
-<li>On <strong>Windows</strong>, schedule the script with <code>taskscheduleR</code>.</li>
-<li>On <strong>Linux/macOS</strong>, use <code>cronR</code> or add it to your system cron jobs.</li>
-<li>Every time the script runs, your Quarto report will be rendered and sent to the selected users automatically.</li>
+<li>Connecting to a secure database (private credentials)</li>
+<li>Running R-based data transformations (proprietary algorithms)</li>
+<li>Generating a Quarto report</li>
+<li>Publishing the final HTML to a public website</li>
+</ul>
+<p><strong>The problem:</strong> All code had to remain private, yet automation was needed every Monday morning—without exceeding free GitHub limits.</p>
+</section>
+<section id="the-solution" class="level3">
+<h3 class="anchored" data-anchor-id="the-solution">The Solution</h3>
+<p><strong>Private Repository:</strong> <code>client-health-pipeline</code></p>
+<ul>
+<li>Contains: R scripts, data transformations, credentials</li>
+<li>Status: Fully private</li>
+</ul>
+<p><strong>Public Repository:</strong> <code>automated-reporting</code></p>
+<ul>
+<li>Contains: Only the <code>.github/workflows/</code> folder</li>
+<li>Status: Public (to access unlimited free minutes)</li>
+<li>Purpose: Triggers automation, connects securely to private repo, publishes results</li>
 </ul>
 </section>
-<section id="other-options" class="level2">
-<h2 class="anchored" data-anchor-id="other-options">Other Options</h2>
-<p>Email automation is not the only way to share Quarto reports with restricted users:</p>
+<section id="the-outcome" class="level3">
+<h3 class="anchored" data-anchor-id="the-outcome">The Outcome</h3>
+<p>✅ Private code remains protected<br>
+✅ Reports generate and publish automatically<br>
+✅ Zero additional GitHub costs<br>
+✅ Workflow transparency maintained</p>
+<p>This approach works for automated reports, R package testing, ETL jobs, Shiny app deployment, and reproducible research—combining security, automation, and cost efficiency.</p>
+<hr>
+</section>
+</section>
+<section id="step-by-step-implementation" class="level2">
+<h2 class="anchored" data-anchor-id="step-by-step-implementation">Step-by-Step Implementation</h2>
+<section id="step-1-create-your-private-repository" class="level3">
+<h3 class="anchored" data-anchor-id="step-1-create-your-private-repository">Step 1: Create Your Private Repository</h3>
+<p>This is where your actual work lives.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a new private repository on GitHub</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Name it: my-private-analysis</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Initialize with a .gitignore</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>What goes here:</strong></p>
 <ul>
-<li><strong>Netlify with password protection</strong>: host your Quarto site and restrict access with a password.</li>
-<li><strong>GitHub Actions or GitLab CI</strong>: automate report rendering and emailing or publishing.</li>
-<li><strong>Posit Connect</strong>: enterprise solution that provides user access control, scheduling, and automatic email notifications out of the box.</li>
+<li>All your source code</li>
+<li>Data processing scripts</li>
+<li>Configuration files</li>
+<li>Any sensitive information</li>
 </ul>
-<p>Choose the approach that best fits your context and your audience’s needs.</p>
+<p><strong>Critical: Add a <code>.gitignore</code> file:</strong></p>
+<pre><code># Credentials and secrets
+.env
+.Renviron
+config.yml
+*.key
+
+# Data files
+data/raw/*
+*.csv
+*.xlsx
+
+# Outputs
+output/*
+cache/*</code></pre>
 </section>
-<section id="conclusion" class="level2">
-<h2 class="anchored" data-anchor-id="conclusion">Conclusion</h2>
-<p>For many small teams or individuals, automating email delivery is a quick, safe, and effective way to share Quarto reports with a limited group of users. By combining Quarto, R, and the <code>blastula</code> package, you can render, attach, and distribute updated reports with minimal effort.</p>
+<section id="step-2-create-your-public-workflow-repository" class="level3">
+<h3 class="anchored" data-anchor-id="step-2-create-your-public-workflow-repository">Step 2: Create Your Public Workflow Repository</h3>
+<p>This repository will be public and contain only automation logic.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a new PUBLIC repository</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Name it: automated-workflows</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>What goes here:</strong></p>
+<ul>
+<li><code>.github/workflows/</code> folder with your YAML files</li>
+<li>Optional: README explaining your automation approach</li>
+<li>Optional: Sample scripts (no sensitive code)</li>
+</ul>
 </section>
-</div>
-<div class="blog-conclusion fade-in-up">
-<p>Thanks for stopping by! Hope you found something useful !</p>
-</div>
+<section id="step-3-generate-a-personal-access-token-pat" class="level3">
+<h3 class="anchored" data-anchor-id="step-3-generate-a-personal-access-token-pat">Step 3: Generate a Personal Access Token (PAT)</h3>
+<p>Your public workflow needs permission to access your private repository.</p>
+<ol type="1">
+<li>Go to <strong>GitHub Settings → Developer settings → Personal access tokens → Tokens (classic)</strong></li>
+<li>Click <strong>“Generate new token (classic)”</strong></li>
+<li>Name it: <code>workflow-private-repo-access</code></li>
+<li>Set expiration: 90 days (for security)</li>
+<li>Select scopes: ✅ <strong><code>repo</code></strong> (full control of private repositories)</li>
+<li>Click <strong>“Generate token”</strong></li>
+<li><strong>Copy the token immediately</strong> (you won’t see it again!)</li>
+</ol>
+</section>
+<section id="step-4-add-the-token-as-a-secret" class="level3">
+<h3 class="anchored" data-anchor-id="step-4-add-the-token-as-a-secret">Step 4: Add the Token as a Secret</h3>
+<p>In your <strong>public workflow repository:</strong></p>
+<ol type="1">
+<li>Go to <strong>Settings → Secrets and variables → Actions</strong></li>
+<li>Click <strong>“New repository secret”</strong></li>
+<li>Name: <code>PERSONAL_ACCESS_TOKEN</code></li>
+<li>Value: Paste your PAT from Step 3</li>
+<li>Click <strong>“Add secret”</strong></li>
+</ol>
+<p><strong>Security note:</strong> Secrets are encrypted and automatically redacted from logs.</p>
+</section>
+<section id="step-5-create-your-workflow" class="level3">
+<h3 class="anchored" data-anchor-id="step-5-create-your-workflow">Step 5: Create Your Workflow</h3>
+<p>In your public repository, create <code>.github/workflows/automated-report.yml</code>:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">name</span><span class="kw">:</span><span class="at"> Weekly Report Generation</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="fu">on</span><span class="kw">:</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">schedule</span><span class="kw">:</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="kw">-</span><span class="at"> </span><span class="fu">cron</span><span class="kw">:</span><span class="at"> </span><span class="st">'0 6 * * 1'</span><span class="co">  # Every Monday at 6 AM UTC</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">workflow_dispatch</span><span class="kw">:</span><span class="co">      # Allows manual trigger</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="fu">jobs</span><span class="kw">:</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">generate-report</span><span class="kw">:</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">runs-on</span><span class="kw">:</span><span class="at"> ubuntu-latest</span></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="at">    </span></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">steps</span><span class="kw">:</span></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> </span><span class="fu">name</span><span class="kw">:</span><span class="at"> Checkout private code</span></span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a><span class="at">        </span><span class="fu">uses</span><span class="kw">:</span><span class="at"> actions/checkout@v4</span></span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a><span class="at">        </span><span class="fu">with</span><span class="kw">:</span></span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a><span class="at">          </span><span class="fu">repository</span><span class="kw">:</span><span class="at"> yourusername/my-private-analysis</span></span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a><span class="at">          </span><span class="fu">token</span><span class="kw">:</span><span class="at"> ${{ secrets.PERSONAL_ACCESS_TOKEN }}</span></span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a><span class="at">          </span><span class="fu">path</span><span class="kw">:</span><span class="at"> private-code</span></span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a><span class="at">      </span></span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> </span><span class="fu">name</span><span class="kw">:</span><span class="at"> Setup R</span></span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a><span class="at">        </span><span class="fu">uses</span><span class="kw">:</span><span class="at"> r-lib/actions/setup-r@v2</span></span>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a><span class="at">        </span><span class="fu">with</span><span class="kw">:</span></span>
+<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a><span class="at">          </span><span class="fu">r-version</span><span class="kw">:</span><span class="at"> </span><span class="st">'4.3.0'</span></span>
+<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a><span class="at">      </span></span>
+<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> </span><span class="fu">name</span><span class="kw">:</span><span class="at"> Install R packages</span></span>
+<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a><span class="fu">        run</span><span class="kw">: </span><span class="ch">|</span></span>
+<span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a>          cd private-code</span>
+<span id="cb4-28"><a href="#cb4-28" aria-hidden="true" tabindex="-1"></a>          Rscript -e 'install.packages(c("tidyverse", "purrr"))'</span>
+<span id="cb4-29"><a href="#cb4-29" aria-hidden="true" tabindex="-1"></a><span class="at">      </span></span>
+<span id="cb4-30"><a href="#cb4-30" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> </span><span class="fu">name</span><span class="kw">:</span><span class="at"> Run analysis</span></span>
+<span id="cb4-31"><a href="#cb4-31" aria-hidden="true" tabindex="-1"></a><span class="fu">        run</span><span class="kw">: </span><span class="ch">|</span></span>
+<span id="cb4-32"><a href="#cb4-32" aria-hidden="true" tabindex="-1"></a>          cd private-code</span>
+<span id="cb4-33"><a href="#cb4-33" aria-hidden="true" tabindex="-1"></a>          Rscript analysis.R</span>
+<span id="cb4-34"><a href="#cb4-34" aria-hidden="true" tabindex="-1"></a><span class="at">      </span></span>
+<span id="cb4-35"><a href="#cb4-35" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> </span><span class="fu">name</span><span class="kw">:</span><span class="at"> Render Quarto report</span></span>
+<span id="cb4-36"><a href="#cb4-36" aria-hidden="true" tabindex="-1"></a><span class="fu">        run</span><span class="kw">: </span><span class="ch">|</span></span>
+<span id="cb4-37"><a href="#cb4-37" aria-hidden="true" tabindex="-1"></a>          cd private-code</span>
+<span id="cb4-38"><a href="#cb4-38" aria-hidden="true" tabindex="-1"></a>          quarto render report.qmd</span>
+<span id="cb4-39"><a href="#cb4-39" aria-hidden="true" tabindex="-1"></a><span class="at">      </span></span>
+<span id="cb4-40"><a href="#cb4-40" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> </span><span class="fu">name</span><span class="kw">:</span><span class="at"> Upload report</span></span>
+<span id="cb4-41"><a href="#cb4-41" aria-hidden="true" tabindex="-1"></a><span class="at">        </span><span class="fu">uses</span><span class="kw">:</span><span class="at"> actions/upload-artifact@v4</span></span>
+<span id="cb4-42"><a href="#cb4-42" aria-hidden="true" tabindex="-1"></a><span class="at">        </span><span class="fu">with</span><span class="kw">:</span></span>
+<span id="cb4-43"><a href="#cb4-43" aria-hidden="true" tabindex="-1"></a><span class="at">          </span><span class="fu">name</span><span class="kw">:</span><span class="at"> weekly-report</span></span>
+<span id="cb4-44"><a href="#cb4-44" aria-hidden="true" tabindex="-1"></a><span class="at">          </span><span class="fu">path</span><span class="kw">:</span><span class="at"> private-code/output/report.html</span></span>
+<span id="cb4-45"><a href="#cb4-45" aria-hidden="true" tabindex="-1"></a><span class="at">      </span></span>
+<span id="cb4-46"><a href="#cb4-46" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> </span><span class="fu">name</span><span class="kw">:</span><span class="at"> Deploy to GitHub Pages</span></span>
+<span id="cb4-47"><a href="#cb4-47" aria-hidden="true" tabindex="-1"></a><span class="at">        </span><span class="fu">uses</span><span class="kw">:</span><span class="at"> peaceiris/actions-gh-pages@v3</span></span>
+<span id="cb4-48"><a href="#cb4-48" aria-hidden="true" tabindex="-1"></a><span class="at">        </span><span class="fu">with</span><span class="kw">:</span></span>
+<span id="cb4-49"><a href="#cb4-49" aria-hidden="true" tabindex="-1"></a><span class="at">          </span><span class="fu">github_token</span><span class="kw">:</span><span class="at"> ${{ secrets.GITHUB_TOKEN }}</span></span>
+<span id="cb4-50"><a href="#cb4-50" aria-hidden="true" tabindex="-1"></a><span class="at">          </span><span class="fu">publish_dir</span><span class="kw">:</span><span class="at"> private-code/output</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="step-6-test-your-workflow" class="level3">
+<h3 class="anchored" data-anchor-id="step-6-test-your-workflow">Step 6: Test Your Workflow</h3>
+<ol type="1">
+<li>Go to the <strong>Actions</strong> tab in your public repository</li>
+<li>Select your workflow</li>
+<li>Click <strong>“Run workflow”</strong> (manual trigger)</li>
+<li>Monitor the execution logs</li>
+<li><strong>Security check:</strong> Ensure no secrets appear in logs</li>
+</ol>
+<hr>
+</section>
+</section>
+<section id="other-powerful-use-cases" class="level2">
+<h2 class="anchored" data-anchor-id="other-powerful-use-cases">Other Powerful Use Cases</h2>
+<section id="automated-testing-for-private-r-packages" class="level3">
+<h3 class="anchored" data-anchor-id="automated-testing-for-private-r-packages">Automated Testing for Private R Packages</h3>
+<p>Run <code>R CMD check</code> on every commit without exposing source code:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">name</span><span class="kw">:</span><span class="at"> R Package Check</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">on</span><span class="kw">:</span><span class="at"> </span><span class="kw">[</span><span class="at">push</span><span class="kw">,</span><span class="at"> pull_request</span><span class="kw">]</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="fu">jobs</span><span class="kw">:</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">check</span><span class="kw">:</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">runs-on</span><span class="kw">:</span><span class="at"> ubuntu-latest</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">steps</span><span class="kw">:</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> </span><span class="fu">uses</span><span class="kw">:</span><span class="at"> actions/checkout@v4</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="at">        </span><span class="fu">with</span><span class="kw">:</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="at">          </span><span class="fu">repository</span><span class="kw">:</span><span class="at"> yourname/private-r-package</span></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="at">          </span><span class="fu">token</span><span class="kw">:</span><span class="at"> ${{ secrets.PERSONAL_ACCESS_TOKEN }}</span></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> </span><span class="fu">uses</span><span class="kw">:</span><span class="at"> r-lib/actions/setup-r@v2</span></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> </span><span class="fu">run</span><span class="kw">:</span><span class="at"> R CMD check .</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="scheduled-data-pipeline-execution" class="level3">
+<h3 class="anchored" data-anchor-id="scheduled-data-pipeline-execution">Scheduled Data Pipeline Execution</h3>
+<p>Run ETL jobs daily without manual intervention:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">on</span><span class="kw">:</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">schedule</span><span class="kw">:</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="kw">-</span><span class="at"> </span><span class="fu">cron</span><span class="kw">:</span><span class="at"> </span><span class="st">'0 2 * * *'</span><span class="co">  # 2 AM daily</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="fu">jobs</span><span class="kw">:</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">etl</span><span class="kw">:</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">runs-on</span><span class="kw">:</span><span class="at"> ubuntu-latest</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">steps</span><span class="kw">:</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> </span><span class="fu">name</span><span class="kw">:</span><span class="at"> Run data pipeline</span></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a><span class="at">        </span><span class="fu">run</span><span class="kw">:</span><span class="at"> python etl_pipeline.py</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="reproducible-research-workflows" class="level3">
+<h3 class="anchored" data-anchor-id="reproducible-research-workflows">Reproducible Research Workflows</h3>
+<p>Generate manuscript outputs while keeping methods confidential:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="kw">-</span><span class="at"> </span><span class="fu">name</span><span class="kw">:</span><span class="at"> Render manuscript</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">run</span><span class="kw">:</span><span class="at"> quarto render manuscript.qmd</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="kw">-</span><span class="at"> </span><span class="fu">name</span><span class="kw">:</span><span class="at"> Publish results only</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">uses</span><span class="kw">:</span><span class="at"> actions/upload-artifact@v4</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">with</span><span class="kw">:</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">name</span><span class="kw">:</span><span class="at"> published-paper</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">path</span><span class="kw">:</span><span class="at"> output/manuscript.pdf</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="shiny-app-deployment" class="level3">
+<h3 class="anchored" data-anchor-id="shiny-app-deployment">Shiny App Deployment</h3>
+<p>Deploy Shiny apps from private code to public servers:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="kw">-</span><span class="at"> </span><span class="fu">name</span><span class="kw">:</span><span class="at"> Deploy to shinyapps.io</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">env</span><span class="kw">:</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">SHINYAPPS_TOKEN</span><span class="kw">:</span><span class="at"> ${{ secrets.SHINYAPPS_TOKEN }}</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="fu">  run</span><span class="kw">: </span><span class="ch">|</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>    Rscript -e 'rsconnect::deployApp()'</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<hr>
+</section>
+</section>
+<section id="what-you-can-publish-safely" class="level2">
+<h2 class="anchored" data-anchor-id="what-you-can-publish-safely">What You Can Publish Safely</h2>
+<p>Even with private code, you can share:</p>
+<p>✅ <strong>Final reports</strong> (HTML, PDF)<br>
+✅ <strong>Data visualizations</strong> and dashboards<br>
+✅ <strong>Documentation</strong> about your methodology<br>
+✅ <strong>Workflow configurations</strong> (YAML files)<br>
+✅ <strong>Logs</strong> (with sensitive info redacted)</p>
+<p>What stays private:</p>
+<p>❌ Source code with proprietary algorithms<br>
+❌ Raw data or personal information<br>
+❌ API keys and credentials<br>
+❌ Unpublished research methods<br>
+❌ Client-specific business logic</p>
+<hr>
+</section>
+<section id="common-issues-solutions" class="level2">
+<h2 class="anchored" data-anchor-id="common-issues-solutions">Common Issues &amp; Solutions</h2>
+<section id="authentication-failed-error" class="level3">
+<h3 class="anchored" data-anchor-id="authentication-failed-error">“Authentication Failed” Error</h3>
+<p><strong>Cause:</strong> PAT doesn’t have right permissions or expired.</p>
+<p><strong>Solution:</strong></p>
+<ol type="1">
+<li>Check token expiration</li>
+<li>Regenerate with <code>repo</code> scope</li>
+<li>Update secret in repository settings</li>
+</ol>
+</section>
+<section id="resource-not-accessible-by-integration" class="level3">
+<h3 class="anchored" data-anchor-id="resource-not-accessible-by-integration">“Resource not accessible by integration”</h3>
+<p><strong>Cause:</strong> <code>GITHUB_TOKEN</code> can’t access private repos.</p>
+<p><strong>Solution:</strong> Always use <code>PERSONAL_ACCESS_TOKEN</code> for private repo access, not the default <code>GITHUB_TOKEN</code>.</p>
+</section>
+<section id="secrets-appearing-in-logs" class="level3">
+<h3 class="anchored" data-anchor-id="secrets-appearing-in-logs">Secrets Appearing in Logs</h3>
+<p><strong>Cause:</strong> Accidental print of sensitive variables.</p>
+<p><strong>Solution:</strong></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="kw">-</span><span class="at"> </span><span class="fu">name</span><span class="kw">:</span><span class="at"> Debug (safe)</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">  run</span><span class="kw">: </span><span class="ch">|</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>    echo "Workflow running..."</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>    # NEVER: echo ${{ secrets.PERSONAL_ACCESS_TOKEN }}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<hr>
+</section>
+</section>
+<section id="cost-comparison" class="level2">
+<h2 class="anchored" data-anchor-id="cost-comparison">Cost Comparison</h2>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Scenario</th>
+<th>Cost</th>
+<th>Minutes/Month</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Public repo</strong> (this method)</td>
+<td><strong>Free</strong></td>
+<td><strong>Unlimited</strong></td>
+</tr>
+<tr class="even">
+<td>Private repo (Free plan)</td>
+<td>Free</td>
+<td>2,000</td>
+</tr>
+<tr class="odd">
+<td>Private repo (Pro plan)</td>
+<td>$4/month</td>
+<td>3,000</td>
+</tr>
+<tr class="even">
+<td>Private repo (Team plan)</td>
+<td>$4/user/mo</td>
+<td>3,000</td>
+</tr>
+</tbody>
+</table>
+<p>For data scientists running daily automated reports, this approach can save hundreds of dollars annually while maintaining complete code privacy.</p>
+<hr>
+</section>
+<section id="wrapping-up" class="level2">
+<h2 class="anchored" data-anchor-id="wrapping-up">Wrapping Up</h2>
+<p>Automation shouldn’t require compromising security. With this public-workflow, private-code approach, you get:</p>
+<p>✅ <strong>Unlimited free automation</strong><br>
+✅ <strong>Complete code privacy</strong><br>
+✅ <strong>Reproducible workflows</strong> that can be audited<br>
+✅ <strong>Professional portfolio</strong> of your automation skills</p>
+<p>This setup saves developers from the chaos of managing complex automations or exposing private code: reports generate automatically, data stays secure, and only polished results are shared.</p>
+<p>Whether you’re a data scientist, researcher, or developer with confidential code, this pattern lets you embrace automation without exposure.</p>
+<hr>
+</section>
+<section id="ready-to-start" class="level2">
+<h2 class="anchored" data-anchor-id="ready-to-start">Ready to Start?</h2>
+<p>Here’s your action plan:</p>
+<ol type="1">
+<li><strong>Start small</strong> with a simple scheduled script</li>
+<li><strong>Test thoroughly</strong> by running workflows manually first</li>
+<li><strong>Monitor logs</strong> to ensure no secrets leak</li>
+<li><strong>Document your setup</strong> for future reference</li>
+</ol>
+<p>Questions about implementing this? Feel free to reach out <a href="https://islemme.github.io/islem-meherzi/contact.html">https://islemme.github.io/islem-meherzi/contact.html</a> !</p>
 
 
+</section>
 
 </main> <!-- /main -->
 <!-- footer.html -->
