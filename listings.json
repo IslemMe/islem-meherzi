@@ -2,6 +2,7 @@
   {
     "listing": "/blog.html",
     "items": [
+      "/Blogs/Automate_Web_Content_with_YML_and_Quarto.html",
       "/Blogs/FreeSecureGitHubActions.html",
       "/Blogs/quarto-email-reports.html",
       "/Blogs/b2_quarto_manuscript.html",
