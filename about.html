@@ -2,13 +2,16 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.8.26">
+<meta name="generator" content="quarto-1.9.38">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
 <title>about – Islem Meherzi</title>
 <style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
 div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -33,15 +36,14 @@ ul.task-list li input[type="checkbox"] {
 <link href="./images/favicon.ico" rel="icon">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-a074b3e8914223beb79d52c55ba55bce.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-fc4320b9899f90b023ad01802b2a8531.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -118,14 +120,6 @@ ul.task-list li input[type="checkbox"] {
 <span class="menu-text">Services</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./research.html"> 
-<span class="menu-text">Research</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="./community.html"> 
-<span class="menu-text">Community</span></a>
-  </li>  
-  <li class="nav-item">
     <a class="nav-link" href="./blog.html"> 
 <span class="menu-text">Blog</span></a>
   </li>  
@@ -152,651 +146,517 @@ ul.task-list li input[type="checkbox"] {
 
 
 <style>
-/* Enhanced About Page Styles - Story-Driven */
-body {
-  font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
-  color: #2c3e50;
-  line-height: 1.7;
-  background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+/* ── About page layout ─────────────────────────────────── */
+.about-bio-strip {
+  background: #fff;
+  border-bottom: 1px solid var(--border);
+  padding: 4rem 2rem;
 }
 
-
-/* Story Section */
-.story-section {
-  background: linear-gradient(145deg, #ffffff, #fdfdfd);
-  border: 1px solid rgba(24, 188, 156, 0.1);
-  border-radius: 20px;
-  padding: 3rem;
-  margin-bottom: 3rem;
-  box-shadow: 0 6px 20px rgba(0,0,0,0.08);
-  position: relative;
-  overflow: hidden;
-}
-
-.story-section::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 5px;
-  background: linear-gradient(90deg, #18bc9c, #f39c12);
-}
-
-.story-section p {
-  font-size: 1.2rem;
-  line-height: 1.8;
-  margin-bottom: 1.5rem;
-  color: #2c3e50;
-}
-
-.story-section .highlight {
-  color: #18bc9c;
-  font-weight: 600;
-  background: linear-gradient(120deg, transparent 0%, rgba(24, 188, 156, 0.1) 50%, transparent 100%);
-  padding: 0 4px;
-  border-radius: 3px;
-}
-
-/* What I Bring Section */
-.value-proposition {
-  background: linear-gradient(135deg, rgba(24, 188, 156, 0.08), rgba(248, 193, 28, 0.05));
-  border: 1px solid rgba(24, 188, 156, 0.2);
-  border-radius: 18px;
-  padding: 2.5rem;
-  margin-bottom: 3rem;
-  text-align: center;
-  box-shadow: 0 4px 15px rgba(24, 188, 156, 0.08);
-  position: relative;
-  overflow: hidden;
-}
-
-.value-proposition::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 4px;
-  background: linear-gradient(90deg, #18bc9c, #f39c12);
-}
-
-.value-proposition h2 {
-  font-family: 'Poppins', sans-serif;
-  font-size: 2rem;
-  font-weight: 700;
-  color: #2c3e50;
-  margin-bottom: 1.5rem;
-}
-
-.value-proposition p {
-  font-size: 1.3rem;
-  font-weight: 500;
-  color: #18bc9c;
-  line-height: 1.6;
-}
-
-/* Section Titles */
-.section-title {
-  font-family: 'Poppins', sans-serif;
-  font-weight: 700;
-  font-size: 2rem;
-  color: #2c3e50;
-  margin: 3rem 0 2rem;
-  position: relative;
-  padding-left: 1.5rem;
-  text-align: left;
-}
-
-.section-title::before {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 0;
-  bottom: 0;
-  width: 5px;
-  background: linear-gradient(135deg, #18bc9c, #f39c12);
-  border-radius: 3px;
-}
-
-/* Skills Grid */
-.skills-grid {
+.about-bio-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 2rem;
-  margin: 2rem 0;
+  grid-template-columns: 1fr 300px;
+  gap: 4rem;
+  align-items: start;
+  max-width: 1060px;
+  margin: 0 auto;
 }
 
-.skill-category {
-  background: linear-gradient(145deg, #ffffff, #fdfdfd);
-  border: 1px solid rgba(24, 188, 156, 0.1);
-  border-radius: 16px;
-  padding: 2rem;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-  transition: all 0.3s ease;
-  position: relative;
-  overflow: hidden;
+.about-bio-text p {
+  font-size: 1.05rem;
+  line-height: 1.85;
+  color: var(--ink);
+  margin-bottom: 1.2rem;
 }
 
-.skill-category::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 3px;
-  background: linear-gradient(90deg, #18bc9c, #f39c12);
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform 0.3s ease;
+.about-bio-text p:last-child { margin-bottom: 0; }
+
+.bio-card {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 1.6rem;
+  position: sticky;
+  top: 80px;
 }
 
-.skill-category:hover::before {
-  transform: scaleX(1);
+.bio-card-row {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  padding: 0.85rem 0;
+  border-bottom: 1px solid var(--border);
 }
 
-.skill-category:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 25px rgba(24, 188, 156, 0.12);
-}
-
-.skill-category h3 {
-  font-family: 'Poppins', sans-serif;
-  font-size: 1.3rem;
+.bio-card-label {
+  font-size: 0.7rem;
   font-weight: 600;
-  color: #18bc9c;
-  margin-bottom: 1rem;
-  display: flex;
-  align-items: center;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--subtle);
 }
 
-.skill-category h3::before {
-  content: "◆";
-  color: #f39c12;
-  margin-right: 0.5rem;
-  font-size: 1rem;
+.bio-card-val {
+  font-size: 0.88rem;
+  color: var(--ink);
 }
 
-.skill-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-  margin-top: 1rem;
-}
-
-.skill-tag {
-  background: linear-gradient(135deg, rgba(24, 188, 156, 0.1), rgba(248, 193, 28, 0.1));
-  color: #18bc9c;
-  font-size: 0.85rem;
+.bio-card-val.active {
+  color: var(--teal);
   font-weight: 500;
-  padding: 4px 12px;
-  border-radius: 15px;
-  border: 1px solid rgba(24, 188, 156, 0.2);
-  transition: all 0.2s ease;
 }
 
-.skill-tag:hover {
-  background: rgba(24, 188, 156, 0.2);
-  transform: translateY(-1px);
-}
-
-/* Impact Stories */
-.impact-stories {
-  margin: 3rem 0;
-}
-
-.impact-card {
-  background: linear-gradient(145deg, #ffffff, #fdfdfd);
-  border: 1px solid rgba(24, 188, 156, 0.1);
-  border-left: 5px solid #18bc9c;
-  border-radius: 16px;
-  padding: 2.5rem;
-  margin-bottom: 2rem;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-  transition: all 0.3s ease;
-  position: relative;
-}
-
-.impact-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 12px 25px rgba(24, 188, 156, 0.15);
-  border-left-color: #f39c12;
-}
-
-.impact-card h3 {
-  font-family: 'Poppins', sans-serif;
-  font-size: 1.4rem;
-  font-weight: 600;
-  color: #2c3e50;
-  margin-bottom: 1rem;
-}
-
-.impact-card .impact-metric {
-  background: linear-gradient(135deg, #f39c12, #e67e22);
-  color: #fff;
-  font-size: 0.9rem;
-  font-weight: 600;
-  padding: 6px 14px;
-  border-radius: 20px;
-  display: inline-block;
-  margin-bottom: 1rem;
-  box-shadow: 0 2px 8px rgba(243, 156, 18, 0.3);
-}
-
-.impact-card p {
-  color: #34495e;
-  line-height: 1.7;
-  margin-bottom: 1rem;
-}
-
-/* Leadership & Community */
-.community-section {
-  background: linear-gradient(145deg, #ffffff, #fdfdfd);
-  border: 1px solid rgba(24, 188, 156, 0.1);
-  border-radius: 18px;
-  padding: 2.5rem;
-  margin: 3rem 0;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-  position: relative;
+/* Skills section */
+.about-skills-wrap {
+  background: var(--dark);
+  padding: 4rem 2rem;
+  box-sizing: border-box;
   overflow: hidden;
 }
 
-.community-section::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
+.about-skills-inner {
+  max-width: 1060px;
+  margin: 0 auto;
   width: 100%;
-  height: 4px;
-  background: linear-gradient(90deg, #18bc9c, #f39c12);
 }
 
-.community-grid {
+.about-skills-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 2rem;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1rem;
   margin-top: 2rem;
+  width: 100%;
 }
 
-.community-card {
-  text-align: center;
-  padding: 1.5rem;
-  border: 1px solid rgba(24, 188, 156, 0.1);
-  border-radius: 12px;
-  transition: all 0.3s ease;
+/* Work list */
+.about-section-wrap {
+  max-width: 1060px;
+  margin: 0 auto;
+  padding: 4rem 2rem;
 }
 
-.community-card:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 8px 20px rgba(24, 188, 156, 0.1);
+.about-work-list {
+  margin-top: 1.8rem;
 }
 
-.community-icon {
-  font-size: 3rem;
-  color: #18bc9c;
-  margin-bottom: 1rem;
+.about-work-item {
+  padding: 1.8rem 0;
+  border-bottom: 1px solid var(--border);
 }
 
-.community-card h4 {
-  font-family: 'Poppins', sans-serif;
-  font-size: 1.2rem;
+.about-work-item:first-child {
+  border-top: 1px solid var(--border);
+}
+
+.work-tag {
+  font-size: 0.72rem;
   font-weight: 600;
-  color: #2c3e50;
+  color: var(--teal);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 0.45rem;
+}
+
+.about-work-item h3 {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--dark);
   margin-bottom: 0.5rem;
+  line-height: 1.3;
 }
 
-.community-card p {
-  color: #7f8c8d;
-  font-size: 0.95rem;
+.about-work-item p {
+  font-size: 0.92rem;
+  color: var(--muted);
+  line-height: 1.7;
+  margin: 0;
+  max-width: 680px;
 }
 
-/* Credentials Footer */
-.credentials-footer {
-  background: linear-gradient(135deg, #2c3e50, #34495e);
-  color: #fff;
+/* Credentials */
+.about-creds {
+  background: var(--dark);
+  border-radius: var(--radius-xl);
   padding: 2.5rem;
-  border-radius: 18px;
+  margin-top: 3rem;
+}
+
+.about-creds h3 {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 700;
+  color: rgba(255,255,255,0.9);
+  margin-bottom: 1.8rem;
+}
+
+.about-creds-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
+}
+
+.cred-block h4 {
+  font-family: var(--font-display);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--teal);
+  margin-bottom: 0.7rem;
+}
+
+.cred-block p {
+  font-size: 0.87rem;
+  color: rgba(255,255,255,0.5);
+  line-height: 1.7;
+  margin: 0 0 0.4rem;
+}
+
+.cred-block a.credential-link {
+  color: rgba(255,255,255,0.6);
+  text-decoration: none;
+  transition: color 0.18s;
+}
+
+.cred-block a.credential-link:hover { color: var(--teal); }
+
+.cred-muted { opacity: 0.45; font-size: 0.82rem !important; }
+
+/* Community row */
+.about-community-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.2rem;
+  margin-top: 1.8rem;
+}
+
+.about-community-card {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 1.5rem;
+  transition: var(--transition);
+}
+
+.about-community-card:hover {
+  border-color: var(--teal-border);
+  box-shadow: var(--shadow-sm);
+  transform: translateY(-2px);
+}
+
+.about-community-card h4 {
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--dark);
+  margin-bottom: 0.4rem;
+}
+
+.about-community-card p {
+  font-size: 0.87rem;
+  color: var(--muted);
+  line-height: 1.65;
+  margin: 0;
+}
+
+.about-community-card .comm-label {
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--teal);
+  display: block;
+  margin-bottom: 0.35rem;
+}
+
+/* CTA */
+.about-cta {
+  background: var(--dark);
+  border-radius: var(--radius-xl);
+  padding: 3rem;
   margin-top: 3rem;
   text-align: center;
+  position: relative;
+  overflow: hidden;
 }
 
-.credentials-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 2rem;
-  margin-top: 2rem;
+.about-cta::before {
+  content: '';
+  position: absolute;
+  top: -60px; left: 50%;
+  transform: translateX(-50%);
+  width: 400px; height: 200px;
+  background: radial-gradient(ellipse, rgba(24,188,156,0.15) 0%, transparent 70%);
+  pointer-events: none;
 }
 
-.credential-item {
-  padding: 1rem;
+.about-cta h2 {
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 0.6rem;
+  position: relative; z-index: 2;
 }
 
-.credential-item h4 {
-  color: #18bc9c;
-  font-size: 1.1rem;
-  margin-bottom: 0.5rem;
+.about-cta p {
+  font-size: 0.97rem;
+  color: rgba(255,255,255,0.5);
+  max-width: 420px;
+  margin: 0 auto 1.8rem;
+  font-weight: 300;
+  position: relative; z-index: 2;
 }
 
-.credential-item p {
-  opacity: 0.9;
-  font-size: 0.9rem;
+.about-cta-buttons {
+  display: flex;
+  gap: 0.8rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  position: relative; z-index: 2;
 }
 
-.credential-link {
-  color: #18bc9c;
-  text-decoration: none;
-  font-weight: 600;
-  transition: all 0.3s ease;
+/* Responsive */
+@media (max-width: 900px) {
+  .about-bio-grid { grid-template-columns: 1fr; gap: 2rem; }
+  .bio-card { position: static; }
+  .about-skills-grid { grid-template-columns: 1fr 1fr; }
+  .about-creds-grid { grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+  .about-community-grid { grid-template-columns: 1fr; }
 }
 
-.credential-link:hover {
-  color: #f39c12;
-  text-decoration: none;
-}
-
-/* Animation Classes */
-.fade-in {
-  opacity: 0;
-  transform: translateY(30px);
-  transition: all 0.8s ease;
-}
-
-.fade-in.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* Responsive Design */
-@media (max-width: 768px) {
-  .page-header {
-    padding: 3rem 1.5rem;
-  }
-  
-  .page-header h1 {
-    font-size: 2.2rem;
-  }
-  
-  .story-section,
-  .value-proposition,
-  .community-section {
-    padding: 2rem;
-    
-  }
-  
-  .skills-grid,
-  .community-grid,
-  .credentials-grid {
-    grid-template-columns: 1fr;
-  }
-  
-  .section-title {
-    font-size: 1.6rem;
-  }
+@media (max-width: 540px) {
+  .about-skills-grid { grid-template-columns: 1fr; }
+  .about-creds-grid { grid-template-columns: 1fr; }
+  .about-creds { padding: 1.8rem; }
+  .about-cta { padding: 2rem 1.5rem; }
+  .about-section-wrap { padding: 3rem 1.2rem; }
 }
 </style>
-<div class="story-section fade-in">
-<p>
-Hi, I’m Islem.
-</p>
-<p>
-I specialize in turning complex, multi-format datasets into clean, actionable insights. From automating data management workflows and reporting to providing R assistance and supporting researchers, I help people, teams and organizations gain clarity and control throughout the entire data process. With 8+ years of experience -from freelancer to Principal Data Scientist at Synodis to independent Data Specialist and Researcher- I build systems that make data reliable, insightful, and ready to drive decisions.
-</p>
-<p>
-I’m passionate about data science, teaching, and writing: from reports to research papers and books. What I do best: <span class="highlight">eliminate the manual work that slows you down and fix the data quality issues that hold you back</span>, so you can focus on what matters most.
-</p>
+
+<!-- ── Hero ───────────────────────────────────────────── -->
+<div class="page-hero">
+ 
+  <p>AI automation &amp; data engineer</p>
 </div>
-<div class="value-proposition fade-in">
-<h2 class="anchored">
-What I Bring
-</h2>
-<p>
-8+ years solving complex data challenges in healthcare and research, with deep R expertise and a track record of transforming manual, error-prone processes into automated, reliable systems that save time and improve outcomes.
-</p>
+
+<!-- ── Bio strip ─────────────────────────────────────── -->
+<div class="about-bio-strip">
+  <div class="about-bio-grid">
+
+    <div class="about-bio-text fade-in-up">
+<p>I help organizations transform complex data into reliable systems and actionable intelligence.</p> <p>With 9+ years of experience in data engineering and analytics, I have solved large-scale data challenges — from integrating fragmented healthcare systems and reconciling millions of records to building robust pipelines and analytical solutions.</p> <p>Over time, I saw the same pattern everywhere: valuable teams were spending too much time on repetitive data tasks that technology could already handle.</p> <p>That led me to focus on AI-powered automation — designing intelligent workflows and agents that improve efficiency, reduce errors, and unlock the full value of data.</p> <p>My goal is simple: build practical technology that makes data work smarter.</p>
+
+    </div>
+
+    <div class="fade-in-up">
+      <div class="bio-card">
+      <br>
+        <div class="bio-card-row">
+          <span class="bio-card-label">Location</span>
+          <span class="bio-card-val">Tunis, Tunisia</span>
+        </div><br>
+        <div class="bio-card-row">
+          <span class="bio-card-label">Experience</span>
+          <span class="bio-card-val">9+ years</span>
+        </div><br>
+        <div class="bio-card-row">
+          <span class="bio-card-label">Languages</span>
+          <span class="bio-card-val">Arabic · English · French</span>
+        </div><br>
+        <div class="bio-card-row">
+          <span class="bio-card-label">Available for</span>
+          <span class="bio-card-val">Projects · Talks · Consulting</span>
+        </div><br>
+        <div class="bio-card-row" style="border-bottom:none;">
+          <span class="bio-card-label">Currently</span>
+          <span class="bio-card-val active">Building AI agents</span>
+        </div><br>
+        <a href="contact.html" class="btn-primary" style="display:block;text-align:center;margin-top:1.4rem;text-decoration:none;">Work with me</a><br>
+      </div>
+    </div>
+
+  </div>
 </div>
-<h2 class="section-title fade-in anchored">
-<p>Expertise</p>
-</h2>
-<div class="skills-grid">
-<div class="skill-category fade-in">
-<h3 class="anchored">
-Data Engineering &amp; Automation
-</h3>
-<p>
-Building robust pipelines that handle the heavy lifting – from data collection and cleaning to validation and reporting – so your team can trust the results.
-</p>
-<div class="skill-tags">
-<p><span class="skill-tag">R</span> <span class="skill-tag">ETL Pipelines</span> <span class="skill-tag">Data Migration</span> <span class="skill-tag">API Integration</span> <span class="skill-tag">Automation</span></p>
+
+<!-- ── Skills dark strip ──────────────────────────────── -->
+<div class="about-skills-wrap">
+  <div class="about-skills-inner">
+    <span class="section-label">Technical depth</span>
+    <h2 class="section-title anchored" style="color:#fff;margin-bottom:0;">What I work with</h2>
+    <div class="about-skills-grid">
+
+      <div class="skill-category stagger-item">
+        <h3 class="anchored">AI &amp; automation</h3>
+        <div class="skill-tags">
+          <span class="skill-tag">n8n</span>
+          <span class="skill-tag">LLM APIs</span>
+          <span class="skill-tag">Groq</span>
+          <span class="skill-tag">Agent design</span>
+          <span class="skill-tag">Workflow automation</span>
+        </div>
+      </div>
+
+      <div class="skill-category stagger-item">
+        <h3 class="anchored">Data engineering</h3>
+        <div class="skill-tags">
+          <span class="skill-tag">R</span>
+          <span class="skill-tag">Python</span>
+          <span class="skill-tag">SQL</span>
+          <span class="skill-tag">ETL pipelines</span>
+          <span class="skill-tag">Reconciliation</span>
+          <span class="skill-tag">NLP</span>
+          <span class="skill-tag">OCR</span>
+          <span class="skill-tag">Web scraping</span>
+        </div>
+      </div>
+
+      <div class="skill-category stagger-item">
+        <h3 class="anchored">DevOps</h3>
+        <div class="skill-tags">
+          <span class="skill-tag">Docker</span>
+          <span class="skill-tag">GitHub Actions</span>
+          <span class="skill-tag">GitLab CI/CD</span>
+          <span class="skill-tag">Azure</span>
+          <span class="skill-tag">Linux</span>
+          <span class="skill-tag">ShinyProxy</span>
+        </div>
+      </div>
+
+      <div class="skill-category stagger-item">
+        <h3 class="anchored">Reporting</h3>
+        <div class="skill-tags">
+          <span class="skill-tag">Quarto</span>
+          <span class="skill-tag">R Shiny</span>
+          <span class="skill-tag">Reproducible research</span>
+          <span class="skill-tag">Dashboards</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
 </div>
-</div>
-<div class="skill-category fade-in">
-<h3 class="anchored">
-Analytics &amp; Insights
-</h3>
-<p>
-Transforming complex datasets into clear, actionable insights through advanced analytics, machine learning, and interactive visualizations.
-</p>
-<div class="skill-tags">
-<p><span class="skill-tag">Statistical Analysis</span> <span class="skill-tag">Machine Learning</span> <span class="skill-tag">NLP</span> <span class="skill-tag">Network Analysis</span> <span class="skill-tag">Data Visualization</span></p>
-</div>
-</div>
-<div class="skill-category fade-in">
-<h3 class="anchored">
-Reporting &amp; Publishing
-</h3>
-<p>
-Creating reproducible, professional reports and manuscripts that automatically update and maintain consistency across all your communications.
-</p>
-<div class="skill-tags">
-<p><span class="skill-tag">Quarto</span> <span class="skill-tag">R Shiny</span> <span class="skill-tag">Interactive Dashboards</span> <span class="skill-tag">Reproducible Research</span> <span class="skill-tag">Docker</span></p>
-</div>
-</div>
-</div>
-<h2 class="section-title fade-in anchored">
-<p>Impact Stories</p>
-</h2>
-<div class="impact-stories">
-<div class="impact-card fade-in">
-<div class="impact-metric">
-<p>Research Workflow Automation</p>
-</div>
-<h3 class="anchored">
-Automated Research Data Collection and Accelerated Insights
-</h3>
-<p>
-Automated the collection, preprocessing, and centralization of multi-source datasets from online literature and research databases. Built a domain-specific database and implemented analysis workflows using network graphs and unsupervised learning, enabling faster, more reliable research insights and streamlined reporting.
-</p>
-</div>
-<div class="impact-card fade-in">
-<div class="impact-metric">
-<p>Website Redesign with Quarto</p>
-</div>
-<h3 class="anchored">
-Migrated a Community Website to R and Quarto, Enabling Simple Updates by Non-Technical Users
-</h3>
-<p>
-Redesigned a dynamic website using Quarto and R to create a structured, low-maintenance platform. Implemented a YML-driven system for easy content updates, allowing non-technical users to maintain and update the site efficiently while keeping it modern and scalable.
-</p>
-</div>
-<div class="impact-card fade-in">
-<div class="impact-metric">
-<p>Healthcare Data Transformation</p>
-</div>
-<h3 class="anchored">
-Streamlined Clinical Data Across 50+ Establishments
-</h3>
-<p>
-Built automated migration pipelines reconciling patient, doctor, and practitioner data from diverse sources (Excel, databases, APIs, OCR) for 50+ medical establishments. The system transformed a labor-intensive manual process into a fast, reliable workflow, dramatically reducing preparation time while ensuring highly accurate data.
-</p>
-</div>
-<div class="impact-card fade-in">
-<div class="impact-metric">
-<p>Research Acceleration</p>
-</div>
-<h3 class="anchored">
-Automated Global Health Research Workflows
-</h3>
-<p>
-Developed intelligent data reconciliation systems aligning global research databases with local records, resolving issues like author homonyms and incomplete metadata, empowering researchers with proper recognition, enhancing clients’ research credibility, and providing clear, actionable reports for fast database verification and correction.
-</p>
-</div>
-<div class="impact-card fade-in">
-<div class="impact-metric">
-<p>Scalable Solutions</p>
-</div>
-<h3 class="anchored">
-Enterprise-Grade R Shiny Applications
-</h3>
-<p>
-Created Azure-hosted, containerized Shiny apps using Docker and ShinyProxy, transforming enterprise document management by enabling smart search, faster classification, and reduced manual workload.
-</p>
-</div>
-</div>
-<h2 class="section-title fade-in anchored">
-<p>Leadership &amp; Community</p>
-</h2>
-<div class="community-section fade-in">
-<p>
-Beyond technical expertise, I believe in building strong professional communities and continuous learning.
-</p>
-<div class="community-grid">
-<div class="community-card">
-<div class="community-icon">
-<p><i class="fas fa-microphone"></i></p>
-</div>
-<h4 class="anchored">
-Toastmasters Officer
-</h4>
-<p>
-Executive Committee Member at Tunis <a href="https://toastmasters.org" class="credential-link" target="_blank">Toastmasters</a> , serving in Secretary and VP of Membership roles, developing leadership and communication skills.
-</p>
-</div>
-<div class="community-card">
-<div class="community-icon">
-<p><i class="fas fa-dna"></i></p>
-</div>
-<h4 class="anchored">
-R-HTA Scientific Member
-</h4>
-<p>
-Scientific Committee Member for <a href="https://www.linkedin.com/company/r-hta-in-lmics/" class="credential-link" target="_blank">R-HTA consortium LMIC Chapter</a>, promoting open-source tools for health research and leading training workshops.
-</p>
-</div>
-<div class="community-card">
-<div class="community-icon">
-<p><i class="fas fa-book-open"></i></p>
-</div>
-<h4 class="anchored">
-Research &amp; Training
-</h4>
-<p>
-Active researcher in global health equity and bibliometrics, while providing R training to empower teams with automation and reproducible research practices.
-</p>
-</div>
-</div>
-</div>
-<div class="credentials-footer fade-in">
-<h3 style="color: #fff; margin-bottom: 1rem;" class="anchored">
-<p>Credentials &amp; Background</p>
-</h3>
-<div class="credentials-grid">
-<div class="credential-item">
-<h4 class="anchored">
-Education
-</h4>
-<p>
-B.Sc. in Networks and Telecommunications,INSAT<br> <br> Software Engineering (BI), ESPRIT
-</p>
-</div>
-<div class="credential-item">
-<h4 class="anchored">
-Certifications
-</h4>
-<p>
-<a href="https://www.credly.com/badges/d3b34330-37d9-49e9-94e4-e240374c373b" class="credential-link" target="_blank">PMP (PMI, 2023)</a><br> <a href="https://c46e136a583f7e334124-ac22991740ab4ff17e21daf2ed577041.ssl.cf1.rackcdn.com/Certificate/ScrumMasterCertified-IslemMeherzi-942445.pdf" class="credential-link" target="_blank">Scrum Master Certified</a>
-</p>
-</div>
-<div class="credential-item">
-<h4 class="anchored">
-Languages
-</h4>
-<p>
-Arabic (Native)<br>English (Fluent)<br>French (Fluent)
-</p>
-</div>
-<div class="credential-item">
+
+<!-- ── Selected work + Community + Credentials ─────── -->
+<div class="about-section-wrap">
+
+  <span class="section-label">Selected work</span>
+  <h2 class="section-title-bar anchored">What I've delivered</h2>
+
+  <div class="about-work-list">
+
+    <div class="about-work-item stagger-item">
+      <span class="work-tag">Healthcare · 65 establishments</span>
+      <h3 class="anchored">Clinical data migration across 15+ source systems</h3>
+      <p>Automated pipelines that extracted, reconciled, and migrated patient and practitioner data from Excel, databases, APIs, and OCR — resolving 70%+ of issues automatically, replacing a fully manual process.</p>
+    </div>
+
+    <div class="about-work-item stagger-item">
+      <span class="work-tag">Research · PubMed + OpenAlex</span>
+      <h3 class="anchored">Automated literature collection and analysis pipeline</h3>
+      <p>Domain-specific research database with automated collection, network graph analysis, unsupervised learning, and Quarto manuscript output — from raw literature to publication-ready results with no manual data handling.</p>
+    </div>
+
+    <div class="about-work-item stagger-item">
+      <span class="work-tag">Enterprise · Azure + Docker</span>
+      <h3 class="anchored">Health insurance analytics platform</h3>
+      <p>Interactive Shiny dashboard with geographic mapping and KPIs, containerized via Docker and ShinyProxy on Azure, with automated data refresh and role-based access.</p>
+    </div>
+
+    <div class="about-work-item stagger-item">
+      <span class="work-tag">Community · Quarto</span>
+      <h3 class="anchored">Website rebuilt for non-technical maintainers</h3>
+      <p>Rebuilt in Quarto with a YAML-driven content system so that non-technical members could update the site independently — no developer bottleneck.</p>
+    </div>
+
+  </div>
+
+  <!-- Community -->
+  <span class="section-label" style="display:block;margin-top:3rem;">Beyond the work</span>
+  <h2 class="section-title-bar anchored">Community &amp; leadership</h2>
+
+  <div class="about-community-grid">
+
+    <div class="about-community-card stagger-item">
+      <span class="comm-label">Public speaking</span>
+      <h4 class="anchored">Tunis Toastmasters</h4>
+      <p>Club Officer (Secretary &amp; VP Membership) — building leadership and communication skills since July 2024.</p>
+    </div>
+
+    <div class="about-community-card stagger-item">
+      <span class="comm-label">Health research</span>
+      <h4 class="anchored">R-HTA in LMICs</h4>
+      <p>Scientific Committee Member — advancing health technology assessment using R in low- and middle-income countries since November 2024.</p>
+    </div>
+
+    <div class="about-community-card stagger-item">
+      <span class="comm-label">Languages</span>
+      <h4 class="anchored">Arabic · English · French</h4>
+      <p>Available for talks, workshops, and consulting engagements in all three languages.</p>
+    </div>
+
+  </div>
+
+  <!-- Credentials -->
+  <div class="about-creds stagger-item">
+    <h3 class="anchored">Credentials &amp; background</h3>
+    <div class="about-creds-grid">
+
+      <div class="cred-block">
+        <h4 class="anchored">Education</h4>
+        <p>Engineering Diploma (M.Sc.) in BI &amp; Computer Science</p>
+        <p class="cred-muted">ESPRIT, 2016</p>
+        <p style="margin-top:0.6rem;">B.Sc. in Computer Networks</p>
+        <p class="cred-muted">INSAT, 2012</p>
+      </div>
+
+      <div class="cred-block">
+        <h4 class="anchored">Certifications</h4>
+        <p><a href="https://www.credly.com/badges/d3b34330-37d9-49e9-94e4-e240374c373b" target="_blank" rel="noopener noreferrer" class="credential-link">PMP — PMI, 2023</a></p>
+        <p><a href="https://c46e136a583f7e334124-ac22991740ab4ff17e21daf2ed577041.ssl.cf1.rackcdn.com/Certificate/ScrumMasterCertified-IslemMeherzi-942445.pdf" target="_blank" rel="noopener noreferrer" class="credential-link">Scrum Master Certified, 2023</a></p>
+      </div>
+
+      <div class="cred-block">
+        <h4 class="anchored">Community roles</h4>
+        <p><a href="https://toastmasters.org" target="_blank" rel="noopener noreferrer" class="credential-link">Tunis Toastmasters</a></p>
+        <p class="cred-muted">Club Officer · since 2024</p>
+        <p style="margin-top:0.6rem;"><a href="https://www.linkedin.com/company/r-hta-in-lmics/" target="_blank" rel="noopener noreferrer" class="credential-link">R-HTA in LMICs</a></p>
+        <p class="cred-muted">Scientific Committee · since 2024</p>
+      </div>
+
+      <div class="cred-block">
+        <h4 class="anchored">Background</h4>
+        <p>8+ years across data engineering, ML, NLP, DevOps, and research automation — from startup to enterprise healthcare systems.</p>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div class="about-cta fade-in-up">
+    <h2 class="anchored">Want to work together?</h2>
+    <p>A project, a workflow to automate, or a talk at your next event — let's talk.</p>
+    <div class="about-cta-buttons">
+      <a href="contact.html" class="btn-cta">Get in touch</a>
+      <a href="services.html" class="btn-cta secondary">View services</a>
+    </div>
+  </div>
 
 </div>
-<div class="credential-item">
-<h4 class="anchored">
-Philosophy
-</h4>
-<p>
-“Reliable data leads to confident decisions. Automation leads to sustainable success.”
-</p>
-</div>
-</div>
-</div>
+
 <script>
-document.addEventListener('DOMContentLoaded', function() {
-  // Enhanced scroll animations
-  const observerOptions = {
-    threshold: 0.1,
-    rootMargin: '0px 0px -50px 0px'
-  };
-
+document.addEventListener('DOMContentLoaded', function () {
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-      }
+      if (entry.isIntersecting) entry.target.classList.add('visible');
     });
-  }, observerOptions);
+  }, { threshold: 0.07 });
 
-  // Observe all fade-in elements
-  const fadeElements = document.querySelectorAll('.fade-in');
-  fadeElements.forEach((element, index) => {
-    element.style.transitionDelay = `${index * 0.1}s`;
-    observer.observe(element);
-  });
-
-  // Enhanced hover effects for skill categories
-  const skillCategories = document.querySelectorAll('.skill-category');
-  skillCategories.forEach((category, index) => {
-    category.addEventListener('mouseenter', function() {
-      const rotation = index % 2 === 0 ? '1deg' : '-1deg';
-      this.style.transform = `translateY(-5px) rotateX(2deg) rotateY(${rotation})`;
-      this.style.transition = 'all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275)';
-    });
-    
-    category.addEventListener('mouseleave', function() {
-      this.style.transform = 'translateY(0) rotateX(0deg) rotateY(0deg)';
-      this.style.transition = 'all 0.3s ease';
-    });
-  });
-
-  // Staggered animation for skill tags
-  const skillTags = document.querySelectorAll('.skill-tag');
-  skillTags.forEach((tag, index) => {
-    tag.style.opacity = '0';
-    tag.style.transform = 'translateY(10px)';
-    tag.style.transition = 'all 0.3s ease';
-    
-    setTimeout(() => {
-      tag.style.opacity = '1';
-      tag.style.transform = 'translateY(0)';
-    }, 1000 + (index * 50));
-  });
-
-  // Impact cards entrance animation
-  const impactCards = document.querySelectorAll('.impact-card');
-  impactCards.forEach((card, index) => {
-    card.addEventListener('mouseenter', function() {
-      this.style.transform = 'translateY(-5px) scale(1.02)';
-    });
-    
-    card.addEventListener('mouseleave', function() {
-      this.style.transform = 'translateY(0) scale(1)';
-    });
+  document.querySelectorAll('.fade-in-up, .stagger-item').forEach((el, i) => {
+    el.style.transitionDelay = (i * 0.08) + 's';
+    observer.observe(el);
   });
 });
 </script>
@@ -804,560 +664,240 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 </main> <!-- /main -->
-<!-- footer.html -->
-  <style>
-  /* Main Footer Styles */
-  .site-footer {
-    width: 100vw;
-    margin-left: calc(-50vw + 50%);
-    box-sizing: border-box;
-    background: linear-gradient(135deg, #18bc9c 0%, #764ba2 100%);
-                                color: #fff;
-                                  text-align: center;
-                                padding: 60px 15px 30px;
-                                font-size: 0.95rem;
-                                position: relative;
-                                left: 0;
-                                overflow: hidden;
-                                }
-
-/* Animated Background Pattern */
-  .site-footer::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 200%;
-    height: 100%;
-    background: repeating-linear-gradient(
-      60deg,
-      transparent,
-      transparent 10px,
-      rgba(255, 255, 255, 0.03) 10px,
-      rgba(255, 255, 255, 0.03) 20px
-    );
-    animation: slidePattern 20s linear infinite;
-  }
-
-@keyframes slidePattern {
-  to {
-    transform: translateX(50%);
-  }
+<style>
+/* ── Footer ─────────────────────────────────── */
+.site-footer {
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  box-sizing: border-box;
+  background: #faf9f7;
+  border-top: 1px solid #e8e4de;
+  padding: 3rem max(2rem, 8vw) 1.8rem;
+  font-family: 'DM Sans', 'Segoe UI', sans-serif;
 }
 
-/* Floating Particles */
-  .particles {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    pointer-events: none;
-    
-  }
-
-.particle {
-  position: absolute;
-  width: 4px;
-  height: 4px;
-  background: rgba(255, 255, 255, 0.5);
-  border-radius: 50%;
-  animation: float 15s infinite;
+.footer-inner {
+  max-width: 1060px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.6fr 1fr 1fr;
+  gap: 3rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid #e8e4de;
 }
 
-.particle:nth-child(1) { left: 10%; animation-delay: 0s; animation-duration: 20s; }
-.particle:nth-child(2) { left: 25%; animation-delay: 2s; animation-duration: 25s; }
-.particle:nth-child(3) { left: 40%; animation-delay: 4s; animation-duration: 18s; }
-.particle:nth-child(4) { left: 55%; animation-delay: 1s; animation-duration: 22s; }
-.particle:nth-child(5) { left: 70%; animation-delay: 3s; animation-duration: 20s; }
-.particle:nth-child(6) { left: 85%; animation-delay: 5s; animation-duration: 24s; }
-
-@keyframes float {
-  0%, 100% {
-    transform: translateY(0) translateX(0);
-    opacity: 0;
-  }
-  10% {
-    opacity: 1;
-  }
-  90% {
-    opacity: 1;
-  }
-  100% {
-    transform: translateY(-100vh) translateX(100px);
-    opacity: 0;
-  }
+.footer-name {
+  font-family: 'Syne', sans-serif;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #1a1a1a;
+  letter-spacing: -0.01em;
+  margin-bottom: 0.3rem;
 }
 
-/* Content Container */
-  .footer-content {
-    position: relative;
-    z-index: 2;
-  }
-
-/* Animated Name Title */
-  .footer-title {
-    font-size: 1.8rem;
-    font-weight: 700;
-    margin-bottom: 10px;
-    background: linear-gradient(45deg, #fff, #ffd700, #fff);
-                                background-size: 200% auto;
-                                -webkit-background-clip: text;
-                                background-clip: text;
-                                -webkit-text-fill-color: transparent;
-                                animation: shimmer 3s ease infinite;
-                                }
-
-@keyframes shimmer {
-  0% { background-position: 0% 50%; }
-100% { background-position: 200% 50%; }
-  }
-
-/* Subtitle with Typewriter Effect */
-  .footer-subtitle {
-    font-size: 1rem;
-    opacity: 0.9;
-    margin-bottom: 25px;
-    height: 24px;
-  }
-
-.typewriter {
-  display: inline-block;
-  border-right: 2px solid #ffd700;
-  animation: blink 0.7s infinite;
+.footer-role {
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: #18bc9c;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 0.9rem;
 }
 
-@keyframes blink {
-  0%, 50% { border-color: transparent; }
-  51%, 100% { border-color: #ffd700; }
-  }
-  
-  /* Navigation Links */
-    .footer-links {
-      margin: 25px 0;
-    }
-  
-  .footer-links a {
-    color: #fff;
-      margin: 0 15px;
-    text-decoration: none;
-    font-weight: 500;
-    position: relative;
-    transition: all 0.3s ease;
-    display: inline-block;
-  }
-  
-  .footer-links a::after {
-    content: '';
-    position: absolute;
-    bottom: -5px;
-    left: 0;
-    width: 0;
-    height: 2px;
-    background: #ffd700;
-      transition: width 0.3s ease;
-  }
-  
-  .footer-links a:hover::after {
-    width: 100%;
-  }
-  
-  .footer-links a:hover {
-    transform: translateY(-2px);
-    color: #ffd700;
-  }
-  
-  /* Social Icons with Pulse Effect */
-    .social-icons {
-      margin: 30px 0;
-    }
-  
-  .social-icons a {
-    color: #fff;
-      margin: 0 12px;
-    font-size: 1.5rem;
-    display: inline-block;
-    width: 50px;
-    height: 50px;
-    line-height: 50px;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(10px);
-    transition: all 0.4s ease;
-    position: relative;
-    overflow: hidden;
-  }
-  
-  .social-icons a::before {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 0;
-    height: 0;
-    border-radius: 50%;
-    background: rgba(255, 215, 0, 0.3);
-    transform: translate(-50%, -50%);
-    transition: width 0.6s, height 0.6s;
-  }
-  
-  .social-icons a:hover::before {
-    width: 100px;
-    height: 100px;
-  }
-  
-  .social-icons a:hover {
-    transform: translateY(-5px) scale(1.1);
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
-    color: #ffd700;
-  }
-  
-  /* Stats Counter Section */
-    .footer-stats {
-      display: flex;
-      justify-content: center;
-      gap: 40px;
-      margin: 30px 0;
-      flex-wrap: wrap;
-    }
-  
-  .stat-item {
-    text-align: center;
-  }
-  
-  .stat-number {
-    font-size: 2rem;
-    font-weight: bold;
-    color: #ffd700;
-      display: block;
-    margin-bottom: 5px;
-  }
-  
-  .stat-label {
-    font-size: 0.85rem;
-    opacity: 0.9;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-  }
-  
-  /* Wave Animation at Top */
-    .wave {
-      position: absolute;
-      top: -50px;
-      left: 0;
-      width: 100%;
-      height: 100px;
-      background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 320'%3E%3Cpath fill='%23ffffff' fill-opacity='0.1' d='M0,64L48,74.7C96,85,192,107,288,106.7C384,107,480,85,576,90.7C672,96,768,128,864,128C960,128,1056,96,1152,80C1248,64,1344,64,1392,64L1440,64L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z'%3E%3C/path%3E%3C/svg%3E");
-      background-size: cover;
-      animation: wave 10s linear infinite;
-    }
-  
-  @keyframes wave {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(-50%); }
-  }
+.footer-brand p {
+  font-size: 0.85rem;
+  color: #94a3b8;
+  line-height: 1.7;
+  margin: 0 0 1.2rem;
+  max-width: 260px;
+}
 
-/* Back to Top Button */
-  .back-to-top {
-    position: fixed;
-    bottom: 30px;
-    right: 30px;
-    background: linear-gradient(135deg, #15a589 0%, #34495e 100%);
-                                color: #fff;
-                                  border: none;
-                                border-radius: 50%;
-                                width: 50px;
-                                height: 50px;
-                                font-size: 1.5rem;
-                                cursor: pointer;
-                                display: none;
-                                align-items: center;
-                                justify-content: center;
-                                box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
-                                transition: all 0.3s ease;
-                                z-index: 1000;
-  }
+.footer-social {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.footer-social a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 7px;
+  border: 1px solid #e2ddd7;
+  background: #fff;
+  color: #94a3b8;
+  font-size: 0.88rem;
+  text-decoration: none;
+  transition: all 0.18s ease;
+}
+
+.footer-social a:hover {
+  border-color: #18bc9c;
+  color: #18bc9c;
+  background: rgba(24,188,156,0.06);
+}
+
+.footer-col h4 {
+  font-family: 'Syne', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: #c4bfb8;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+
+.footer-col ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-col ul li {
+  margin-bottom: 0.6rem;
+}
+
+.footer-col ul li a {
+  font-size: 0.88rem;
+  color: #64748b;
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+
+.footer-col ul li a:hover {
+  color: #18bc9c;
+}
+
+.footer-bottom {
+  max-width: 1060px;
+  margin: 0 auto;
+  padding-top: 1.4rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.footer-bottom p {
+  font-size: 0.78rem;
+  color: #c4bfb8;
+  margin: 0;
+}
+
+/* Back to top */
+.back-to-top {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  background: #18bc9c;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.95rem;
+  box-shadow: 0 4px 12px rgba(24,188,156,0.3);
+  transition: all 0.2s ease;
+  z-index: 1000;
+}
 
 .back-to-top:hover {
-  transform: translateY(-5px) scale(1.1);
-  box-shadow: 0 8px 25px rgba(102, 126, 234, 0.6);
+  background: #15a589;
+  transform: translateY(-2px);
 }
 
-.back-to-top.show {
-  display: flex;
-  animation: bounceIn 0.5s;
+.back-to-top.show { display: flex; }
+
+@media (max-width: 720px) {
+  .footer-inner {
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+  }
+  .footer-brand {
+    grid-column: 1 / -1;
+  }
+  .footer-brand p { max-width: 100%; }
 }
 
-@keyframes bounceIn {
-  0% {
-    opacity: 0;
-    transform: scale(0.3);
-  }
-  50% {
-    opacity: 1;
-    transform: scale(1.05);
-  }
-  100% {
-    transform: scale(1);
-  }
+@media (max-width: 460px) {
+  .footer-inner { grid-template-columns: 1fr; }
+  .footer-bottom { flex-direction: column; align-items: flex-start; gap: 0.3rem; }
 }
-
-/* Copyright with Heartbeat */
-  .copyright {
-    margin-top: 30px;
-    padding-top: 20px;
-    border-top: 1px solid rgba(255, 255, 255, 0.2);
-    font-size: 0.9rem;
-    opacity: 0.9;
-  }
-
-.heart {
-  color: #ff6b6b;
-    display: inline-block;
-  animation: heartbeat 1.5s ease infinite;
-}
-
-@keyframes heartbeat {
-  0%, 100% { transform: scale(1); }
-  50% { transform: scale(1.2); }
-}
-
-/* Responsive Design */
-  @media (max-width: 768px) {
-    .footer-title {
-      font-size: 1.4rem;
-    }
-    
-    .footer-stats {
-      gap: 20px;
-    }
-    
-    .stat-number {
-      font-size: 1.5rem;
-    }
-    
-    .social-icons a {
-      width: 40px;
-      height: 40px;
-      line-height: 40px;
-      font-size: 1.2rem;
-    }
-  }
 </style>
-  
-  <footer class="site-footer">
-  <!-- Animated Particles -->
-  <div class="particles">
-  <div class="particle"></div>
-  <div class="particle"></div>
-  <div class="particle"></div>
-  <div class="particle"></div>
-  <div class="particle"></div>
-  <div class="particle"></div>
-  </div>
-  
-  <!-- Wave Animation -->
-  <div class="wave"></div>
-  
-  <!-- Main Content -->
-  <div class="footer-content">
-  <h2 class="footer-title">Islem Meherzi</h2>
-  <div class="footer-subtitle">
-  <span class="typewriter" id="typewriter-text"></span>
-  </div>
-  
-  <!-- Stats Section -->
-  <div class="footer-stats">
-  <div class="stat-item">
-  <span class="stat-number" data-target="8">0</span>
-  <span class="stat-label">Years Experience</span>
-  </div>
-  <div class="stat-item">
-  <span class="stat-number" data-target="40">0</span>
-  <span class="stat-label">Projects Completed</span>
-  </div>
-  <div class="stat-item">
-  <span class="stat-number" data-target="65">10</span>
-  <span class="stat-label">Automated Workflows built</span>
-  </div>
-  </div>
-  
-  <!-- Navigation Links -->
-  <div class="footer-links">
-  <a href="index.html">Home</a>
-  <a href="about.html">About</a>
-  <a href="research.html">Research</a>
-  <a href="contributions.html">Contributions</a>
-  <a href="blog.html">Blog</a>
-  <a href="contact.html">Contact</a>
-  </div>
-  
-  <!-- Social Icons -->
-  <div class="social-icons">
-  <a href="https://www.linkedin.com/in/islem-meherzi-bba309b3/" target="_blank" aria-label="LinkedIn">
-  <i class="bi bi-linkedin"></i>
-  </a>
-  <a href="https://github.com/IslemMe" target="_blank" aria-label="GitHub">
-  <i class="bi bi-github"></i>
-  </a>
-  <a href="mailto:my.email@example.com" aria-label="Email">
-  <i class="bi bi-envelope"></i>
-  </a>
-  </div>
-  
-  <!-- Copyright -->
-  <div class="copyright">
-<p>© <span id="current-year"></span> Made with 
-  <span class="heart" aria-hidden="true">❤</span> passion <span class="heart" aria-hidden="true">❤</span> by 
-  <a href="https://www.linkedin.com/in/islem-meherzi-bba309b3/" target="_blank" rel="noopener noreferrer">
-    Islem Meherzi
-  </a>
-</p>
 
-  <p style="font-size: 0.8rem; opacity: 0.7; margin-top: 5px;">From messy data to reliable insights</p>
+<footer class="site-footer">
+  <div class="footer-inner">
+
+    <div class="footer-brand">
+      <div class="footer-name">Islem Meherzi</div>
+      <span class="footer-role">AI Automation · Data Engineering</span>
+      <p>Building AI agents and automation systems that turn complex data workflows into things that just run. Available for projects, consulting, and talks worldwide.</p>
+      <div class="footer-social">
+        <a href="https://www.linkedin.com/in/islem-meherzi-bba309b3/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+          <i class="bi bi-linkedin"></i>
+        </a>
+        <a href="https://github.com/IslemMe" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+          <i class="bi bi-github"></i>
+        </a>
+        <a href="mailto:meherziislem@gmail.com" aria-label="Email">
+          <i class="bi bi-envelope"></i>
+        </a>
+      </div>
+    </div>
+
+    <div class="footer-col">
+      <h4>Navigation</h4>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="services.html">Services</a></li>
+      
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h4>Get in touch</h4>
+      <ul>
+        <li><a href="mailto:meherziislem@gmail.com">meherziislem@gmail.com</a></li>
+        <li><a href="contact.html">Project inquiry</a></li>
+        <li><a href="contact.html">Speaking request</a></li>
+        <li><a href="https://www.linkedin.com/in/islem-meherzi-bba309b3/" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+      </ul>
+    </div>
+
   </div>
+
+  <div class="footer-bottom">
+    <p>© <span id="current-year"></span> Islem Meherzi. All rights reserved.</p>
+    <p>Tunis, Tunisia — working worldwide</p>
   </div>
-  </footer>
-  
-  <!-- Back to Top Button -->
-  <button id="backToTop" class="back-to-top" aria-label="Back to top">
+</footer>
+
+<button id="backToTop" class="back-to-top" aria-label="Back to top">
   <i class="bi bi-arrow-up"></i>
-  </button>
-  
-  <script>
-  // Set current year
+</button>
+
+<script>
 document.getElementById("current-year").textContent = new Date().getFullYear();
 
-// Typewriter Effect
-const phrases = [
-"Data Science Engineer",
-"R Expert",
-"Technical Writer",
-"Researcher",
-"Problem Solver",
-"Innovation Driver"
-];
+const btn = document.getElementById("backToTop");
+window.addEventListener("scroll", () => btn.classList.toggle("show", window.scrollY > 400));
+btn.addEventListener("click", () => window.scrollTo({ top: 0, behavior: "smooth" }));
 
-let phraseIndex = 0;
-let charIndex = 0;
-let isDeleting = false;
-const typewriterElement = document.getElementById("typewriter-text");
-
-function typeWriter() {
-  const currentPhrase = phrases[phraseIndex];
-  
-  if (isDeleting) {
-    typewriterElement.textContent = currentPhrase.substring(0, charIndex - 1);
-    charIndex--;
-  } else {
-    typewriterElement.textContent = currentPhrase.substring(0, charIndex + 1);
-    charIndex++;
-  }
-  
-  if (!isDeleting && charIndex === currentPhrase.length) {
-    isDeleting = true;
-    setTimeout(typeWriter, 2000);
-  } else if (isDeleting && charIndex === 0) {
-    isDeleting = false;
-    phraseIndex = (phraseIndex + 1) % phrases.length;
-    setTimeout(typeWriter, 500);
-  } else {
-    setTimeout(typeWriter, isDeleting ? 50 : 100);
-  }
-}
-
-// Start typewriter effect
-typeWriter();
-
-// Animated Counter
-function animateCounter() {
-  const counters = document.querySelectorAll('.stat-number');
-  const speed = 200;
-  
-  counters.forEach(counter => {
-    const target = +counter.getAttribute('data-target');
-    const increment = target / speed;
-    
-    const updateCount = () => {
-      const count = +counter.innerText;
-      
-      if (count < target) {
-        counter.innerText = Math.ceil(count + increment);
-        setTimeout(updateCount, 10);
-      } else {
-        counter.innerText = target + '+';
-      }
-    };
-    
-    // Start animation when footer is in view
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          updateCount();
-          observer.unobserve(entry.target);
-        }
-      });
-    });
-    
-    observer.observe(counter);
-  });
-}
-
-animateCounter();
-
-// Back to Top Button
-const backToTopButton = document.getElementById("backToTop");
-
-window.addEventListener("scroll", () => {
-  if (window.scrollY > 300) {
-    backToTopButton.classList.add("show");
-  } else {
-    backToTopButton.classList.remove("show");
-  }
-});
-
-backToTopButton.addEventListener("click", () => {
-  window.scrollTo({ 
-    top: 0, 
-    behavior: "smooth" 
-  });
-});
-
-// Add subtle parallax effect to particles
-window.addEventListener('scroll', () => {
-  const scrolled = window.pageYOffset;
-  const particles = document.querySelectorAll('.particle');
-  
-  particles.forEach((particle, index) => {
-    const speed = (index + 1) * 0.5;
-    particle.style.transform = `translateY(${scrolled * speed * 0.1}px)`;
-  });
-});
-
-// Footer visibility animation
-const footer = document.querySelector('.site-footer');
-const footerObserver = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.style.opacity = '1';
-      entry.target.style.transform = 'translateY(0)';
-    }
-  });
-}, {
-  threshold: 0.1
-});
-
-// Initial state for animation
-footer.style.opacity = '0';
-footer.style.transform = 'translateY(20px)';
-footer.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-
-footerObserver.observe(footer);
-</script>
-<script>
-document.addEventListener("DOMContentLoaded", function() {
-  const navbarLinks = document.querySelectorAll(".navbar a");
-  navbarLinks.forEach(link => {
+document.addEventListener("DOMContentLoaded", function () {
+  document.querySelectorAll(".navbar a").forEach(link => {
     if (link.href.includes("github.com") || link.href.includes("linkedin.com")) {
       link.setAttribute("target", "_blank");
       link.setAttribute("rel", "noopener noreferrer");
@@ -1365,7 +905,6 @@ document.addEventListener("DOMContentLoaded", function() {
   });
 });
 </script>
-
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";

@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>services – Islem Meherzi</title>
+<title>lab – Islem Meherzi</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -116,7 +116,7 @@ ul.task-list li input[type="checkbox"] {
 <span class="menu-text">About</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="./services.html" aria-current="page"> 
+    <a class="nav-link" href="./services.html"> 
 <span class="menu-text">Services</span></a>
   </li>  
   <li class="nav-item">
@@ -140,472 +140,135 @@ ul.task-list li input[type="checkbox"] {
 <!-- margin-sidebar -->
     
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"><h1 class="title display-7">Lab &amp; Experiments</h1></header>
 
 
 
 
-<!-- Page hero -->
 <div class="page-hero">
-<p>
-AI automation, data engineering, and workshops — built for real problems, not demos.
-</p>
+  
+  <p>Active builds, unpublished research, and experiments — documented in public as they happen.</p>
 </div>
+
 <div class="section-wrap">
-<!-- Intro -->
-<div class="intro-section fade-in-up">
-<p>
-<strong>I help teams and researchers turn complex, messy data workflows into things that just run.</strong> I offer project-based and ongoing consulting across AI automation, data engineering, reproducible reporting, and training. Click any card to see concrete examples and deliverables.
-</p>
+
+  <div class="pub-intro fade-in-up">
+    <p>This is where I document what I'm building and researching <strong>before</strong> it's finished, published, or packaged as a service. Some of this will become blog posts, some will become tools, and some will eventually be published research. Showing work-in-progress is more honest — and more useful — than only presenting finished things.</p>
+  </div>
+
+  <!-- AI Agents -->
+  <span class="section-label">Current builds</span>
+  <h2 class="section-title-bar anchored">AI Agent Projects</h2>
+
+  <div class="card-grid-2" style="margin-top:1.5rem;">
+
+    <div class="pub-card stagger-item">
+      <h3 class="anchored">Content publishing agent</h3>
+      <span class="status-badge" data-color="building" style="margin-bottom:1rem;display:inline-block;">🔧 Building</span>
+      <p>An n8n agent that researches topics, drafts blog posts on a schedule, emails me for approval, then publishes to this website and creates a LinkedIn teaser post with a branded image. Zero manual steps once approved.</p>
+      <div class="keywords-container">
+        <span class="keyword-tag">n8n</span>
+        <span class="keyword-tag">Groq API</span>
+        <span class="keyword-tag">GitHub Pages</span>
+        <span class="keyword-tag">LinkedIn API</span>
+        <span class="keyword-tag">Docker</span>
+      </div>
+      <p style="margin-top:1rem;font-size:0.87rem;color:var(--subtle);font-style:italic;">Write-up coming to blog once the first post publishes automatically.</p>
+    </div>
+
+    <div class="pub-card stagger-item">
+      <h3 class="anchored">Tunisia Economic Pulse — live data agent</h3>
+      <span class="status-badge" data-color="building" style="margin-bottom:1rem;display:inline-block;">🔧 Building</span>
+      <p>A daily AI workflow that collects economic and financial indicators from multiple Tunisian sources (BCT, INS, stock exchange), stores them in Google Sheets, and surfaces insights through a live R Shiny dashboard — with AI-generated commentary on anomalies and trends.</p>
+      <div class="keywords-container">
+        <span class="keyword-tag">n8n</span>
+        <span class="keyword-tag">R</span>
+        <span class="keyword-tag">Shiny</span>
+        <span class="keyword-tag">Google Sheets</span>
+        <span class="keyword-tag">LLM APIs</span>
+        <span class="keyword-tag">Docker</span>
+      </div>
+      <p style="margin-top:1rem;font-size:0.87rem;color:var(--subtle);font-style:italic;">MVP dashboard targeting end of phase 1. Supabase migration planned for scale.</p>
+    </div>
+
+  </div>
+
+  <!-- Research -->
+  <span class="section-label" style="margin-top:3rem;display:block;">Unpublished research</span>
+  <h2 class="section-title-bar anchored">Research Projects</h2>
+
+  <p style="color:var(--muted);font-size:0.95rem;margin-bottom:1.5rem;max-width:640px;">My research focuses on health data and bibliometric methods. These projects haven't led to publications yet — but the methods and pipelines I built for them directly inform the AI + data services I offer.</p>
+
+  <div class="card-grid-2" style="margin-top:0;">
+
+    <div class="pub-card stagger-item">
+      <h3 class="anchored">Research Project 1</h3>
+      <span class="status-badge" data-color="review" style="margin-bottom:1rem;display:inline-block;">Under peer review</span>
+      <p class="confidential-note">Details are confidential while under double-blind peer review.</p>
+      <p>This work presents novel metrics that unlock new insights in global health research.</p>
+      <div class="keywords-container">
+        <span class="keyword-tag">Bibliometrics</span>
+        <span class="keyword-tag">Network Analysis</span>
+        <span class="keyword-tag">Unsupervised Learning</span>
+        <span class="keyword-tag">Global Health</span>
+        <span class="keyword-tag">Scientometrics</span>
+      </div>
+    </div>
+
+    <div class="pub-card stagger-item">
+      <h3 class="anchored">Research Project 2</h3>
+      <span class="status-badge" data-color="progress" style="margin-bottom:1rem;display:inline-block;">In progress</span>
+      <p>Examines the alignment between scientific research output and public health priorities, using large-scale health datasets and mortality data to identify research gaps and inform strategic research investment decisions.</p>
+      <div class="keywords-container">
+        <span class="keyword-tag">Public Health Data</span>
+        <span class="keyword-tag">Research Assessment</span>
+        <span class="keyword-tag">Health Policy</span>
+        <span class="keyword-tag">Evidence Gaps</span>
+        <span class="keyword-tag">Data Analytics</span>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Research areas -->
+  <span class="section-label" style="margin-top:3rem;display:block;">Research interests</span>
+  <h2 class="section-title-bar anchored">Areas I work in</h2>
+
+  <div class="research-areas-grid" style="margin-top:1.5rem;">
+    <div class="research-area-card stagger-item">
+      <ul>
+        <li><strong>Bibliometric Analysis</strong> — quantitative methods to analyze research output patterns and impact</li>
+        <li><strong>Scientometric Research</strong> — measuring and analyzing scientific literature and productivity</li>
+        <li><strong>Global Health Research</strong> — research priorities and their alignment with disease burden</li>
+      </ul>
+    </div>
+    <div class="research-area-card stagger-item">
+      <ul>
+        <li><strong>Research Collaboration Networks</strong> — mapping international research partnerships</li>
+        <li><strong>Health Data Analytics</strong> — large-scale health datasets for research insights</li>
+        <li><strong>Evidence-Based Policy</strong> — supporting health policy decisions through data</li>
+      </ul>
+    </div>
+    <div class="research-area-card stagger-item">
+      <ul>
+        <li><strong>AI + Research workflows</strong> — automating literature review, data extraction, and analysis</li>
+        <li><strong>R &amp; Quarto for research</strong> — reproducible, publication-ready pipelines</li>
+        <li><strong>Health Research Equity</strong> — disparities and gaps in global health research</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div class="update-box fade-in-up" style="margin-top:3rem;">
+    <p><strong>Interested in collaborating or following along?</strong></p>
+    <p>I welcome discussions about potential collaborations, methodological questions, or opportunities to contribute to health research and AI automation projects.</p>
+    <a href="contact.html" class="btn-teal">Get in touch</a>
+  </div>
+
 </div>
-<!-- AI & Automation — top priority -->
-<span class="section-label" style="margin-top:1rem;display:block;">New focus</span>
-<h2 class="section-title-bar anchored">
-AI Agents &amp; Automation
-</h2>
-<div class="card-grid">
-<div class="service-card scale-in">
-<h3 class="card-title anchored">
-AI Agent Builds
-</h3>
-<p class="service-description">
-End-to-end design and delivery of AI agents using n8n and LLM APIs. From content automation to data pipelines — built to run without constant manual intervention.
-</p>
-<button class="learn-more-btn" onclick="openModal('ai-agents')">
-See details
-</button>
-</div>
-<div class="service-card scale-in">
-<h3 class="card-title anchored">
-Workflow Automation (n8n)
-</h3>
-<p class="service-description">
-Connect your tools, automate repetitive tasks, and build multi-step pipelines. Self-hosted via Docker — no vendor lock-in, no surprise SaaS bills.
-</p>
-<button class="learn-more-btn" onclick="openModal('automation')">
-See details
-</button>
-</div>
-</div>
-<!-- Existing core services -->
-<span class="section-label" style="margin-top:2.5rem;display:block;">Core expertise</span>
-<h2 class="section-title-bar anchored">
-Data Engineering &amp; Analytics
-</h2>
-<div class="card-grid">
-<div class="service-card scale-in">
-<h3 class="card-title anchored">
-Data Engineering &amp; Migration
-</h3>
-<p class="service-description">
-Clean data, reliable pipelines, seamless system transitions. Specialized in complex multi-source reconciliation.
-</p>
-<button class="learn-more-btn" onclick="openModal('data-engineering')">
-See details
-</button>
-</div>
-<div class="service-card scale-in">
-<h3 class="card-title anchored">
-Research &amp; Publication Support
-</h3>
-<p class="service-description">
-Faster insights, publication-ready outputs, automated workflows for researchers and academic teams.
-</p>
-<button class="learn-more-btn" onclick="openModal('research')">
-See details
-</button>
-</div>
-<div class="service-card scale-in">
-<h3 class="card-title anchored">
-Application Development &amp; Deployment
-</h3>
-<p class="service-description">
-From concept to production: Shiny dashboards, Quarto reports, and Docker-containerized solutions on Azure.
-</p>
-<button class="learn-more-btn" onclick="openModal('app-development')">
-See details
-</button>
-</div>
-<div class="service-card scale-in">
-<h3 class="card-title anchored">
-Training &amp; Speaking
-</h3>
-<p class="service-description">
-Workshops on AI agents, R, Quarto, and Docker. Conference talks and strategic consulting for teams modernizing their data workflows.
-</p>
-<button class="learn-more-btn" onclick="openModal('training')">
-See details
-</button>
-</div>
-</div>
-</div>
-<div class="section-wrap">
-<div class="cta-section fade-in-up">
-<h2 class="anchored">
-Ready to transform your data workflow?
-</h2>
-<p>
-Let’s talk about what you’re trying to automate, build, or teach — I’ll tell you honestly if and how I can help.
-</p>
-<div class="cta-buttons">
-<p><a href="contact.html" class="btn-cta">Start a conversation</a> <a href="community.html" class="btn-cta secondary">See my work</a></p>
-</div>
-</div>
-</div>
-<!-- MODALS -->
-<div id="ai-agents-modal" class="modal">
-<div class="modal-content">
-<div class="modal-header">
-<h2 class="modal-title anchored">
-AI Agent Builds
-</h2>
-<p><span class="close" onclick="closeModal('ai-agents-modal')">×</span></p>
-</div>
-<div class="modal-body">
-<div class="modal-section">
-<h4 class="anchored">
-What I build
-</h4>
-<ul class="modal-list">
-<li>
-Custom AI agents using <span class="tech-highlight">n8n</span> and LLM APIs (Groq, Together AI, OpenAI)
-</li>
-<li>
-Content automation agents: research → draft → review → publish workflows
-</li>
-<li>
-Data analysis agents: ingest → clean → analyse → report, fully automated
-</li>
-<li>
-Event and monitoring agents: track, alert, and act on triggers
-</li>
-<li>
-Self-hosted deployments via <span class="tech-highlight">Docker</span> — runs on your infrastructure
-</li>
-</ul>
-</div>
-<div class="example-box">
-<p><strong>Current build — Content publishing agent:</strong> An agent that drafts a blog post on a schedule, emails for approval, then publishes to the website and posts a LinkedIn teaser with a branded image. Built with n8n + Groq, zero paid SaaS required.</p>
-</div>
-<div class="modal-section">
-<h4 class="anchored">
-Technologies
-</h4>
-<p>
-<span class="tech-highlight">n8n</span> <span class="tech-highlight">Groq</span> <span class="tech-highlight">Docker</span> <span class="tech-highlight">GitHub Actions</span> <span class="tech-highlight">REST APIs</span>
-</p>
-</div>
-</div>
-<div class="contact-cta">
-<p>
-Want an agent built for your use case?
-</p>
-<p><a href="contact.html">Let’s discuss it</a></p>
-</div>
-</div>
-</div>
-<div id="automation-modal" class="modal">
-<div class="modal-content">
-<div class="modal-header">
-<h2 class="modal-title anchored">
-Workflow Automation (n8n)
-</h2>
-<p><span class="close" onclick="closeModal('automation-modal')">×</span></p>
-</div>
-<div class="modal-body">
-<div class="modal-section">
-<h4 class="anchored">
-What I build
-</h4>
-<ul class="modal-list">
-<li>
-Multi-step automation pipelines connecting your existing tools via <span class="tech-highlight">n8n</span>
-</li>
-<li>
-Email, Slack, and calendar integrations triggered by data events
-</li>
-<li>
-Scheduled data collection, transformation, and delivery workflows
-</li>
-<li>
-Self-hosted setup via Docker — no ongoing SaaS subscription required
-</li>
-<li>
-Handover with documentation so your team can maintain and extend it
-</li>
-</ul>
-</div>
-<div class="example-box">
-<p><strong>Example:</strong> A workflow that monitors a data source for changes, reconciles with a reference database, and emails a clean summary report every Monday — no manual steps.</p>
-</div>
-<div class="modal-section">
-<h4 class="anchored">
-Technologies
-</h4>
-<p>
-<span class="tech-highlight">n8n</span> <span class="tech-highlight">Docker</span> <span class="tech-highlight">REST APIs</span> <span class="tech-highlight">Webhooks</span> <span class="tech-highlight">Linux</span>
-</p>
-</div>
-</div>
-<div class="contact-cta">
-<p>
-Have a repetitive process to automate?
-</p>
-<p><a href="contact.html">Tell me about it</a></p>
-</div>
-</div>
-</div>
-<div id="data-engineering-modal" class="modal">
-<div class="modal-content">
-<div class="modal-header">
-<h2 class="modal-title anchored">
-Data Engineering &amp; Migration
-</h2>
-<p><span class="close" onclick="closeModal('data-engineering-modal')">×</span></p>
-</div>
-<div class="modal-body">
-<div class="modal-section">
-<h4 class="anchored">
-What I can help with
-</h4>
-<ul class="modal-list">
-<li>
-Data reconciliation, automated correction, and transformation from multiple sources
-</li>
-<li>
-Build &amp; automate customized ETL pipelines in <span class="tech-highlight">R</span>
-</li>
-<li>
-Complex data transformation &amp; reconciliation across systems
-</li>
-<li>
-Transitions from <span class="tech-highlight">Excel</span> / <span class="tech-highlight">SAS</span> to automated workflows
-</li>
-<li>
-AI-powered ingestion, parsing, and extraction from unstructured data (web, PDFs, documents)
-</li>
-<li>
-Data gathering from APIs &amp; online sources
-</li>
-<li>
-Text mining, NLP, feature engineering &amp; clustering
-</li>
-<li>
-Automated reporting pipelines with quality assurance
-</li>
-</ul>
-</div>
-<div class="example-box">
-<p><strong>Example:</strong> End-to-end pipelines across 65 clinical establishments — extracted, cleaned, reconciled, and migrated data from 15+ diverse sources (text, Excel, APIs, databases, OCR), delivering validated datasets and reports that resolved 70%+ of data issues automatically.</p>
-</div>
-<div class="modal-section">
-<h4 class="anchored">
-Technologies
-</h4>
-<p>
-<span class="tech-highlight">R</span> <span class="tech-highlight">dplyr</span> <span class="tech-highlight">APIs</span> <span class="tech-highlight">ETL</span> <span class="tech-highlight">NLP</span> <span class="tech-highlight">Web scraping</span> <span class="tech-highlight">OCR</span>
-</p>
-</div>
-</div>
-<div class="contact-cta">
-<p>
-Need reliable data pipelines or system migration support?
-</p>
-<p><a href="contact.html">Let’s discuss your project</a></p>
-</div>
-</div>
-</div>
-<div id="research-modal" class="modal">
-<div class="modal-content">
-<div class="modal-header">
-<h2 class="modal-title anchored">
-Research &amp; Publication Support
-</h2>
-<p><span class="close" onclick="closeModal('research-modal')">×</span></p>
-</div>
-<div class="modal-body">
-<div class="modal-section">
-<h4 class="anchored">
-What I can help with
-</h4>
-<ul class="modal-list">
-<li>
-Automate data collection from PubMed, OpenAlex, APIs, and web sources
-</li>
-<li>
-Creation and review of graphs for scientific publications
-</li>
-<li>
-Data reconciliation with trusted databases (WHO, geographical datasets)
-</li>
-<li>
-Data cleaning, preprocessing, and transformation into analysis-ready formats
-</li>
-<li>
-Advanced visualizations: clustering, Sankey diagrams, geographic maps
-</li>
-<li>
-Automated, reproducible reporting using <span class="tech-highlight">R</span> and <span class="tech-highlight">Quarto</span>
-</li>
-<li>
-Publication-ready manuscripts with <span class="tech-highlight">Quarto Manuscript</span>
-</li>
-</ul>
-</div>
-<div class="example-box">
-<p><strong>Example:</strong> Designed a fully automated workflow that collected thousands of research papers from PubMed and OpenAlex, reconciled key fields with trusted databases, built advanced visualizations, and integrated everything into Quarto manuscripts for publication-ready outputs.</p>
-</div>
-<div class="modal-section">
-<h4 class="anchored">
-Technologies
-</h4>
-<p>
-<span class="tech-highlight">R</span> <span class="tech-highlight">Quarto</span> <span class="tech-highlight">Zotero</span> <span class="tech-highlight">APIs</span> <span class="tech-highlight">WHO databases</span> <span class="tech-highlight">Statistical analysis</span>
-</p>
-</div>
-</div>
-<div class="contact-cta">
-<p>
-Ready to streamline your research workflow?
-</p>
-<p><a href="contact.html">Start a conversation</a></p>
-</div>
-</div>
-</div>
-<div id="app-development-modal" class="modal">
-<div class="modal-content">
-<div class="modal-header">
-<h2 class="modal-title anchored">
-Application Development &amp; Deployment
-</h2>
-<p><span class="close" onclick="closeModal('app-development-modal')">×</span></p>
-</div>
-<div class="modal-body">
-<div class="modal-section">
-<h4 class="anchored">
-What I can help with
-</h4>
-<ul class="modal-list">
-<li>
-Build interactive <span class="tech-highlight">R Shiny</span> dashboards for data visualization and analytics
-</li>
-<li>
-Create professional websites, reports, and books with <span class="tech-highlight">Quarto</span>
-</li>
-<li>
-Package &amp; containerize applications with <span class="tech-highlight">Docker</span>
-</li>
-<li>
-Deploy production-ready applications using <span class="tech-highlight">ShinyProxy</span> on <span class="tech-highlight">Azure</span>
-</li>
-<li>
-CI/CD workflows for automated testing and deployment
-</li>
-<li>
-Transform prototypes into scalable, enterprise-grade solutions
-</li>
-</ul>
-</div>
-<div class="example-box">
-<p><strong>Example:</strong> Built a health insurance analytics dashboard — interactive R Shiny app with geographical mapping and KPIs, deployed via Docker and ShinyProxy on Azure with automated data updates.</p>
-</div>
-<div class="modal-section">
-<h4 class="anchored">
-Technologies
-</h4>
-<p>
-<span class="tech-highlight">R Shiny</span> <span class="tech-highlight">Quarto</span> <span class="tech-highlight">Docker</span> <span class="tech-highlight">ShinyProxy</span> <span class="tech-highlight">Azure</span> <span class="tech-highlight">CI/CD</span>
-</p>
-</div>
-</div>
-<div class="contact-cta">
-<p>
-Ready to build and scale your data applications?
-</p>
-<p><a href="contact.html">Get in touch</a></p>
-</div>
-</div>
-</div>
-<div id="training-modal" class="modal">
-<div class="modal-content">
-<div class="modal-header">
-<h2 class="modal-title anchored">
-Training &amp; Speaking
-</h2>
-<p><span class="close" onclick="closeModal('training-modal')">×</span></p>
-</div>
-<div class="modal-body">
-<div class="modal-section">
-<h4 class="anchored">
-What I offer
-</h4>
-<ul class="modal-list">
-<li>
-<span class="tech-highlight">AI agents for business</span>: what they can automate today, how to start without expensive tools
-</li>
-<li>
-<span class="tech-highlight">n8n automation workshop</span>: hands-on, participants leave with a working workflow
-</li>
-<li>
-<span class="tech-highlight">R &amp; Quarto training</span>: data manipulation, reproducible reporting, manuscript writing
-</li>
-<li>
-<span class="tech-highlight">Docker for R</span>: containerizing and deploying R applications at scale
-</li>
-<li>
-<span class="tech-highlight">Strategic consulting</span>: workflow architecture and data system design
-</li>
-<li>
-<span class="tech-highlight">Conference speaking</span>: talks in English, French, or Arabic
-</li>
-</ul>
-</div>
-<div class="example-box">
-<p><strong>Past examples:</strong> Led R-HTA in LMICs workshops on data manipulation and web scraping in R for health technology assessment teams across low-resource settings. Available for corporate half-day / full-day workshops, university sessions, and online webinars.</p>
-</div>
-<div class="modal-section">
-<h4 class="anchored">
-Topics &amp; formats
-</h4>
-<p>
-<span class="tech-highlight">AI agents</span> <span class="tech-highlight">n8n</span> <span class="tech-highlight">R &amp; Quarto</span> <span class="tech-highlight">Docker</span> <span class="tech-highlight">Data engineering</span> — delivered as conference talk, workshop, or consulting engagement
-</p>
-</div>
-</div>
-<div class="contact-cta">
-<p>
-Want to book a talk or workshop?
-</p>
-<p><a href="contact.html">Discuss training &amp; speaking</a></p>
-</div>
-</div>
-</div>
+
 <script>
-function openModal(modalType) {
-  const modal = document.getElementById(modalType + '-modal');
-  if (!modal) return;
-  modal.style.display = 'block';
-  document.body.style.overflow = 'hidden';
-}
-
-function closeModal(modalId) {
-  const modal = document.getElementById(modalId);
-  if (!modal) return;
-  modal.style.display = 'none';
-  document.body.style.overflow = 'auto';
-}
-
-window.onclick = function(event) {
-  if (event.target.classList.contains('modal')) closeModal(event.target.id);
-}
-
-document.addEventListener('keydown', function(event) {
-  if (event.key === 'Escape') {
-    document.querySelectorAll('.modal[style*="block"]').forEach(m => closeModal(m.id));
-  }
-});
-
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) entry.target.classList.add('visible');
@@ -613,11 +276,7 @@ document.addEventListener('DOMContentLoaded', function() {
   }, { threshold: 0.08 });
 
   document.querySelectorAll('.fade-in-up, .stagger-item').forEach((el, i) => {
-    el.style.transitionDelay = i * 0.12 + 's';
-    observer.observe(el);
-  });
-  document.querySelectorAll('.scale-in').forEach((el, i) => {
-    el.style.transitionDelay = i * 0.1 + 's';
+    el.style.transitionDelay = (i * 0.1) + 's';
     observer.observe(el);
   });
 });

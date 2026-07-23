@@ -2,13 +2,16 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.8.26">
+<meta name="generator" content="quarto-1.9.38">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
 <title>Islem Meherzi</title>
 <style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
 div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -33,15 +36,14 @@ ul.task-list li input[type="checkbox"] {
 <link href="./images/favicon.ico" rel="icon">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-a074b3e8914223beb79d52c55ba55bce.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-fc4320b9899f90b023ad01802b2a8531.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -76,7 +78,7 @@ ul.task-list li input[type="checkbox"] {
 <link rel="stylesheet" href="styles.css">
 </head>
 
-<body class="nav-fixed fullcontent quarto-light">
+<body class="nav-fixed quarto-light">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -118,14 +120,6 @@ ul.task-list li input[type="checkbox"] {
 <span class="menu-text">Services</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./research.html"> 
-<span class="menu-text">Research</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="./community.html"> 
-<span class="menu-text">Community</span></a>
-  </li>  
-  <li class="nav-item">
     <a class="nav-link" href="./blog.html"> 
 <span class="menu-text">Blog</span></a>
   </li>  
@@ -141,1063 +135,845 @@ ul.task-list li input[type="checkbox"] {
     </nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
     
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
+<main class="content column-page" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
 
 
 
 
 <style>
-/* Enhanced Home Page Styles */
+/* ─── Reset & Base ──────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
 body {
-  font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
-  color: #2c3e50;
-  background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+  font-family: 'DM Sans', 'Segoe UI', sans-serif;
+  background: #f9f8f5;
+  color: #1a1a1a;
+  line-height: 1.65;
 }
 
-.hero-section {
-  text-align: center;
-  padding: 4rem 2rem;
-  background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 50%, #e8f8f5 100%);
-  border-radius: 18px;
-  margin-bottom: 3rem;
-  box-shadow: 0 8px 25px rgba(24, 188, 156, 0.1);
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=Syne:wght@600;700;800&display=swap');
+
+/* ─── Hero ──────────────────────────────────────────── */
+.hero {
+  min-height: 92vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  align-items: stretch;
+}
+
+.hero-left {
+  padding: 5rem 4rem 5rem 5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: #f9f8f5;
+  position: relative;
+}
+
+.hero-left::after {
+  content: '';
+  position: absolute;
+  right: 0; top: 15%; bottom: 15%;
+  width: 1px;
+  background: linear-gradient(to bottom, transparent, #c8c4bc, transparent);
+}
+
+.hero-right {
+  background: #1a1a1a;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 5rem 4rem 5rem 5rem;
   position: relative;
   overflow: hidden;
 }
 
-.hero-section::before {
+.hero-right::before {
   content: '';
   position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
-  background: radial-gradient(circle, rgba(24, 188, 156, 0.03) 0%, transparent 60%);
-  animation: float 6s ease-in-out infinite;
-}
-
-@keyframes float {
-  0%, 100% { transform: translateY(0px) rotate(0deg); }
-  50% { transform: translateY(-20px) rotate(180deg); }
-}
-
-.hero-section img {
+  top: -120px; right: -120px;
+  width: 380px; height: 380px;
   border-radius: 50%;
-  width: 220px;
-  height: 220px;
-  margin-bottom: 1.5rem;
-  box-shadow: 0 8px 25px rgba(24, 188, 156, 0.2);
-  border: 4px solid rgba(24, 188, 156, 0.1);
-  transition: all 0.3s ease;
-  position: relative;
-  z-index: 2;
+  background: radial-gradient(circle, rgba(24,188,156,0.18) 0%, transparent 70%);
+  pointer-events: none;
 }
 
-.hero-section img:hover {
-  transform: scale(1.05);
-  box-shadow: 0 12px 35px rgba(24, 188, 156, 0.3);
-}
-
-.hero-greeting {
-  font-size: 1.4rem;
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
   color: #18bc9c;
-  margin-bottom: 1rem;
-  font-weight: 600;
-  position: relative;
-  z-index: 2;
-  animation: slideDown 0.8s ease-out;
+  border: 1px solid rgba(24,188,156,0.35);
+  background: rgba(24,188,156,0.07);
+  padding: 6px 14px;
+  border-radius: 100px;
+  margin-bottom: 2rem;
+  width: fit-content;
 }
 
-.hero-title {
-  font-family: 'Poppins', sans-serif;
-  font-size: 2.8rem;
+.badge-dot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: #18bc9c;
+  animation: pulse-dot 2s ease-in-out infinite;
+}
+
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(0.8); }
+}
+
+.hero-name {
+  font-family: 'Syne', sans-serif;
+  font-size: clamp(2.8rem, 5vw, 4.2rem);
   font-weight: 800;
-  color: #2c3e50;
-  margin: 1rem 0 1.5rem;
-  line-height: 1.2;
-  position: relative;
-  z-index: 2;
-  animation: slideUp 0.8s ease-out 0.2s both;
+  line-height: 1.05;
+  color: #1a1a1a;
+  margin-bottom: 1.2rem;
+  letter-spacing: -0.02em;
 }
 
-.hero-subtitle {
-  font-size: 1.2rem;
-  color: #34495e;
-  margin: 1.5rem auto 2rem;
-  max-width: 750px;
+.hero-name span {
+  color: #18bc9c;
+}
+
+.hero-tagline {
+  font-size: 1.12rem;
+  color: #555;
+  font-weight: 300;
+  max-width: 420px;
+  margin-bottom: 2.5rem;
   line-height: 1.7;
-  position: relative;
-  z-index: 2;
-  animation: fadeIn 0.8s ease-out 0.4s both;
 }
 
-.hero-buttons {
+.hero-cta-row {
   display: flex;
   gap: 1rem;
-  justify-content: center;
   flex-wrap: wrap;
-  margin-top: 2rem;
-  position: relative;
-  z-index: 2;
-  animation: slideUp 0.8s ease-out 0.6s both;
 }
 
-.btn-hero {
-  background: linear-gradient(135deg, #18bc9c, #15a589);
-  color: #fff !important;
-  font-family: 'Poppins', sans-serif;
-  font-weight: 600;
-  padding: 14px 28px;
-  border-radius: 50px;
-  text-decoration: none;
-  display: inline-block;
-  box-shadow: 0 4px 15px rgba(24, 188, 156, 0.3);
-  transition: all 0.3s ease;
-  position: relative;
-  overflow: hidden;
-}
-
-.btn-hero::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-  transition: left 0.5s;
-}
-
-.btn-hero:hover::before {
-  left: 100%;
-}
-
-.btn-hero:hover {
-  transform: translateY(-3px) scale(1.05);
-  box-shadow: 0 8px 25px rgba(24, 188, 156, 0.4);
-  color: #fff !important;
-}
-
-.btn-hero.secondary {
-  background: linear-gradient(135deg, #f39c12, #e67e22);
-  box-shadow: 0 4px 15px rgba(243, 156, 18, 0.3);
-}
-
-.btn-hero.secondary:hover {
-  box-shadow: 0 8px 25px rgba(243, 156, 18, 0.4);
-}
-
-.btn-hero.outline {
-  background: transparent;
-  color: #18bc9c !important;
-  border: 2px solid #18bc9c;
-  box-shadow: none;
-}
-
-.btn-hero.outline:hover {
+.btn-primary {
   background: #18bc9c;
-  color: #fff !important;
-  box-shadow: 0 8px 25px rgba(24, 188, 156, 0.4);
+  color: #fff;
+  font-weight: 500;
+  font-size: 0.95rem;
+  padding: 0.8rem 1.8rem;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: background 0.2s, transform 0.15s;
+  border: none;
+}
+
+.btn-primary:hover {
+  background: #15a589;
+  transform: translateY(-1px);
+  color: #fff;
+  text-decoration: none;
+}
+
+.btn-outline {
+  background: transparent;
+  color: #1a1a1a;
+  font-weight: 500;
+  font-size: 0.95rem;
+  padding: 0.8rem 1.8rem;
+  border-radius: 8px;
+  border: 1.5px solid #ccc;
+  text-decoration: none;
+  transition: border-color 0.2s, color 0.2s, transform 0.15s;
+}
+
+.btn-outline:hover {
+  border-color: #18bc9c;
+  color: #18bc9c;
+  transform: translateY(-1px);
+  text-decoration: none;
+}
+
+/* Right side — dark panel */
+.hero-label {
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.35);
+  margin-bottom: 2rem;
+}
+
+.hero-services-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 3rem;
+}
+
+.hero-services-list li {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 1rem 0;
+  border-bottom: 1px solid rgba(255,255,255,0.07);
+  color: rgba(255,255,255,0.85);
+  font-size: 1rem;
+  font-weight: 300;
+  transition: color 0.2s;
+}
+
+.hero-services-list li:first-child { border-top: 1px solid rgba(255,255,255,0.07); }
+
+.hero-services-list li:hover { color: #18bc9c; }
+
+.svc-icon {
+  width: 36px; height: 36px;
+  border-radius: 8px;
+  background: rgba(24,188,156,0.12);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1rem;
+  flex-shrink: 0;
+}
+
+.hero-location {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: rgba(255,255,255,0.4);
+  font-size: 0.85rem;
+}
+
+.hero-location a {
+  color: rgba(255,255,255,0.4);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.hero-location a:hover { color: #18bc9c; }
+
+/* ─── Section shared ─────────────────────────────────── */
+.section {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 5rem 2rem;
+}
+
+.section-label {
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #18bc9c;
+  margin-bottom: 0.6rem;
 }
 
 .section-title {
-  font-family: 'Poppins', sans-serif;
-  font-size: 2rem;
+  font-family: 'Syne', sans-serif;
+  font-size: clamp(1.8rem, 3vw, 2.6rem);
   font-weight: 700;
-  color: #2c3e50;
-  text-align: center;
-  margin: 3rem 0 2rem;
-  position: relative;
+  color: #1a1a1a;
+  line-height: 1.2;
+  margin-bottom: 1rem;
 }
 
-.section-title::after {
-  content: '';
-  position: absolute;
-  bottom: -10px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 80px;
-  height: 4px;
-  background: linear-gradient(90deg, #18bc9c, #f39c12);
-  border-radius: 2px;
+.section-sub {
+  font-size: 1.05rem;
+  color: #666;
+  max-width: 560px;
+  font-weight: 300;
 }
 
-.services-preview {
+/* ─── Focus agents (2 big cards) ────────────────────── */
+.agents-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 2rem;
-  margin: 3rem 0;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  margin-top: 3rem;
 }
 
-.service-card-mini {
-  background: linear-gradient(145deg, #ffffff, #fdfdfd);
-  border: 1px solid rgba(24, 188, 156, 0.15);
-  border-radius: 18px;
-  padding: 2rem;
-  text-align: center;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-  transition: all 0.4s ease;
+.agent-card {
+  background: #fff;
+  border: 1px solid #e8e4de;
+  border-radius: 16px;
+  padding: 2.2rem;
+  transition: border-color 0.2s, box-shadow 0.2s, transform 0.15s;
   position: relative;
   overflow: hidden;
 }
 
-.service-card-mini::before {
+.agent-card::before {
   content: '';
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 4px;
-  background: linear-gradient(90deg, #18bc9c, #f39c12);
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #18bc9c, #15a589);
   transform: scaleX(0);
   transform-origin: left;
   transition: transform 0.3s ease;
 }
 
-.service-card-mini:hover::before {
-  transform: scaleX(1);
+.agent-card:hover::before { transform: scaleX(1); }
+
+.agent-card:hover {
+  border-color: rgba(24,188,156,0.3);
+  box-shadow: 0 8px 28px rgba(0,0,0,0.07);
+  transform: translateY(-3px);
 }
 
-.service-card-mini:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 12px 30px rgba(24, 188, 156, 0.15);
-  border-color: #18bc9c;
+.agent-icon {
+  width: 48px; height: 48px;
+  border-radius: 12px;
+  background: rgba(24,188,156,0.1);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.4rem;
+  margin-bottom: 1.2rem;
 }
 
-.service-icon {
-  font-size: 3rem;
+.agent-card h3 {
+  font-family: 'Syne', sans-serif;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin-bottom: 0.6rem;
+}
+
+.agent-card p {
+  font-size: 0.95rem;
+  color: #666;
+  line-height: 1.65;
+  margin-bottom: 1.2rem;
+}
+
+.agent-tag {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 500;
+  padding: 3px 10px;
+  border-radius: 100px;
+  background: rgba(24,188,156,0.09);
   color: #18bc9c;
-  margin-bottom: 1rem;
-  display: block;
-  transition: all 0.3s ease;
+  border: 1px solid rgba(24,188,156,0.2);
+  margin-right: 4px;
+  margin-bottom: 4px;
 }
 
-.service-card-mini:hover .service-icon {
-  transform: scale(1.1);
+.agent-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.78rem;
   color: #f39c12;
+  font-weight: 500;
+  margin-top: 1rem;
 }
 
-.service-card-mini h3 {
-  font-family: 'Poppins', sans-serif;
-  font-size: 1.3rem;
-  font-weight: 600;
-  color: #2c3e50;
-  margin-bottom: 1rem;
+.status-dot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: #f39c12;
 }
 
-.service-card-mini p {
-  font-size: 1rem;
-  color: #34495e;
-  line-height: 1.6;
-  margin-bottom: 0;
+/* ─── Skills strip ────────────────────────────────────── */
+.skills-strip {
+  background: #1a1a1a;
+  padding: 4rem 2rem;
 }
 
+.skills-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
+}
+
+.skill-block {
+  padding: 1.5rem;
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 12px;
+  transition: border-color 0.2s;
+}
+
+.skill-block:hover { border-color: rgba(24,188,156,0.4); }
+
+.skill-block-icon {
+  font-size: 1.5rem;
+  margin-bottom: 0.8rem;
+}
+
+.skill-block h4 {
+  font-size: 0.88rem;
+  font-weight: 500;
+  color: rgba(255,255,255,0.9);
+  margin-bottom: 0.4rem;
+  letter-spacing: 0.02em;
+}
+
+.skill-block p {
+  font-size: 0.8rem;
+  color: rgba(255,255,255,0.38);
+  line-height: 1.5;
+}
+
+/* ─── Speaking strip ────────────────────────────────── */
+.speaking-strip {
+  background: #f0faf7;
+  border-top: 1px solid #d4ede7;
+  border-bottom: 1px solid #d4ede7;
+  padding: 3.5rem 2rem;
+}
+
+.speaking-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.speaking-text h2 {
+  font-family: 'Syne', sans-serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin-bottom: 0.4rem;
+}
+
+.speaking-text p {
+  font-size: 0.95rem;
+  color: #555;
+  max-width: 480px;
+}
+
+.speaking-topics {
+  display: flex;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+  margin-top: 1rem;
+}
+
+.topic-pill {
+  font-size: 0.8rem;
+  font-weight: 500;
+  padding: 5px 14px;
+  background: #fff;
+  border: 1px solid #c0ddd6;
+  border-radius: 100px;
+  color: #2c7a68;
+}
+
+/* ─── CTA section ─────────────────────────────────────── */
 .cta-section {
-  background: linear-gradient(135deg, #18bc9c, #15a589);
-  color: #fff;
   text-align: center;
-  padding: 3rem 2rem;
-  border-radius: 18px;
-  margin: 4rem 0 2rem;
-  box-shadow: 0 8px 25px rgba(24, 188, 156, 0.2);
-  position: relative;
-  overflow: hidden;
-}
-
-.cta-section::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Ccircle cx='30' cy='30' r='4'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-  opacity: 0.5;
+  padding: 6rem 2rem;
+  background: #f9f8f5;
 }
 
 .cta-section h2 {
-  font-family: 'Poppins', sans-serif;
-  font-size: 1.8rem;
+  font-family: 'Syne', sans-serif;
+  font-size: clamp(1.8rem, 3vw, 2.6rem);
   font-weight: 700;
-  color: #fff;
+  color: #1a1a1a;
   margin-bottom: 1rem;
-  position: relative;
-  z-index: 2;
 }
 
 .cta-section p {
-  font-size: 1.1rem;
-  margin-bottom: 2rem;
-  opacity: 0.95;
-  position: relative;
-  z-index: 2;
+  font-size: 1.05rem;
+  color: #666;
+  max-width: 500px;
+  margin: 0 auto 2rem;
+  font-weight: 300;
 }
 
-.btn-cta {
-  background: #fff;
-  color: #18bc9c !important;
-  font-family: 'Poppins', sans-serif;
-  font-weight: 600;
-  padding: 14px 28px;
-  border-radius: 50px;
-  text-decoration: none;
-  display: inline-block;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-  transition: all 0.3s ease;
-  position: relative;
-  z-index: 2;
+/* ─── Responsive ─────────────────────────────────────── */
+@media (max-width: 860px) {
+  .hero { grid-template-columns: 1fr; min-height: unset; }
+  .hero-left { padding: 3.5rem 2rem; }
+  .hero-left::after { display: none; }
+  .hero-right { padding: 3rem 2rem; }
+  .agents-grid { grid-template-columns: 1fr; }
+  .skills-inner { grid-template-columns: 1fr 1fr; }
+  .speaking-inner { flex-direction: column; align-items: flex-start; }
 }
 
-.btn-cta:hover {
-  transform: translateY(-3px) scale(1.05);
-  box-shadow: 0 8px 25px rgba(0,0,0,0.2);
-  color: #18bc9c !important;
-}
-
-/* Animations */
-@keyframes slideDown {
-  from {
-    opacity: 0;
-    transform: translateY(-30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes slideUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-/* Responsive Design */
-@media (max-width: 768px) {
-  .hero-title {
-    font-size: 2.2rem;
-  }
-  
-  .hero-buttons {
-    flex-direction: column;
-    align-items: center;
-  }
-  
-  .btn-hero {
-    width: 100%;
-    max-width: 300px;
-  }
-  
-  .services-preview {
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
-  }
-  
-  .service-card-mini {
-    padding: 1.5rem;
-  }
+@media (max-width: 540px) {
+  .skills-inner { grid-template-columns: 1fr; }
 }
 </style>
-<div class="hero-section">
-<!-- <img src="images/islem.png" alt="Islem "> -->
-<div class="hero-greeting">
-<p>Welcome, I’m glad you’re here!</p>
-</div>
-<h1 class="hero-title" style="color: #4b5563; font-size: 1.5rem; font-weight: 600;">
-<p>Transforming Complex Data Into Confident Decisions</p>
-</h1>
-<p class="hero-subtitle">
-</p><p>I’m <strong>Islem</strong>, a Data Science Engineer and researcher who helps <strong>individuals and organizations</strong> turn challenging data into reliable insights.<br>
-I specialize in <strong>automation</strong>, <strong>data reconciliation</strong>, and <strong>research analytics</strong>: delivering solutions that save time, eliminate errors, and accelerate decision-making.</p>
-<p></p>
-<div class="hero-buttons">
-<p><a href="./about.html" class="btn-hero">About Me</a> <a href="./services.html" class="btn-hero secondary">My Services</a> <a href="./contact.html" class="btn-hero outline">Get in Touch</a></p>
-</div>
-</div>
-<hr>
-<section id="how-i-can-help" class="level2">
-<h2 class="anchored" data-anchor-id="how-i-can-help"><span class="section-title">How I Can Help</span></h2>
-<div class="services-preview">
-<div class="service-card-mini">
-<div class="service-icon">
-<p><i class="fa fa-cogs"></i></p>
-</div>
-<h3 class="anchored">
-Data Engineering &amp; Automation
-</h3>
-<p>
-Automate your entire data workflow: from <strong>collection</strong> and <strong>cleaning</strong> to <strong>reconciliation</strong>, <strong>validation</strong>, and <strong>reporting</strong>.<br>
-Built for healthcare, research, and business teams who need <strong>reliable, production-ready pipelines</strong> that scale.
-</p>
-</div>
-<div class="service-card-mini">
-<div class="service-icon">
-<p><i class="fa fa-flask"></i></p>
-</div>
-<h3 class="anchored">
-Research &amp; Analytics Support
-</h3>
-<p>
-Accelerate your research with <strong>automated data collection</strong> from scientific databases, <strong>publication-ready visualizations</strong>, and <strong>reproducible reports</strong>.<br>
-From hypothesis to manuscript: faster, cleaner, more impactful.
-</p>
-</div>
-<div class="service-card-mini">
-<div class="service-icon">
-<p><i class="fa fa-chalkboard-teacher"></i></p>
-</div>
-<h3 class="anchored">
-Training &amp; Consulting
-</h3>
-<p>
-Master <strong>R programming</strong>, <strong>workflow automation</strong>, and <strong>deployment strategies</strong> through customized training.<br>
-Or get strategic guidance to design and implement data solutions that deliver results.
-</p>
-</div>
-<div class="service-card-mini">
-<div class="service-icon">
-<p><i class="fa fa-check-circle"></i></p>
-</div>
-<h3 class="anchored">
-Data Quality &amp; Validation
-</h3>
-<p>
-Ensure your data is <strong>accurate, consistent, and analysis-ready</strong>.<br>
-I build automated validation checks, cross-dataset integrity rules, and reproducible QC workflows, so you can trust every number before it reaches your team or your report.
-</p>
-</div>
-</div>
-<hr>
-<div class="cta-section">
-<h2 class="anchored">
-Ready to Turn Data Challenges Into Strategic Clarity?
-</h2>
-<p>
-Whether you’re managing complex healthcare research, automating repetitive workflows, or migrating legacy systems. I help transform your data challenges into <strong>reliable, actionable solutions</strong>.<br>
-Let’s discuss how I can support your next project.
-</p>
-<div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-top: 2rem;">
-<p><a href="./services.html" class="btn-cta"><i class="fa fa-cogs"></i> Services</a> <a href="./research.html" class="btn-cta"><i class="fa fa-microscope"></i> Research</a> <a href="workshops.qmd" class="btn-cta"><i class="fa fa-microphone"></i> Training</a><br><br> <a href="./contact.html" class="btn-cta primary"><i class="fa fa-envelope"></i> Start a Conversation</a></p>
-</div>
-</div>
-<script>
-// Add scroll animations
-document.addEventListener('DOMContentLoaded', function() {
-  // Intersection Observer for animations
-  const observerOptions = {
-    threshold: 0.1,
-    rootMargin: '0px 0px -50px 0px'
-  };
 
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.style.opacity = '1';
-        entry.target.style.transform = 'translateY(0)';
-      }
-    });
-  }, observerOptions);
-
-  // Observe service cards
-  const serviceCards = document.querySelectorAll('.service-card-mini');
-  serviceCards.forEach((card, index) => {
-    card.style.opacity = '0';
-    card.style.transform = 'translateY(30px)';
-    card.style.transition = 'all 0.6s ease';
-    card.style.transitionDelay = `${index * 0.2}s`;
-    observer.observe(card);
-  });
-
-  // Add hover effects to service cards
-  serviceCards.forEach(card => {
-    card.addEventListener('mouseenter', function() {
-      this.style.transform = 'translateY(-10px) scale(1.02)';
-    });
+<!-- ─── Hero ──────────────────────────────────── -->
+<section class="hero">
+  <div class="hero-left">
+    <div>
+      <span></span>
     
-    card.addEventListener('mouseleave', function() {
-      this.style.transform = 'translateY(0) scale(1)';
-    });
-  });
-});
-</script>
+    </div>
+    <h1 class="hero-name">
+      Islem<br><span>Meherzi</span>
+    </h1>
+  
+       <strong>
+    Messy data in.<br>
+   Intelligent systems out.</strong>
+<br>
 
+  <p class="hero-tagline">
+    I transform <strong>messy, disconnected data</strong> into 
+    <strong>reliable, business-ready systems</strong>.  
+    Through <strong>data engineering, AI, and intelligent automation</strong>,
+    <br>I build solutions that streamline workflows and create measurable value.
+  </p>
+    <div class="hero-cta-row">
+      <a href="contact.html" class="btn-primary">Start a conversation</a>
+      <a href="services.html" class="btn-outline">See my services</a>
+    </div>
+  </div>
 
+  <div class="hero-right">
+    <p class="hero-label">What I build &amp; deliver</p>
+    <ul class="hero-services-list">
+          <li>
+        <span class="svc-icon">📊</span>
+        Data reconciliation &amp; R automation
+      </li>
+      <li>
+        <span class="svc-icon">📝</span>
+        Reproducible reporting
+      </li>
+      <li>
+        <span class="svc-icon">🤖</span>
+        AI agents &amp; automation workflows
+      </li>
+      <li>
+        <span class="svc-icon">🔗</span>
+        n8n pipelines &amp; integrations
+      </li>
+
+      <li>
+        <span class="svc-icon">🎤</span>
+        Talks, workshops &amp; consulting
+      </li>
+    </ul>
+    <div class="hero-location">
+      <span>📍</span>
+      <a href="https://www.linkedin.com/in/islem-meherzi-bba309b3/" target="_blank">Tunis, Tunisia — LinkedIn</a>
+    </div>
+  </div>
 </section>
 
+<br>
+<!-- ─── Skills strip ─────────────────────────── -->
+  <p class="section-label">
+    Technical expertise
+  </p>
+
+  <h2 class="section-title anchored">
+    Building reliable data systems from raw information
+  </h2>
+
+  <p class="section-sub">
+  I design data and AI solutions that transform complex data into clean, connected, and actionable assets—combining data engineering, analytics, and automation to streamline operations and support better decisions.
+  </p>
+  <br>
+  <br>
+<div class="skills-strip">
+  <div class="skills-inner">
+    <div class="skill-block">
+      <div class="skill-block-icon">⚙️</div>
+      <h4 class="anchored">AI &amp; automation</h4>
+      <p>n8n, LLM APIs, Groq, agent orchestration, workflow design</p>
+    </div>
+    <div class="skill-block">
+      <div class="skill-block-icon">📈</div>
+      <h4 class="anchored">Data engineering</h4>
+      <p>R, Python, ETL, reconciliation, complex cleaning, fuzzy joins</p>
+    </div>
+    <div class="skill-block">
+      <div class="skill-block-icon">🐳</div>
+      <h4 class="anchored">DevOps &amp; deployment</h4>
+      <p>Docker, GitHub Actions, GitLab CI/CD, Azure, Linux, ShinyProxy</p>
+    </div>
+    <div class="skill-block">
+      <div class="skill-block-icon">📄</div>
+      <h4 class="anchored">Reproducible outputs</h4>
+      <p>Quarto manuscripts, Shiny dashboards, automated reporting pipelines</p>
+    </div>
+  </div>
+</div>
+<br>
+<!-- ─── Speaking strip ────────────────────────── -->
+<div class="speaking-strip">
+  <div class="speaking-inner">
+    <div class="speaking-text">
+      <h2 class="anchored">
+Available for consulting &amp; workshops
+</h2>
+      <p>
+I help teams adopt practical AI automation, improve their data workflows, and move from ideas to reliable working systems.
+</p>
+      <div class="speaking-topics">
+        <span class="topic-pill">AI agents for business</span>
+        <span class="topic-pill">n8n automation</span>
+        <span class="topic-pill">R + AI workflows</span>
+        <span class="topic-pill">Reproducible research</span>
+      </div>
+    </div>
+    <a href="contact.html" class="btn-primary" style="white-space:nowrap; flex-shrink:0;">Invite me to speak</a>
+  </div>
+</div>
+
+<!-- ─── CTA ───────────────────────────────────── -->
+<div class="cta-section">
+  <h2 class="anchored">Got a project in mind?</h2>
+  <p>Whether you need an AI agent built, a data workflow automated, or a talk on what's actually possible with AI today.</p>
+  <a href="contact.html" class="btn-primary">Let's talk</a>
+</div>
+
+
+
 </main> <!-- /main -->
-<!-- footer.html -->
-  <style>
-  /* Main Footer Styles */
-  .site-footer {
-    width: 100vw;
-    margin-left: calc(-50vw + 50%);
-    box-sizing: border-box;
-    background: linear-gradient(135deg, #18bc9c 0%, #764ba2 100%);
-                                color: #fff;
-                                  text-align: center;
-                                padding: 60px 15px 30px;
-                                font-size: 0.95rem;
-                                position: relative;
-                                left: 0;
-                                overflow: hidden;
-                                }
-
-/* Animated Background Pattern */
-  .site-footer::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 200%;
-    height: 100%;
-    background: repeating-linear-gradient(
-      60deg,
-      transparent,
-      transparent 10px,
-      rgba(255, 255, 255, 0.03) 10px,
-      rgba(255, 255, 255, 0.03) 20px
-    );
-    animation: slidePattern 20s linear infinite;
-  }
-
-@keyframes slidePattern {
-  to {
-    transform: translateX(50%);
-  }
+<style>
+/* ── Footer ─────────────────────────────────── */
+.site-footer {
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  box-sizing: border-box;
+  background: #faf9f7;
+  border-top: 1px solid #e8e4de;
+  padding: 3rem max(2rem, 8vw) 1.8rem;
+  font-family: 'DM Sans', 'Segoe UI', sans-serif;
 }
 
-/* Floating Particles */
-  .particles {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    pointer-events: none;
-    
-  }
-
-.particle {
-  position: absolute;
-  width: 4px;
-  height: 4px;
-  background: rgba(255, 255, 255, 0.5);
-  border-radius: 50%;
-  animation: float 15s infinite;
+.footer-inner {
+  max-width: 1060px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.6fr 1fr 1fr;
+  gap: 3rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid #e8e4de;
 }
 
-.particle:nth-child(1) { left: 10%; animation-delay: 0s; animation-duration: 20s; }
-.particle:nth-child(2) { left: 25%; animation-delay: 2s; animation-duration: 25s; }
-.particle:nth-child(3) { left: 40%; animation-delay: 4s; animation-duration: 18s; }
-.particle:nth-child(4) { left: 55%; animation-delay: 1s; animation-duration: 22s; }
-.particle:nth-child(5) { left: 70%; animation-delay: 3s; animation-duration: 20s; }
-.particle:nth-child(6) { left: 85%; animation-delay: 5s; animation-duration: 24s; }
-
-@keyframes float {
-  0%, 100% {
-    transform: translateY(0) translateX(0);
-    opacity: 0;
-  }
-  10% {
-    opacity: 1;
-  }
-  90% {
-    opacity: 1;
-  }
-  100% {
-    transform: translateY(-100vh) translateX(100px);
-    opacity: 0;
-  }
+.footer-name {
+  font-family: 'Syne', sans-serif;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #1a1a1a;
+  letter-spacing: -0.01em;
+  margin-bottom: 0.3rem;
 }
 
-/* Content Container */
-  .footer-content {
-    position: relative;
-    z-index: 2;
-  }
-
-/* Animated Name Title */
-  .footer-title {
-    font-size: 1.8rem;
-    font-weight: 700;
-    margin-bottom: 10px;
-    background: linear-gradient(45deg, #fff, #ffd700, #fff);
-                                background-size: 200% auto;
-                                -webkit-background-clip: text;
-                                background-clip: text;
-                                -webkit-text-fill-color: transparent;
-                                animation: shimmer 3s ease infinite;
-                                }
-
-@keyframes shimmer {
-  0% { background-position: 0% 50%; }
-100% { background-position: 200% 50%; }
-  }
-
-/* Subtitle with Typewriter Effect */
-  .footer-subtitle {
-    font-size: 1rem;
-    opacity: 0.9;
-    margin-bottom: 25px;
-    height: 24px;
-  }
-
-.typewriter {
-  display: inline-block;
-  border-right: 2px solid #ffd700;
-  animation: blink 0.7s infinite;
+.footer-role {
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: #18bc9c;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 0.9rem;
 }
 
-@keyframes blink {
-  0%, 50% { border-color: transparent; }
-  51%, 100% { border-color: #ffd700; }
-  }
-  
-  /* Navigation Links */
-    .footer-links {
-      margin: 25px 0;
-    }
-  
-  .footer-links a {
-    color: #fff;
-      margin: 0 15px;
-    text-decoration: none;
-    font-weight: 500;
-    position: relative;
-    transition: all 0.3s ease;
-    display: inline-block;
-  }
-  
-  .footer-links a::after {
-    content: '';
-    position: absolute;
-    bottom: -5px;
-    left: 0;
-    width: 0;
-    height: 2px;
-    background: #ffd700;
-      transition: width 0.3s ease;
-  }
-  
-  .footer-links a:hover::after {
-    width: 100%;
-  }
-  
-  .footer-links a:hover {
-    transform: translateY(-2px);
-    color: #ffd700;
-  }
-  
-  /* Social Icons with Pulse Effect */
-    .social-icons {
-      margin: 30px 0;
-    }
-  
-  .social-icons a {
-    color: #fff;
-      margin: 0 12px;
-    font-size: 1.5rem;
-    display: inline-block;
-    width: 50px;
-    height: 50px;
-    line-height: 50px;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(10px);
-    transition: all 0.4s ease;
-    position: relative;
-    overflow: hidden;
-  }
-  
-  .social-icons a::before {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 0;
-    height: 0;
-    border-radius: 50%;
-    background: rgba(255, 215, 0, 0.3);
-    transform: translate(-50%, -50%);
-    transition: width 0.6s, height 0.6s;
-  }
-  
-  .social-icons a:hover::before {
-    width: 100px;
-    height: 100px;
-  }
-  
-  .social-icons a:hover {
-    transform: translateY(-5px) scale(1.1);
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
-    color: #ffd700;
-  }
-  
-  /* Stats Counter Section */
-    .footer-stats {
-      display: flex;
-      justify-content: center;
-      gap: 40px;
-      margin: 30px 0;
-      flex-wrap: wrap;
-    }
-  
-  .stat-item {
-    text-align: center;
-  }
-  
-  .stat-number {
-    font-size: 2rem;
-    font-weight: bold;
-    color: #ffd700;
-      display: block;
-    margin-bottom: 5px;
-  }
-  
-  .stat-label {
-    font-size: 0.85rem;
-    opacity: 0.9;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-  }
-  
-  /* Wave Animation at Top */
-    .wave {
-      position: absolute;
-      top: -50px;
-      left: 0;
-      width: 100%;
-      height: 100px;
-      background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 320'%3E%3Cpath fill='%23ffffff' fill-opacity='0.1' d='M0,64L48,74.7C96,85,192,107,288,106.7C384,107,480,85,576,90.7C672,96,768,128,864,128C960,128,1056,96,1152,80C1248,64,1344,64,1392,64L1440,64L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z'%3E%3C/path%3E%3C/svg%3E");
-      background-size: cover;
-      animation: wave 10s linear infinite;
-    }
-  
-  @keyframes wave {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(-50%); }
-  }
+.footer-brand p {
+  font-size: 0.85rem;
+  color: #94a3b8;
+  line-height: 1.7;
+  margin: 0 0 1.2rem;
+  max-width: 260px;
+}
 
-/* Back to Top Button */
-  .back-to-top {
-    position: fixed;
-    bottom: 30px;
-    right: 30px;
-    background: linear-gradient(135deg, #15a589 0%, #34495e 100%);
-                                color: #fff;
-                                  border: none;
-                                border-radius: 50%;
-                                width: 50px;
-                                height: 50px;
-                                font-size: 1.5rem;
-                                cursor: pointer;
-                                display: none;
-                                align-items: center;
-                                justify-content: center;
-                                box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
-                                transition: all 0.3s ease;
-                                z-index: 1000;
-  }
+.footer-social {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.footer-social a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 7px;
+  border: 1px solid #e2ddd7;
+  background: #fff;
+  color: #94a3b8;
+  font-size: 0.88rem;
+  text-decoration: none;
+  transition: all 0.18s ease;
+}
+
+.footer-social a:hover {
+  border-color: #18bc9c;
+  color: #18bc9c;
+  background: rgba(24,188,156,0.06);
+}
+
+.footer-col h4 {
+  font-family: 'Syne', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: #c4bfb8;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+
+.footer-col ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-col ul li {
+  margin-bottom: 0.6rem;
+}
+
+.footer-col ul li a {
+  font-size: 0.88rem;
+  color: #64748b;
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+
+.footer-col ul li a:hover {
+  color: #18bc9c;
+}
+
+.footer-bottom {
+  max-width: 1060px;
+  margin: 0 auto;
+  padding-top: 1.4rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.footer-bottom p {
+  font-size: 0.78rem;
+  color: #c4bfb8;
+  margin: 0;
+}
+
+/* Back to top */
+.back-to-top {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  background: #18bc9c;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.95rem;
+  box-shadow: 0 4px 12px rgba(24,188,156,0.3);
+  transition: all 0.2s ease;
+  z-index: 1000;
+}
 
 .back-to-top:hover {
-  transform: translateY(-5px) scale(1.1);
-  box-shadow: 0 8px 25px rgba(102, 126, 234, 0.6);
+  background: #15a589;
+  transform: translateY(-2px);
 }
 
-.back-to-top.show {
-  display: flex;
-  animation: bounceIn 0.5s;
+.back-to-top.show { display: flex; }
+
+@media (max-width: 720px) {
+  .footer-inner {
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+  }
+  .footer-brand {
+    grid-column: 1 / -1;
+  }
+  .footer-brand p { max-width: 100%; }
 }
 
-@keyframes bounceIn {
-  0% {
-    opacity: 0;
-    transform: scale(0.3);
-  }
-  50% {
-    opacity: 1;
-    transform: scale(1.05);
-  }
-  100% {
-    transform: scale(1);
-  }
+@media (max-width: 460px) {
+  .footer-inner { grid-template-columns: 1fr; }
+  .footer-bottom { flex-direction: column; align-items: flex-start; gap: 0.3rem; }
 }
-
-/* Copyright with Heartbeat */
-  .copyright {
-    margin-top: 30px;
-    padding-top: 20px;
-    border-top: 1px solid rgba(255, 255, 255, 0.2);
-    font-size: 0.9rem;
-    opacity: 0.9;
-  }
-
-.heart {
-  color: #ff6b6b;
-    display: inline-block;
-  animation: heartbeat 1.5s ease infinite;
-}
-
-@keyframes heartbeat {
-  0%, 100% { transform: scale(1); }
-  50% { transform: scale(1.2); }
-}
-
-/* Responsive Design */
-  @media (max-width: 768px) {
-    .footer-title {
-      font-size: 1.4rem;
-    }
-    
-    .footer-stats {
-      gap: 20px;
-    }
-    
-    .stat-number {
-      font-size: 1.5rem;
-    }
-    
-    .social-icons a {
-      width: 40px;
-      height: 40px;
-      line-height: 40px;
-      font-size: 1.2rem;
-    }
-  }
 </style>
-  
-  <footer class="site-footer">
-  <!-- Animated Particles -->
-  <div class="particles">
-  <div class="particle"></div>
-  <div class="particle"></div>
-  <div class="particle"></div>
-  <div class="particle"></div>
-  <div class="particle"></div>
-  <div class="particle"></div>
-  </div>
-  
-  <!-- Wave Animation -->
-  <div class="wave"></div>
-  
-  <!-- Main Content -->
-  <div class="footer-content">
-  <h2 class="footer-title">Islem Meherzi</h2>
-  <div class="footer-subtitle">
-  <span class="typewriter" id="typewriter-text"></span>
-  </div>
-  
-  <!-- Stats Section -->
-  <div class="footer-stats">
-  <div class="stat-item">
-  <span class="stat-number" data-target="8">0</span>
-  <span class="stat-label">Years Experience</span>
-  </div>
-  <div class="stat-item">
-  <span class="stat-number" data-target="40">0</span>
-  <span class="stat-label">Projects Completed</span>
-  </div>
-  <div class="stat-item">
-  <span class="stat-number" data-target="65">10</span>
-  <span class="stat-label">Automated Workflows built</span>
-  </div>
-  </div>
-  
-  <!-- Navigation Links -->
-  <div class="footer-links">
-  <a href="index.html">Home</a>
-  <a href="about.html">About</a>
-  <a href="research.html">Research</a>
-  <a href="contributions.html">Contributions</a>
-  <a href="blog.html">Blog</a>
-  <a href="contact.html">Contact</a>
-  </div>
-  
-  <!-- Social Icons -->
-  <div class="social-icons">
-  <a href="https://www.linkedin.com/in/islem-meherzi-bba309b3/" target="_blank" aria-label="LinkedIn">
-  <i class="bi bi-linkedin"></i>
-  </a>
-  <a href="https://github.com/IslemMe" target="_blank" aria-label="GitHub">
-  <i class="bi bi-github"></i>
-  </a>
-  <a href="mailto:my.email@example.com" aria-label="Email">
-  <i class="bi bi-envelope"></i>
-  </a>
-  </div>
-  
-  <!-- Copyright -->
-  <div class="copyright">
-<p>© <span id="current-year"></span> Made with 
-  <span class="heart" aria-hidden="true">❤</span> passion <span class="heart" aria-hidden="true">❤</span> by 
-  <a href="https://www.linkedin.com/in/islem-meherzi-bba309b3/" target="_blank" rel="noopener noreferrer">
-    Islem Meherzi
-  </a>
-</p>
 
-  <p style="font-size: 0.8rem; opacity: 0.7; margin-top: 5px;">From messy data to reliable insights</p>
+<footer class="site-footer">
+  <div class="footer-inner">
+
+    <div class="footer-brand">
+      <div class="footer-name">Islem Meherzi</div>
+      <span class="footer-role">AI Automation · Data Engineering</span>
+      <p>Building AI agents and automation systems that turn complex data workflows into things that just run. Available for projects, consulting, and talks worldwide.</p>
+      <div class="footer-social">
+        <a href="https://www.linkedin.com/in/islem-meherzi-bba309b3/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+          <i class="bi bi-linkedin"></i>
+        </a>
+        <a href="https://github.com/IslemMe" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+          <i class="bi bi-github"></i>
+        </a>
+        <a href="mailto:meherziislem@gmail.com" aria-label="Email">
+          <i class="bi bi-envelope"></i>
+        </a>
+      </div>
+    </div>
+
+    <div class="footer-col">
+      <h4>Navigation</h4>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="services.html">Services</a></li>
+      
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h4>Get in touch</h4>
+      <ul>
+        <li><a href="mailto:meherziislem@gmail.com">meherziislem@gmail.com</a></li>
+        <li><a href="contact.html">Project inquiry</a></li>
+        <li><a href="contact.html">Speaking request</a></li>
+        <li><a href="https://www.linkedin.com/in/islem-meherzi-bba309b3/" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+      </ul>
+    </div>
+
   </div>
+
+  <div class="footer-bottom">
+    <p>© <span id="current-year"></span> Islem Meherzi. All rights reserved.</p>
+    <p>Tunis, Tunisia — working worldwide</p>
   </div>
-  </footer>
-  
-  <!-- Back to Top Button -->
-  <button id="backToTop" class="back-to-top" aria-label="Back to top">
+</footer>
+
+<button id="backToTop" class="back-to-top" aria-label="Back to top">
   <i class="bi bi-arrow-up"></i>
-  </button>
-  
-  <script>
-  // Set current year
+</button>
+
+<script>
 document.getElementById("current-year").textContent = new Date().getFullYear();
 
-// Typewriter Effect
-const phrases = [
-"Data Science Engineer",
-"R Expert",
-"Technical Writer",
-"Researcher",
-"Problem Solver",
-"Innovation Driver"
-];
+const btn = document.getElementById("backToTop");
+window.addEventListener("scroll", () => btn.classList.toggle("show", window.scrollY > 400));
+btn.addEventListener("click", () => window.scrollTo({ top: 0, behavior: "smooth" }));
 
-let phraseIndex = 0;
-let charIndex = 0;
-let isDeleting = false;
-const typewriterElement = document.getElementById("typewriter-text");
-
-function typeWriter() {
-  const currentPhrase = phrases[phraseIndex];
-  
-  if (isDeleting) {
-    typewriterElement.textContent = currentPhrase.substring(0, charIndex - 1);
-    charIndex--;
-  } else {
-    typewriterElement.textContent = currentPhrase.substring(0, charIndex + 1);
-    charIndex++;
-  }
-  
-  if (!isDeleting && charIndex === currentPhrase.length) {
-    isDeleting = true;
-    setTimeout(typeWriter, 2000);
-  } else if (isDeleting && charIndex === 0) {
-    isDeleting = false;
-    phraseIndex = (phraseIndex + 1) % phrases.length;
-    setTimeout(typeWriter, 500);
-  } else {
-    setTimeout(typeWriter, isDeleting ? 50 : 100);
-  }
-}
-
-// Start typewriter effect
-typeWriter();
-
-// Animated Counter
-function animateCounter() {
-  const counters = document.querySelectorAll('.stat-number');
-  const speed = 200;
-  
-  counters.forEach(counter => {
-    const target = +counter.getAttribute('data-target');
-    const increment = target / speed;
-    
-    const updateCount = () => {
-      const count = +counter.innerText;
-      
-      if (count < target) {
-        counter.innerText = Math.ceil(count + increment);
-        setTimeout(updateCount, 10);
-      } else {
-        counter.innerText = target + '+';
-      }
-    };
-    
-    // Start animation when footer is in view
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          updateCount();
-          observer.unobserve(entry.target);
-        }
-      });
-    });
-    
-    observer.observe(counter);
-  });
-}
-
-animateCounter();
-
-// Back to Top Button
-const backToTopButton = document.getElementById("backToTop");
-
-window.addEventListener("scroll", () => {
-  if (window.scrollY > 300) {
-    backToTopButton.classList.add("show");
-  } else {
-    backToTopButton.classList.remove("show");
-  }
-});
-
-backToTopButton.addEventListener("click", () => {
-  window.scrollTo({ 
-    top: 0, 
-    behavior: "smooth" 
-  });
-});
-
-// Add subtle parallax effect to particles
-window.addEventListener('scroll', () => {
-  const scrolled = window.pageYOffset;
-  const particles = document.querySelectorAll('.particle');
-  
-  particles.forEach((particle, index) => {
-    const speed = (index + 1) * 0.5;
-    particle.style.transform = `translateY(${scrolled * speed * 0.1}px)`;
-  });
-});
-
-// Footer visibility animation
-const footer = document.querySelector('.site-footer');
-const footerObserver = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.style.opacity = '1';
-      entry.target.style.transform = 'translateY(0)';
-    }
-  });
-}, {
-  threshold: 0.1
-});
-
-// Initial state for animation
-footer.style.opacity = '0';
-footer.style.transform = 'translateY(20px)';
-footer.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-
-footerObserver.observe(footer);
-</script>
-<script>
-document.addEventListener("DOMContentLoaded", function() {
-  const navbarLinks = document.querySelectorAll(".navbar a");
-  navbarLinks.forEach(link => {
+document.addEventListener("DOMContentLoaded", function () {
+  document.querySelectorAll(".navbar a").forEach(link => {
     if (link.href.includes("github.com") || link.href.includes("linkedin.com")) {
       link.setAttribute("target", "_blank");
       link.setAttribute("rel", "noopener noreferrer");
@@ -1205,7 +981,6 @@ document.addEventListener("DOMContentLoaded", function() {
   });
 });
 </script>
-
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";
