@@ -6,8 +6,11 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Islem">
+<meta name="dcterms.date" content="2026-07-31">
+<meta name="description" content="Exploring how n8n can orchestrate R, Plumber, and Quarto into a single automated workflow, with a thin AI layer added on top to turn structured output into plain-language explanations — free to run, demonstrated here through a data profiling pipeline.">
 
-<title>Islem Meherzi</title>
+<title>Orchestrating R With n8n, Then Adding an AI Layer on Top – Islem Meherzi</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -26,27 +29,62 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<link href="./images/favicon.ico" rel="icon">
-<script src="site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-d8c91a0af336eb4bfeec90926fe79523.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../images/favicon.ico" rel="icon">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-d8c91a0af336eb4bfeec90926fe79523.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -74,11 +112,14 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
+<script src="../site_libs/quarto-diagram/mermaid.min.js"></script>
+<script src="../site_libs/quarto-diagram/mermaid-init.js"></script>
+<link href="../site_libs/quarto-diagram/mermaid.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
 
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="../styles.css">
 </head>
 
 <body class="nav-fixed quarto-light">
@@ -88,7 +129,7 @@ ul.task-list li input[type="checkbox"] {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="./index.html">
+    <a class="navbar-brand" href="../index.html">
     <span class="navbar-title">Islem Meherzi</span>
     </a>
   </div>
@@ -111,23 +152,23 @@ ul.task-list li input[type="checkbox"] {
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link active" href="./index.html" aria-current="page"> 
+    <a class="nav-link" href="../index.html"> 
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./about.html"> 
+    <a class="nav-link" href="../about.html"> 
 <span class="menu-text">About</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./services.html"> 
+    <a class="nav-link" href="../services.html"> 
 <span class="menu-text">Services</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./blog.html"> 
+    <a class="nav-link" href="../blog.html"> 
 <span class="menu-text">Blog</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./contact.html"> 
+    <a class="nav-link" href="../contact.html"> 
 <span class="menu-text">Contact</span></a>
   </li>  
 </ul>
@@ -138,609 +179,241 @@ ul.task-list li input[type="checkbox"] {
     </nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#why-i-started-exploring-n8n-with-r" id="toc-why-i-started-exploring-n8n-with-r" class="nav-link active" data-scroll-target="#why-i-started-exploring-n8n-with-r">Why I started exploring n8n with R</a></li>
+  <li><a href="#why-that-boundary-matters" id="toc-why-that-boundary-matters" class="nav-link" data-scroll-target="#why-that-boundary-matters">Why that boundary matters</a></li>
+  <li><a href="#the-stack-and-what-n8n-does-with-it" id="toc-the-stack-and-what-n8n-does-with-it" class="nav-link" data-scroll-target="#the-stack-and-what-n8n-does-with-it">The stack, and what n8n does with it</a></li>
+  <li><a href="#the-pipeline-end-to-end" id="toc-the-pipeline-end-to-end" class="nav-link" data-scroll-target="#the-pipeline-end-to-end">The pipeline, end to end</a></li>
+  <li><a href="#what-the-ai-layer-is-actually-allowed-to-do" id="toc-what-the-ai-layer-is-actually-allowed-to-do" class="nav-link" data-scroll-target="#what-the-ai-layer-is-actually-allowed-to-do">What the AI layer is actually allowed to do</a></li>
+  <li><a href="#why-deterministic-plus-ai-beats-just-use-ai-for-everything" id="toc-why-deterministic-plus-ai-beats-just-use-ai-for-everything" class="nav-link" data-scroll-target="#why-deterministic-plus-ai-beats-just-use-ai-for-everything">Why deterministic-plus-AI beats “just use AI for everything”</a></li>
+  <li><a href="#what-about-agentic-ai" id="toc-what-about-agentic-ai" class="nav-link" data-scroll-target="#what-about-agentic-ai">What about agentic AI?</a></li>
+  <li><a href="#triggers-beyond-a-manual-upload" id="toc-triggers-beyond-a-manual-upload" class="nav-link" data-scroll-target="#triggers-beyond-a-manual-upload">Triggers beyond a manual upload</a></li>
+  <li><a href="#what-it-actually-costs-to-run" id="toc-what-it-actually-costs-to-run" class="nav-link" data-scroll-target="#what-it-actually-costs-to-run">What it actually costs to run</a></li>
+  <li><a href="#where-this-leaves-things" id="toc-where-this-leaves-things" class="nav-link" data-scroll-target="#where-this-leaves-things">Where this leaves things</a></li>
+  </ul>
+</nav>
+    </div>
 <!-- main -->
-<main class="content column-page" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Orchestrating R With n8n, Then Adding an AI Layer on Top</h1>
+  <div class="quarto-categories">
+    <div class="quarto-category">R</div>
+    <div class="quarto-category">AI</div>
+    <div class="quarto-category">data-engineering</div>
+    <div class="quarto-category">n8n</div>
+    <div class="quarto-category">automation</div>
+  </div>
+  </div>
+
+<div>
+  <div class="description">
+    Exploring how n8n can orchestrate R, Plumber, and Quarto into a single automated workflow, with a thin AI layer added on top to turn structured output into plain-language explanations — free to run, demonstrated here through a data profiling pipeline.
+  </div>
+</div>
+
+
+<div class="quarto-title-meta">
 
-
-
-
-<style>
-/* ─── Reset & Base ──────────────────────────────────── */
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-body {
-  font-family: 'DM Sans', 'Segoe UI', sans-serif;
-  background: #f9f8f5;
-  color: #1a1a1a;
-  line-height: 1.65;
-}
-
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=Syne:wght@600;700;800&display=swap');
-
-/* ─── Hero ──────────────────────────────────────────── */
-.hero {
-  min-height: 92vh;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 0;
-  align-items: stretch;
-}
-
-.hero-left {
-  padding: 5rem 4rem 5rem 5rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  background: #f9f8f5;
-  position: relative;
-}
-
-.hero-left::after {
-  content: '';
-  position: absolute;
-  right: 0; top: 15%; bottom: 15%;
-  width: 1px;
-  background: linear-gradient(to bottom, transparent, #c8c4bc, transparent);
-}
-
-.hero-right {
-  background: #1a1a1a;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding: 5rem 4rem 5rem 5rem;
-  position: relative;
-  overflow: hidden;
-}
-
-.hero-right::before {
-  content: '';
-  position: absolute;
-  top: -120px; right: -120px;
-  width: 380px; height: 380px;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(24,188,156,0.18) 0%, transparent 70%);
-  pointer-events: none;
-}
-
-.badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 0.78rem;
-  font-weight: 500;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: #18bc9c;
-  border: 1px solid rgba(24,188,156,0.35);
-  background: rgba(24,188,156,0.07);
-  padding: 6px 14px;
-  border-radius: 100px;
-  margin-bottom: 2rem;
-  width: fit-content;
-}
-
-.badge-dot {
-  width: 6px; height: 6px;
-  border-radius: 50%;
-  background: #18bc9c;
-  animation: pulse-dot 2s ease-in-out infinite;
-}
-
-@keyframes pulse-dot {
-  0%, 100% { opacity: 1; transform: scale(1); }
-  50% { opacity: 0.5; transform: scale(0.8); }
-}
-
-.hero-name {
-  font-family: 'Syne', sans-serif;
-  font-size: clamp(2.8rem, 5vw, 4.2rem);
-  font-weight: 800;
-  line-height: 1.05;
-  color: #1a1a1a;
-  margin-bottom: 1.2rem;
-  letter-spacing: -0.02em;
-}
-
-.hero-name span {
-  color: #18bc9c;
-}
-
-.hero-tagline {
-  font-size: 1.12rem;
-  color: #555;
-  font-weight: 300;
-  max-width: 420px;
-  margin-bottom: 2.5rem;
-  line-height: 1.7;
-}
-
-.hero-cta-row {
-  display: flex;
-  gap: 1rem;
-  flex-wrap: wrap;
-}
-
-.btn-primary {
-  background: #18bc9c;
-  color: #fff;
-  font-weight: 500;
-  font-size: 0.95rem;
-  padding: 0.8rem 1.8rem;
-  border-radius: 8px;
-  text-decoration: none;
-  transition: background 0.2s, transform 0.15s;
-  border: none;
-}
-
-.btn-primary:hover {
-  background: #15a589;
-  transform: translateY(-1px);
-  color: #fff;
-  text-decoration: none;
-}
-
-.btn-outline {
-  background: transparent;
-  color: #1a1a1a;
-  font-weight: 500;
-  font-size: 0.95rem;
-  padding: 0.8rem 1.8rem;
-  border-radius: 8px;
-  border: 1.5px solid #ccc;
-  text-decoration: none;
-  transition: border-color 0.2s, color 0.2s, transform 0.15s;
-}
-
-.btn-outline:hover {
-  border-color: #18bc9c;
-  color: #18bc9c;
-  transform: translateY(-1px);
-  text-decoration: none;
-}
-
-/* Right side — dark panel */
-.hero-label {
-  font-size: 0.75rem;
-  font-weight: 500;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: rgba(255,255,255,0.35);
-  margin-bottom: 2rem;
-}
-
-.hero-services-list {
-  list-style: none;
-  padding: 0;
-  margin: 0 0 3rem;
-}
-
-.hero-services-list li {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  padding: 1rem 0;
-  border-bottom: 1px solid rgba(255,255,255,0.07);
-  color: rgba(255,255,255,0.85);
-  font-size: 1rem;
-  font-weight: 300;
-  transition: color 0.2s;
-}
-
-.hero-services-list li:first-child { border-top: 1px solid rgba(255,255,255,0.07); }
-
-.hero-services-list li:hover { color: #18bc9c; }
-
-.svc-icon {
-  width: 36px; height: 36px;
-  border-radius: 8px;
-  background: rgba(24,188,156,0.12);
-  display: flex; align-items: center; justify-content: center;
-  font-size: 1rem;
-  flex-shrink: 0;
-}
-
-.hero-location {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  color: rgba(255,255,255,0.4);
-  font-size: 0.85rem;
-}
-
-.hero-location a {
-  color: rgba(255,255,255,0.4);
-  text-decoration: none;
-  transition: color 0.2s;
-}
-
-.hero-location a:hover { color: #18bc9c; }
-
-/* ─── Section shared ─────────────────────────────────── */
-.section {
-  max-width: 1100px;
-  margin: 0 auto;
-  padding: 5rem 2rem;
-}
-
-.section-label {
-  font-size: 0.75rem;
-  font-weight: 500;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: #18bc9c;
-  margin-bottom: 0.6rem;
-}
-
-.section-title {
-  font-family: 'Syne', sans-serif;
-  font-size: clamp(1.8rem, 3vw, 2.6rem);
-  font-weight: 700;
-  color: #1a1a1a;
-  line-height: 1.2;
-  margin-bottom: 1rem;
-}
-
-.section-sub {
-  font-size: 1.05rem;
-  color: #666;
-  max-width: 560px;
-  font-weight: 300;
-}
-
-/* ─── Focus agents (2 big cards) ────────────────────── */
-.agents-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1.5rem;
-  margin-top: 3rem;
-}
-
-.agent-card {
-  background: #fff;
-  border: 1px solid #e8e4de;
-  border-radius: 16px;
-  padding: 2.2rem;
-  transition: border-color 0.2s, box-shadow 0.2s, transform 0.15s;
-  position: relative;
-  overflow: hidden;
-}
-
-.agent-card::before {
-  content: '';
-  position: absolute;
-  top: 0; left: 0; right: 0;
-  height: 3px;
-  background: linear-gradient(90deg, #18bc9c, #15a589);
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform 0.3s ease;
-}
-
-.agent-card:hover::before { transform: scaleX(1); }
-
-.agent-card:hover {
-  border-color: rgba(24,188,156,0.3);
-  box-shadow: 0 8px 28px rgba(0,0,0,0.07);
-  transform: translateY(-3px);
-}
-
-.agent-icon {
-  width: 48px; height: 48px;
-  border-radius: 12px;
-  background: rgba(24,188,156,0.1);
-  display: flex; align-items: center; justify-content: center;
-  font-size: 1.4rem;
-  margin-bottom: 1.2rem;
-}
-
-.agent-card h3 {
-  font-family: 'Syne', sans-serif;
-  font-size: 1.2rem;
-  font-weight: 700;
-  color: #1a1a1a;
-  margin-bottom: 0.6rem;
-}
-
-.agent-card p {
-  font-size: 0.95rem;
-  color: #666;
-  line-height: 1.65;
-  margin-bottom: 1.2rem;
-}
-
-.agent-tag {
-  display: inline-block;
-  font-size: 0.75rem;
-  font-weight: 500;
-  padding: 3px 10px;
-  border-radius: 100px;
-  background: rgba(24,188,156,0.09);
-  color: #18bc9c;
-  border: 1px solid rgba(24,188,156,0.2);
-  margin-right: 4px;
-  margin-bottom: 4px;
-}
-
-.agent-status {
-  display: inline-flex;
-  align-items: center;
-  gap: 5px;
-  font-size: 0.78rem;
-  color: #f39c12;
-  font-weight: 500;
-  margin-top: 1rem;
-}
-
-.status-dot {
-  width: 6px; height: 6px;
-  border-radius: 50%;
-  background: #f39c12;
-}
-
-/* ─── Skills strip ────────────────────────────────────── */
-.skills-strip {
-  background: #1a1a1a;
-  padding: 4rem 2rem;
-}
-
-.skills-inner {
-  max-width: 1100px;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 2rem;
-}
-
-.skill-block {
-  padding: 1.5rem;
-  border: 1px solid rgba(255,255,255,0.08);
-  border-radius: 12px;
-  transition: border-color 0.2s;
-}
-
-.skill-block:hover { border-color: rgba(24,188,156,0.4); }
-
-.skill-block-icon {
-  font-size: 1.5rem;
-  margin-bottom: 0.8rem;
-}
-
-.skill-block h4 {
-  font-size: 0.88rem;
-  font-weight: 500;
-  color: rgba(255,255,255,0.9);
-  margin-bottom: 0.4rem;
-  letter-spacing: 0.02em;
-}
-
-.skill-block p {
-  font-size: 0.8rem;
-  color: rgba(255,255,255,0.38);
-  line-height: 1.5;
-}
-
-/* ─── Speaking strip ────────────────────────────────── */
-.speaking-strip {
-  background: #f0faf7;
-  border-top: 1px solid #d4ede7;
-  border-bottom: 1px solid #d4ede7;
-  padding: 3.5rem 2rem;
-}
-
-.speaking-inner {
-  max-width: 1100px;
-  margin: 0 auto;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 2rem;
-  flex-wrap: wrap;
-}
-
-.speaking-text h2 {
-  font-family: 'Syne', sans-serif;
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: #1a1a1a;
-  margin-bottom: 0.4rem;
-}
-
-.speaking-text p {
-  font-size: 0.95rem;
-  color: #555;
-  max-width: 480px;
-}
-
-.speaking-topics {
-  display: flex;
-  gap: 0.6rem;
-  flex-wrap: wrap;
-  margin-top: 1rem;
-}
-
-.topic-pill {
-  font-size: 0.8rem;
-  font-weight: 500;
-  padding: 5px 14px;
-  background: #fff;
-  border: 1px solid #c0ddd6;
-  border-radius: 100px;
-  color: #2c7a68;
-}
-
-/* ─── CTA section ─────────────────────────────────────── */
-.cta-section {
-  text-align: center;
-  padding: 6rem 2rem;
-  background: #f9f8f5;
-}
-
-.cta-section h2 {
-  font-family: 'Syne', sans-serif;
-  font-size: clamp(1.8rem, 3vw, 2.6rem);
-  font-weight: 700;
-  color: #1a1a1a;
-  margin-bottom: 1rem;
-}
-
-.cta-section p {
-  font-size: 1.05rem;
-  color: #666;
-  max-width: 500px;
-  margin: 0 auto 2rem;
-  font-weight: 300;
-}
-
-/* ─── Responsive ─────────────────────────────────────── */
-@media (max-width: 860px) {
-  .hero { grid-template-columns: 1fr; min-height: unset; }
-  .hero-left { padding: 3.5rem 2rem; }
-  .hero-left::after { display: none; }
-  .hero-right { padding: 3rem 2rem; }
-  .agents-grid { grid-template-columns: 1fr; }
-  .skills-inner { grid-template-columns: 1fr 1fr; }
-  .speaking-inner { flex-direction: column; align-items: flex-start; }
-}
-
-@media (max-width: 540px) {
-  .skills-inner { grid-template-columns: 1fr; }
-}
-</style>
-
-<!-- ─── Hero ──────────────────────────────────── -->
-<section class="hero">
-  <div class="hero-left">
     <div>
-      <span></span>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Islem </p>
+          </div>
+  </div>
     
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">July 31, 2026</p>
     </div>
-    <h1 class="hero-name">
-      Islem<br><span>Meherzi</span>
-    </h1>
+  </div>
   
-       <strong>
-    Messy data in.<br>
-   Intelligent systems out.</strong>
-<br>
-
-  <p class="hero-tagline">
-    I transform <strong>messy, disconnected data</strong> into 
-    <strong>reliable, business-ready systems</strong>.  
-    Through <strong>data engineering, AI, and intelligent automation</strong>,
-    <br>I build solutions that streamline workflows and create measurable value.
-  </p>
-    <div class="hero-cta-row">
-      <a href="contact.html" class="btn-primary">Start a conversation</a>
-      <a href="services.html" class="btn-outline">See my services</a>
-    </div>
+    
   </div>
+  
 
-  <div class="hero-right">
-    <p class="hero-label">What I build &amp; deliver</p>
-    <ul class="hero-services-list">
-          <li>
-        <span class="svc-icon">📊</span>
-        Data reconciliation &amp; R automation
-      </li>
-      <li>
-        <span class="svc-icon">📝</span>
-        Reproducible reporting
-      </li>
-      <li>
-        <span class="svc-icon">🤖</span>
-        AI agents &amp; automation workflows
-      </li>
-      <li>
-        <span class="svc-icon">🔗</span>
-        n8n pipelines &amp; integrations
-      </li>
 
-      <li>
-        <span class="svc-icon">🎤</span>
-        Talks, workshops &amp; consulting
-      </li>
-    </ul>
-    <div class="hero-location">
-      <span>📍</span>
-      <a href="https://www.linkedin.com/in/islem-meherzi-bba309b3/" target="_blank">Tunis, Tunisia — LinkedIn</a>
-    </div>
-  </div>
+</header>
+
+
+<section id="why-i-started-exploring-n8n-with-r" class="level2">
+<h2 class="anchored" data-anchor-id="why-i-started-exploring-n8n-with-r">Why I started exploring n8n with R</h2>
+<p>The question I set out to answer was simple: can n8n actually orchestrate an R workflow end to end — not just trigger a script, but coordinate R, an API layer, a reporting tool, and an AI step into one pipeline that runs on its own?</p>
+<p>Data profiling became the test case, because it’s a workflow I run often, and one where the raw output is genuinely hard for a non-technical person to use as-is. The point of this post is what happens when you let a handful of tools, each good at one job, get orchestrated together instead of stitching everything together manually.</p>
+<p>R already does the hard part well. Packages like skimr and DataExplorer, or a simple Plumber API, can generate detailed quality metrics in seconds. That was never the problem.</p>
+<p>The real challenge comes afterward. A JSON file filled with hundreds of metrics tells you what happened, but not what matters. So the shape I landed on was: let R handle the analysis, n8n orchestrate the workflow, Plumber expose the API, Quarto generate the report, and AI add the final layer by turning raw metrics into a concise narrative people can actually read.</p>
+<p>That same architecture can power data validation, ETL monitoring, quality checks, or almost any R workflow that ends with “here are the numbers.” Data profiling just happened to be the first place I put it to the test.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The AI never sees the raw data. It only ever sees a structured summary: aggregate stats, detected issues, metadata, quality scores.</p>
+</div>
+</div>
 </section>
-
-<br>
-<!-- ─── Skills strip ─────────────────────────── -->
-  <p class="section-label">
-    Technical expertise
-  </p>
-
-  <h2 class="section-title anchored">
-    Building reliable data systems from raw information
-  </h2>
-
-  <p class="section-sub">
-  I design data and AI solutions that transform complex data into clean, connected, and actionable assets—combining data engineering, analytics, and automation to streamline operations and support better decisions.
-  </p>
-  <br>
-  <br>
-<div class="skills-strip">
-  <div class="skills-inner">
-    <div class="skill-block">
-      <div class="skill-block-icon">⚙️</div>
-      <h4 class="anchored">AI &amp; automation</h4>
-      <p>n8n, LLM APIs, Groq, agent orchestration, workflow design</p>
-    </div>
-    <div class="skill-block">
-      <div class="skill-block-icon">📈</div>
-      <h4 class="anchored">Data engineering</h4>
-      <p>R, Python, ETL, reconciliation, complex cleaning, fuzzy joins</p>
-    </div>
-    <div class="skill-block">
-      <div class="skill-block-icon">🐳</div>
-      <h4 class="anchored">DevOps &amp; deployment</h4>
-      <p>Docker, GitHub Actions, GitLab CI/CD, Azure, Linux, ShinyProxy</p>
-    </div>
-    <div class="skill-block">
-      <div class="skill-block-icon">📄</div>
-      <h4 class="anchored">Reproducible outputs</h4>
-      <p>Quarto manuscripts, Shiny dashboards, automated reporting pipelines</p>
-    </div>
-  </div>
+<section id="why-that-boundary-matters" class="level2">
+<h2 class="anchored" data-anchor-id="why-that-boundary-matters">Why that boundary matters</h2>
+<p>Keeping the LLM limited to the structured summary, never the raw rows, pays off in a few concrete ways:</p>
+<ul>
+<li><strong>Faster.</strong> A small JSON file, not a dataset, so response time doesn’t depend on file size.</li>
+<li><strong>Cheaper.</strong> Cost tracks the summary, not the row count: a 2-million-row file costs about the same to interpret as a 2,000-row one.</li>
+<li><strong>Privacy-friendly.</strong> No data leaves the R/Docker boundary: useful anywhere data protection rules apply (in Tunisia, the INPDP reform makes this less optional than it used to be).</li>
+<li><strong>Deterministic where it counts.</strong> Every number in the report came from R. The AI can explain a number, never invent one.</li>
+<li><strong>Less room for hallucination.</strong> Summarizing a dozen known facts is a narrow task; “analyze this dataset” is not.</li>
+</ul>
+</section>
+<section id="the-stack-and-what-n8n-does-with-it" class="level2">
+<h2 class="anchored" data-anchor-id="the-stack-and-what-n8n-does-with-it">The stack, and what n8n does with it</h2>
+<p>Each piece here does one job. n8n is what turns them into a single pipeline instead of five disconnected tools.</p>
+<p><strong>R</strong> does the actual work: profiling, validation, duplicate detection, type inference, cleaning. Every number in the final report comes from here, and nothing downstream is allowed to override that.</p>
+<p><strong>Plumber</strong> turns the R script into an HTTP API, so n8n can call it directly instead of shelling out to <code>Rscript</code> (which breaks easily on path and environment issues):</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">#* Profile an uploaded dataset</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co">#* @param file:file Uploaded CSV</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co">#* @post /profile</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="cf">function</span>(file) {</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  df <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(file<span class="sc">$</span>datapath)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>  metrics <span class="ot">&lt;-</span> <span class="fu">run_profiling</span>(df)   <span class="co"># your existing profiling logic</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>  jsonlite<span class="sc">::</span><span class="fu">write_json</span>(metrics, <span class="st">"metrics.json"</span>, <span class="at">auto_unbox =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>  metrics</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>n8n calls <code>/profile</code>, gets JSON back, and never needs to know R is even involved. That decoupling is what let me swap profiling logic underneath it several times without touching the orchestration at all.</p>
+<p><strong>Docker</strong> runs the pipeline as two containers:n8n in one, and the R/Plumber/Quarto service in another that handles both profiling and report rendering. This isn’t a formality: it’s what stopped “works on my machine” scripts from breaking the moment I moved environments, and it’s what makes the whole thing portable to any VPS.</p>
+<p><strong>n8n</strong> is the orchestrator that actually ties the above together. It receives the upload and email through a webhook, calls the Plumber API, sends the resulting JSON to the LLM, triggers the Quarto render, and emails the finished report. None of these steps is clever on its own — what n8n buys you is not having to hand-write retry logic, error branches, and conditional flow for each one.</p>
+<p><strong>OpenRouter</strong> handles the AI call, routed through one API that can reach DeepSeek, Qwen, Llama, Mistral, Gemma, or GPT-compatible models. Switching models is a one-field change in one n8n node, no prompt rewrite required.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
 </div>
-<br>
-<!-- ─── Speaking strip ────────────────────────── -->
-<div class="speaking-strip">
-  <div class="speaking-inner">
-    <div class="speaking-text">
-      <h2 class="anchored">
-Available for consulting &amp; workshops
-</h2>
-      <p>
-I help teams adopt practical AI automation, improve their data workflows, and move from ideas to reliable working systems.
-</p>
-      <div class="speaking-topics">
-        <span class="topic-pill">AI agents for business</span>
-        <span class="topic-pill">n8n automation</span>
-        <span class="topic-pill">R + AI workflows</span>
-        <span class="topic-pill">Reproducible research</span>
-      </div>
-    </div>
-    <a href="contact.html" class="btn-primary" style="white-space:nowrap; flex-shrink:0;">Invite me to speak</a>
-  </div>
+<div class="callout-title-container flex-fill">
+Tip
 </div>
-
-<!-- ─── CTA ───────────────────────────────────── -->
-<div class="cta-section">
-  <h2 class="anchored">Got a project in mind?</h2>
-  <p>Whether you need an AI agent built, a data workflow automated, or a talk on what's actually possible with AI today.</p>
-  <a href="contact.html" class="btn-primary">Let's talk</a>
 </div>
+<div class="callout-body-container callout-body">
+<p>For full data privacy, swap OpenRouter for a local <a href="https://ollama.com/">Ollama</a> model. Same architecture — only the endpoint changes.</p>
+</div>
+</div>
+<p><strong>ngrok</strong>, optionally, exposes a local n8n webhook to the internet during testing: useful before you’ve deployed to a server.</p>
+<p><strong>Quarto</strong> renders the profiling metrics and the AI narrative into one HTML or PDF report, the same tool this blog runs on, for the same reason: reproducible documents without a separate templating layer.</p>
+</section>
+<section id="the-pipeline-end-to-end" class="level2">
+<h2 class="anchored" data-anchor-id="the-pipeline-end-to-end">The pipeline, end to end</h2>
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+<pre class="mermaid mermaid-js">flowchart LR
+    A[Upload&lt;br/&gt;CSV + email] --&gt; B[n8n&lt;br/&gt;webhook]
+    B --&gt; C[R + Plumber&lt;br/&gt;profiling API]
+    C --&gt; D[metrics.json&lt;br/&gt;+ clean data]
+    D --&gt; E[AI layer&lt;br/&gt;OpenRouter]
+    D --&gt; F[Quarto&lt;br/&gt;render]
+    E --&gt; F
+    F --&gt; G[Report&lt;br/&gt;HTML / PDF]
+    G --&gt; H[Email&lt;br/&gt;sent]
+
+    classDef gray fill:#F1EFE8,stroke:#2C2C2A,stroke-width:1.5px,color:#2C2C2A
+    classDef teal fill:#9FE1CB,stroke:#0F6E56,stroke-width:1.5px,color:#04342C
+    classDef orange fill:#FAC775,stroke:#B36A0C,stroke-width:1.5px,color:#4A2C05
+
+    class A,B,H gray
+    class C,D,F teal
+    class E orange
+
+    linkStyle default stroke:#2C2C2A,stroke-width:2px
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+<p>Here’s what that looks like running for real in n8n:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="imgs/n8n_workflow.png" class="img-fluid figure-img" style="width:90.0%" alt="Screenshot of the n8n workflow canvas showing the pipeline nodes"></p>
+<figcaption>AI-Powered Automated Data Profiling &amp; Quality Report Generation</figcaption>
+</figure>
+</div>
+<p>Here’s what that graph actually does: the webhook writes the upload to disk, then calls the R container’s <code>/profile</code> endpoint. n8n reads <code>metrics.json</code> back off disk, reshapes it, and feeds it to a Basic LLM Chain node pointed at OpenRouter for the narrative. That narrative gets posted back to the same R container — this time hitting its <code>/report</code> endpoint. n8n reads the finished report off disk, emails it, and responds to the original webhook.</p>
+</section>
+<section id="what-the-ai-layer-is-actually-allowed-to-do" class="level2">
+<h2 class="anchored" data-anchor-id="what-the-ai-layer-is-actually-allowed-to-do">What the AI layer is actually allowed to do</h2>
+<p>The AI <strong>does</strong>: summarize results in plain language, prioritize which issues matter most, explain the practical risk behind a metric, produce next-action recommendations, flag anomalies worth a human look.</p>
+<p>The AI <strong>does not</strong>: compute any statistic, decide what counts as a violation (that’s an R rule), see a single raw row, or override a business decision.</p>
+<p>Every recommendation traces back to a number R already computed. It’s a communication layer, not a computation layer.</p>
+</section>
+<section id="why-deterministic-plus-ai-beats-just-use-ai-for-everything" class="level2">
+<h2 class="anchored" data-anchor-id="why-deterministic-plus-ai-beats-just-use-ai-for-everything">Why deterministic-plus-AI beats “just use AI for everything”</h2>
+<p>Feeding a raw dataset straight to an LLM and asking for a quality report is tempting, and I tried it early on. It falls apart for a few predictable reasons: validation stops being auditable, results stop being consistent run to run, and business rules end up buried in a prompt instead of visible in code.</p>
+<p>Keeping R deterministic and the LLM strictly an explanation layer avoids all three, and it matters most in regulated environments, where “why did the system flag this?” needs an answer better than a fluent-sounding AI summary with no logic behind it.</p>
+</section>
+<section id="what-about-agentic-ai" class="level2">
+<h2 class="anchored" data-anchor-id="what-about-agentic-ai">What about agentic AI?</h2>
+<p>Agentic workflows: an LLM that plans its own steps, calls tools, and decides what to do next, are getting a lot of attention, and for genuinely open-ended tasks, that autonomy earns its keep.</p>
+<p>For a pipeline like this one, it doesn’t, for three reasons:</p>
+<ul>
+<li><strong>Speed.</strong> An agent chains several LLM calls per task. This pipeline makes one: read the summary, produce the interpretation.</li>
+<li><strong>Hallucination compounds.</strong> Each extra autonomous step is another chance to misread something, and that error carries forward. One narrow call has far less room to go wrong than a multi-step agent deciding its own process.</li>
+<li><strong>The task is already solved.</strong> R already knows exactly how to compute profiling, validation, and duplicate checks, the same way, every time. An agent rediscovering that from scratch adds cost without adding value.</li>
+</ul>
+<p>Agentic approaches make sense on the <em>other</em> kind of problem: look at this new dataset and tell me what’s odd about it,” where no rule set exists yet. That’s not this. For known metrics and defined rules, a deterministic core with an AI layer for summarizing and flagging has been the better trade-off.</p>
+</section>
+<section id="triggers-beyond-a-manual-upload" class="level2">
+<h2 class="anchored" data-anchor-id="triggers-beyond-a-manual-upload">Triggers beyond a manual upload</h2>
+<p>Once the webhook exists, the trigger is arbitrary: a new file landing in a folder, a scheduled nightly run, a change in SharePoint, Google Drive, or OneDrive, an S3 event, a database update, a Git commit. Each one produces a fresh report with zero change to the profiling or interpretation logic.</p>
+</section>
+<section id="what-it-actually-costs-to-run" class="level2">
+<h2 class="anchored" data-anchor-id="what-it-actually-costs-to-run">What it actually costs to run</h2>
+<p>This was deliberate from the start, not an afterthought. R, Docker, Plumber, Quarto, and n8n (self-hosted) are all open source, no licensing cost anywhere. The LLM call runs entirely on free-tier OpenRouter models, in practice: <code>metrics.json</code> is a small, well-defined input, and free models handle that kind of structured reasoning well.</p>
+<p>Paid APIs are an option if you want more polished phrasing at scale, but they’re not required to get useful output. Swap in local Ollama instead of OpenRouter and it’s still zero, at the cost of your own compute. What used to require statistical training to interpret now runs on its own, for free — and it scales just as well from a solo analyst to a nightly production job.</p>
+<p>Here’s what actually lands: the email as received, and a snippet of the report itself. For this run, I used a public dataset — the <a href="https://www.kaggle.com/datasets/desolution01/messy-employee-dataset">Messy Employee Dataset</a> on Kaggle — so the metrics and issues you’ll see below are reproducible if you want to try the pipeline yourself.</p>
+<div class="quarto-layout-panel" data-layout-ncol="2">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="imgs/email_receipt.png" class="img-fluid figure-img" alt="Screenshot of the received email with the report attached"></p>
+<figcaption>The email delivered automatically, report attached</figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="imgs/report_snippet.png" class="img-fluid figure-img" alt="Screenshot of part of the Quarto report showing metrics and AI-generated explanation"></p>
+<figcaption>A section of the generated report, R metrics next to the AI narrative</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="where-this-leaves-things" class="level2">
+<h2 class="anchored" data-anchor-id="where-this-leaves-things">Where this leaves things</h2>
+<p>This covers the architecture at the level that matters for understanding <em>why</em> it works: n8n orchestrates R, Plumber, and Quarto into one pipeline; R stays deterministic; the AI layer only ever sees a structured summary; and every component is open source or free to run. It’s the shape of the system, not a step-by-step build guide.</p>
+<p>There’s enough underneath this: self-hosting n8n with Docker, webhook and node setup, structuring the OpenRouter prompt around the metrics schema, triggering the Quarto render, wiring up email delivery, that each one probably deserves its own writeup. I’m planning to follow up with a more hands-on post covering the setup in more detail, likely starting with the parts that are trickiest to get right.</p>
+<hr>
+<p>Thanks for reading this far. If this setup is close to something you need, or you want a similar automated workflow built for your own use case, I’m happy to talk it through. You can reach me <a href="https://islemme.github.io/islem-meherzi/contact.html" target="_blank">here.</a></p>
 
 
+</section>
 
 </main> <!-- /main -->
 <style>
