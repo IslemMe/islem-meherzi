@@ -86,9 +86,9 @@ ul.task-list li input[type="checkbox"] {
     }
 
     const options = {
-      valueNames: ['listing-date','listing-title','listing-author','listing-image','listing-description',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
+      valueNames: ['listing-date','listing-title','listing-author','listing-image','listing-description','listing-categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
       
-      searchColumns: ["listing-date","listing-title","listing-author","listing-image","listing-description"],
+      searchColumns: ["listing-date","listing-title","listing-author","listing-image","listing-description","listing-categories"],
     };
 
     window['quarto-listings'] = window['quarto-listings'] || {};
@@ -141,7 +141,7 @@ window.Quarto = {
 <link rel="stylesheet" href="styles.css">
 </head>
 
-<body class="nav-fixed fullcontent quarto-light">
+<body class="nav-fixed quarto-light">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -201,7 +201,8 @@ window.Quarto = {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(5)</span></div><div class="category" data-category="QUk=">AI <span class="quarto-category-count">(1)</span></div><div class="category" data-category="YXV0b21hdGlvbg==">automation <span class="quarto-category-count">(1)</span></div><div class="category" data-category="QXV0b21hdGlvbg==">Automation <span class="quarto-category-count">(2)</span></div><div class="category" data-category="RGF0YSUyMFNjaWVuY2U=">Data Science <span class="quarto-category-count">(1)</span></div><div class="category" data-category="ZGF0YS1lbmdpbmVlcmluZw==">data-engineering <span class="quarto-category-count">(1)</span></div><div class="category" data-category="RGV2T3Bz">DevOps <span class="quarto-category-count">(1)</span></div><div class="category" data-category="R2l0SHVi">GitHub <span class="quarto-category-count">(1)</span></div><div class="category" data-category="bjhu">n8n <span class="quarto-category-count">(1)</span></div><div class="category" data-category="UHJvZHVjdGl2aXR5">Productivity <span class="quarto-category-count">(2)</span></div><div class="category" data-category="UXVhcnRv">Quarto <span class="quarto-category-count">(2)</span></div><div class="category" data-category="Ug==">R <span class="quarto-category-count">(4)</span></div><div class="category" data-category="UmVzZWFyY2g=">Research <span class="quarto-category-count">(2)</span></div><div class="category" data-category="UlN0dWRpbw==">RStudio <span class="quarto-category-count">(1)</span></div><div class="category" data-category="V3JpdGluZw==">Writing <span class="quarto-category-count">(1)</span></div></div></div>
 <!-- main -->
 <main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
 
@@ -471,7 +472,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
 <div class="quarto-listing quarto-listing-container-default" id="listing-blog-listing">
 <div class="list quarto-listing-default">
-<div class="quarto-post image-right" data-index="0" data-categories="UiUyQ0FJJTJDZGF0YS1lbmdpbmVlcmluZyUyQ244biUyQ2F1dG9tYXRpb24=" data-listing-date-sort="1785456000000" data-listing-file-modified-sort="1785675143367" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="9" data-listing-word-count-sort="1743">
+<div class="quarto-post image-right" data-index="0" data-categories="UiUyQ0FJJTJDZGF0YS1lbmdpbmVlcmluZyUyQ244biUyQ2F1dG9tYXRpb24=" data-listing-date-sort="1785456000000" data-listing-file-modified-sort="1785675925320" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="9" data-listing-word-count-sort="1743">
 <div class="thumbnail"><a href="./Blogs/ai-layer-on-r-profiling.html" class="no-external">
 
 <img loading="lazy" src="./Blogs/imgs/productive-dev-workspace.jpg" class="thumbnail-image" style="height: 200px;">
@@ -481,6 +482,19 @@ document.addEventListener("DOMContentLoaded", function() {
 <h3 class="no-anchor listing-title">
 <a href="./Blogs/ai-layer-on-r-profiling.html" class="no-external">Orchestrating R With n8n, Then Adding an AI Layer on Top</a>
 </h3>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('Ug=='); return false;">R</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('QUk='); return false;">AI</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('ZGF0YS1lbmdpbmVlcmluZw=='); return false;">data-engineering</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('bjhu'); return false;">n8n</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('YXV0b21hdGlvbg=='); return false;">automation</div>
+
+</div>
 <div class="delink listing-description"><a href="./Blogs/ai-layer-on-r-profiling.html" class="no-external">
 <p>Exploring how n8n can orchestrate R, Plumber, and Quarto into a single automated workflow, with a thin AI layer added on top to turn structured output into plain-language explanations: free to run, demonstrated here through a data profiling pipeline.</p>
 </a></div>
@@ -496,7 +510,7 @@ Islem Meherzi
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="1" data-categories="R2l0SHViJTJDQXV0b21hdGlvbiUyQ1IlMkNEYXRhJTIwU2NpZW5jZSUyQ0Rldk9wcw==" data-listing-date-sort="1761177600000" data-listing-file-modified-sort="1785675143367" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="9" data-listing-word-count-sort="1720">
+<div class="quarto-post image-right" data-index="1" data-categories="R2l0SHViJTJDQXV0b21hdGlvbiUyQ1IlMkNEYXRhJTIwU2NpZW5jZSUyQ0Rldk9wcw==" data-listing-date-sort="1761177600000" data-listing-file-modified-sort="1785675925320" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="9" data-listing-word-count-sort="1720">
 <div class="thumbnail"><a href="./Blogs/FreeSecureGitHubActions.html" class="no-external">
 
 <img loading="lazy" src="./Blogs/imgs/githubactions.png" class="thumbnail-image" style="height: 200px;">
@@ -506,6 +520,19 @@ Islem Meherzi
 <h3 class="no-anchor listing-title">
 <a href="./Blogs/FreeSecureGitHubActions.html" class="no-external">How to Use GitHub Actions Without Exposing Your Code</a>
 </h3>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('R2l0SHVi'); return false;">GitHub</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('QXV0b21hdGlvbg=='); return false;">Automation</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('Ug=='); return false;">R</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('RGF0YSUyMFNjaWVuY2U='); return false;">Data Science</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('RGV2T3Bz'); return false;">DevOps</div>
+
+</div>
 <div class="delink listing-description"><a href="./Blogs/FreeSecureGitHubActions.html" class="no-external">
 <p>The Smart Way to Automate Securely with Private Repositories</p>
 </a></div>
@@ -521,7 +548,7 @@ Islem Meherzi
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="2" data-categories="UXVhcnRvJTJDUiUyQ0F1dG9tYXRpb24=" data-listing-date-sort="1759795200000" data-listing-file-modified-sort="1785675143376" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="587">
+<div class="quarto-post image-right" data-index="2" data-categories="UXVhcnRvJTJDUiUyQ0F1dG9tYXRpb24=" data-listing-date-sort="1759795200000" data-listing-file-modified-sort="1785675925329" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="587">
 <div class="thumbnail"><a href="./Blogs/quarto-email-reports.html" class="no-external">
 
 <img loading="lazy" src="./Blogs/imgs/quarto_share.png" class="thumbnail-image" style="height: 200px;">
@@ -531,6 +558,15 @@ Islem Meherzi
 <h3 class="no-anchor listing-title">
 <a href="./Blogs/quarto-email-reports.html" class="no-external">A Quick and Safe Way to Share Quarto Reports with Restricted Users</a>
 </h3>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('UXVhcnRv'); return false;">Quarto</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('Ug=='); return false;">R</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('QXV0b21hdGlvbg=='); return false;">Automation</div>
+
+</div>
 <div class="delink listing-description"><a href="./Blogs/quarto-email-reports.html" class="no-external">
 <p>Automate sending Quarto reports to a restricted audience via email using R, Gmail App Passwords, and the blastula package, with a ready-to-use script and alternatives like Netlify and GitHub Actions.</p>
 </a></div>
@@ -546,7 +582,7 @@ Islem Meherzi
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="3" data-categories="UiUyQ1Jlc2VhcmNoJTJDUlN0dWRpbyUyQ1F1YXJ0byUyQ1Byb2R1Y3Rpdml0eQ==" data-listing-date-sort="1759449600000" data-listing-file-modified-sort="1785675143367" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="8" data-listing-word-count-sort="1594">
+<div class="quarto-post image-right" data-index="3" data-categories="UiUyQ1Jlc2VhcmNoJTJDUlN0dWRpbyUyQ1F1YXJ0byUyQ1Byb2R1Y3Rpdml0eQ==" data-listing-date-sort="1759449600000" data-listing-file-modified-sort="1785675925320" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="8" data-listing-word-count-sort="1594">
 <div class="thumbnail"><a href="./Blogs/b2_quarto_manuscript.html" class="no-external">
 
 <img loading="lazy" src="./Blogs/imgs/b2.png" class="thumbnail-image" style="height: 200px;">
@@ -556,6 +592,19 @@ Islem Meherzi
 <h3 class="no-anchor listing-title">
 <a href="./Blogs/b2_quarto_manuscript.html" class="no-external">From RStudio to Published Paper: Writing Manuscripts with Quarto</a>
 </h3>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('Ug=='); return false;">R</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('UmVzZWFyY2g='); return false;">Research</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('UlN0dWRpbw=='); return false;">RStudio</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('UXVhcnRv'); return false;">Quarto</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('UHJvZHVjdGl2aXR5'); return false;">Productivity</div>
+
+</div>
 <div class="delink listing-description"><a href="./Blogs/b2_quarto_manuscript.html" class="no-external">
 <p>Learn how to use Quarto directly inside RStudio to draft, format, and publish your manuscript with code, figures, and references all in one place.</p>
 </a></div>
@@ -571,7 +620,7 @@ Islem Meherzi
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="4" data-categories="UHJvZHVjdGl2aXR5JTJDUmVzZWFyY2glMkNXcml0aW5n" data-listing-date-sort="1726617600000" data-listing-file-modified-sort="1785675143367" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="237">
+<div class="quarto-post image-right" data-index="4" data-categories="UHJvZHVjdGl2aXR5JTJDUmVzZWFyY2glMkNXcml0aW5n" data-listing-date-sort="1726617600000" data-listing-file-modified-sort="1785675925320" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="237">
 <div class="thumbnail"><a href="./Blogs/b1_post-research-writing.html" class="no-external">
 
 <img loading="lazy" src="./Blogs/imgs/b1.jpg" class="thumbnail-image" style="height: 200px;">
@@ -581,6 +630,15 @@ Islem Meherzi
 <h3 class="no-anchor listing-title">
 <a href="./Blogs/b1_post-research-writing.html" class="no-external">Beat Procrastination and Write Research Papers Faster</a>
 </h3>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('UHJvZHVjdGl2aXR5'); return false;">Productivity</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('UmVzZWFyY2g='); return false;">Research</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('V3JpdGluZw=='); return false;">Writing</div>
+
+</div>
 <div class="delink listing-description"><a href="./Blogs/b1_post-research-writing.html" class="no-external">
 <p>Practical strategies to draft research papers efficiently and avoid perfectionism traps. Learn how Version 0, quick planning, and Quarto Manuscript can speed up your writing.</p>
 </a></div>
