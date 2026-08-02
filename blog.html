@@ -243,153 +243,119 @@ body {
 }
 
 /* Blog Intro */
-.blog-intro{
-    background:#fafafa;
-    border:1px solid #ececec;
-    border-radius:10px;
-    padding:2rem;
-    margin:2rem auto 3rem;
-    max-width:850px;
-    box-shadow:none;
-}
-
-.blog-intro::before{
-    display:none;
-}
-
-.blog-intro p{
-    margin:0;
-    color:#4b5563;
-    font-size:1.05rem;
-    line-height:1.8;
-}
-
-/* Categories */
-.quarto-listing .listing-categories {
-  margin-bottom: 2rem;
-  text-align: center;
-}
-
-.quarto-listing .listing-categories .category {
-  display: inline-block;
-  background: #f1f5f9;
-  color: #0f766e;
-  font-size: 0.85rem;
-  font-weight: 500;
-  padding: 6px 14px;
-  border-radius: 20px;
-  margin: 0 0.4rem 0.5rem 0;
-  text-decoration: none;
-  transition: all 0.2s ease;
-}
-
-.quarto-listing .listing-categories .category:hover {
-  background: #e2e8f0;
-}
-
-/* Blog Grid */
-.quarto-listing .listing-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-  gap: 1.5rem;
-  margin-top: 2rem;
-  padding: 0;
-}
-
-/* Blog Cards */
-.quarto-listing .listing-item {
-  background: #ffffff;
+.blog-intro {
+  background: #f8fafc;
   border: 1px solid #e2e8f0;
   border-radius: 12px;
-  overflow: hidden;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-  transition: all 0.3s ease;
-  display: flex;
-  flex-direction: column;
+  padding: 1.5rem 2rem;
+  margin-bottom: 2rem;
 }
 
-.quarto-listing .listing-item:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
-  border-color: #cbd5e1;
+.blog-intro p {
+  font-size: 1.1rem;
+  color: #475569;
+  line-height: 1.7;
+  margin: 0;
 }
 
-/* Image */
-.quarto-listing .listing-image {
-  position: relative;
-  overflow: hidden;
-  height: 200px;
+/* ── Sidebar Categories (right column) ── */
+.quarto-listing-category {
+  margin-bottom: 1.5rem;
 }
 
-.quarto-listing .listing-item img {
-  width: 100%;
-  height: 200px;
-  object-fit: cover;
-  transition: transform 0.4s ease;
+.quarto-listing-category .category {
+  display: block;
+  color: #475569;
+  font-size: 0.9rem;
+  font-weight: 500;
+  padding: 4px 0;
+  text-decoration: none;
+  border-bottom: 1px solid #f1f5f9;
+  transition: color 0.2s ease;
 }
 
-.quarto-listing .listing-item:hover img {
-  transform: scale(1.03);
+.quarto-listing-category .category:hover {
+  color: #0f766e;
 }
 
-/* Content */
-.quarto-listing .listing-item-content {
-  padding: 1.75rem;
-  display: flex;
-  flex-direction: column;
-  flex-grow: 1;
+/* ── Default Listing: List Layout ── */
+.quarto-listing-default {
+  margin-top: 1rem;
+}
+
+.quarto-listing-default .listing-item {
+  padding: 2rem 0;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.quarto-listing-default .listing-item:last-child {
+  border-bottom: none;
 }
 
 /* Title */
-.quarto-listing .listing-title {
+.quarto-listing-default .listing-title {
   font-family: 'Inter', 'Segoe UI', sans-serif;
   font-size: 1.35rem;
   font-weight: 600;
   line-height: 1.4;
-  margin-bottom: 0.6rem;
+  margin-bottom: 0.3rem;
   color: #0f172a;
 }
 
-.quarto-listing .listing-title a {
+.quarto-listing-default .listing-title a {
   color: inherit;
   text-decoration: none;
 }
 
-.quarto-listing .listing-title a:hover {
+.quarto-listing-default .listing-title a:hover {
   color: #0f766e;
 }
 
-/* Meta */
-.quarto-listing .listing-meta {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 0.75rem;
-  font-size: 0.85rem;
+/* ── FIX: Item categories (tags under title) ── */
+.quarto-listing-default .listing-categories {
+  margin-bottom: 0.5rem;   /* was 2rem — way too big */
+  margin-top: 0.25rem;
 }
 
-.quarto-listing .listing-date {
+.quarto-listing-default .listing-categories .category {
+  display: inline-block;
+  background: #f1f5f9;
+  color: #0f766e;
+  font-size: 0.7rem;
+  font-weight: 600;
+  padding: 3px 10px;
+  border-radius: 12px;
+  margin: 0 0.3rem 0.3rem 0;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+/* Date & Author */
+.quarto-listing-default .listing-date {
   color: #64748b;
   font-size: 0.85rem;
   font-weight: 400;
 }
 
-.quarto-listing .listing-categories-item {
-  background: #f1f5f9;
-  color: #0f766e;
-  padding: 3px 10px;
-  border-radius: 12px;
-  font-weight: 500;
-  font-size: 0.75rem;
-  text-decoration: none;
+.quarto-listing-default .listing-author {
+  color: #64748b;
+  font-size: 0.85rem;
 }
 
-/* Description */
-.quarto-listing .listing-description {
+/* ── FIX: Description ── */
+.quarto-listing-default .listing-description {
   font-size: 0.95rem;
   color: #475569;
   line-height: 1.6;
-  margin-top: auto;
+  margin-top: 0.5rem;   /* was margin-top: auto */
+  margin-bottom: 0;
+}
+
+/* Image */
+.quarto-listing-default .listing-image img {
+  border-radius: 8px;
+  object-fit: cover;
 }
 
 /* Animation */
@@ -414,21 +380,14 @@ body {
     font-size: 2rem;
   }
   
-  .quarto-listing .listing-grid {
-    grid-template-columns: 1fr;
-    gap: 1.25rem;
-  }
-}
-
-@media (max-width: 480px) {
-  .quarto-listing .listing-item-content {
-    padding: 1.25rem;
+  .quarto-listing-default .listing-item {
+    padding: 1.5rem 0;
   }
 }
 </style>
 <div class="blog-intro fade-in-up">
 <p>
-Welcome to my blog, where I share my explorations in AI and data science.
+👋 Welcome to my blog, where I share my explorations in AI and data science.
 </p>
 </div>
 <script>
@@ -472,7 +431,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
 <div class="quarto-listing quarto-listing-container-default" id="listing-blog-listing">
 <div class="list quarto-listing-default">
-<div class="quarto-post image-right" data-index="0" data-categories="UiUyQ0FJJTJDZGF0YS1lbmdpbmVlcmluZyUyQ244biUyQ2F1dG9tYXRpb24=" data-listing-date-sort="1785456000000" data-listing-file-modified-sort="1785675925320" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="9" data-listing-word-count-sort="1743">
+<div class="quarto-post image-right" data-index="0" data-categories="UiUyQ0FJJTJDZGF0YS1lbmdpbmVlcmluZyUyQ244biUyQ2F1dG9tYXRpb24=" data-listing-date-sort="1785456000000" data-listing-file-modified-sort="1785676759038" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="9" data-listing-word-count-sort="1743">
 <div class="thumbnail"><a href="./Blogs/ai-layer-on-r-profiling.html" class="no-external">
 
 <img loading="lazy" src="./Blogs/imgs/productive-dev-workspace.jpg" class="thumbnail-image" style="height: 200px;">
@@ -510,7 +469,7 @@ Islem Meherzi
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="1" data-categories="R2l0SHViJTJDQXV0b21hdGlvbiUyQ1IlMkNEYXRhJTIwU2NpZW5jZSUyQ0Rldk9wcw==" data-listing-date-sort="1761177600000" data-listing-file-modified-sort="1785675925320" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="9" data-listing-word-count-sort="1720">
+<div class="quarto-post image-right" data-index="1" data-categories="R2l0SHViJTJDQXV0b21hdGlvbiUyQ1IlMkNEYXRhJTIwU2NpZW5jZSUyQ0Rldk9wcw==" data-listing-date-sort="1761177600000" data-listing-file-modified-sort="1785676759037" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="9" data-listing-word-count-sort="1720">
 <div class="thumbnail"><a href="./Blogs/FreeSecureGitHubActions.html" class="no-external">
 
 <img loading="lazy" src="./Blogs/imgs/githubactions.png" class="thumbnail-image" style="height: 200px;">
@@ -548,7 +507,7 @@ Islem Meherzi
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="2" data-categories="UXVhcnRvJTJDUiUyQ0F1dG9tYXRpb24=" data-listing-date-sort="1759795200000" data-listing-file-modified-sort="1785675925329" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="587">
+<div class="quarto-post image-right" data-index="2" data-categories="UXVhcnRvJTJDUiUyQ0F1dG9tYXRpb24=" data-listing-date-sort="1759795200000" data-listing-file-modified-sort="1785676759048" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="587">
 <div class="thumbnail"><a href="./Blogs/quarto-email-reports.html" class="no-external">
 
 <img loading="lazy" src="./Blogs/imgs/quarto_share.png" class="thumbnail-image" style="height: 200px;">
@@ -582,7 +541,7 @@ Islem Meherzi
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="3" data-categories="UiUyQ1Jlc2VhcmNoJTJDUlN0dWRpbyUyQ1F1YXJ0byUyQ1Byb2R1Y3Rpdml0eQ==" data-listing-date-sort="1759449600000" data-listing-file-modified-sort="1785675925320" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="8" data-listing-word-count-sort="1594">
+<div class="quarto-post image-right" data-index="3" data-categories="UiUyQ1Jlc2VhcmNoJTJDUlN0dWRpbyUyQ1F1YXJ0byUyQ1Byb2R1Y3Rpdml0eQ==" data-listing-date-sort="1759449600000" data-listing-file-modified-sort="1785676759038" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="8" data-listing-word-count-sort="1594">
 <div class="thumbnail"><a href="./Blogs/b2_quarto_manuscript.html" class="no-external">
 
 <img loading="lazy" src="./Blogs/imgs/b2.png" class="thumbnail-image" style="height: 200px;">
@@ -620,7 +579,7 @@ Islem Meherzi
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="4" data-categories="UHJvZHVjdGl2aXR5JTJDUmVzZWFyY2glMkNXcml0aW5n" data-listing-date-sort="1726617600000" data-listing-file-modified-sort="1785675925320" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="237">
+<div class="quarto-post image-right" data-index="4" data-categories="UHJvZHVjdGl2aXR5JTJDUmVzZWFyY2glMkNXcml0aW5n" data-listing-date-sort="1726617600000" data-listing-file-modified-sort="1785676759038" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="237">
 <div class="thumbnail"><a href="./Blogs/b1_post-research-writing.html" class="no-external">
 
 <img loading="lazy" src="./Blogs/imgs/b1.jpg" class="thumbnail-image" style="height: 200px;">
