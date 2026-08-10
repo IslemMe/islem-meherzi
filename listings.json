@@ -2,6 +2,7 @@
   {
     "listing": "/blog.html",
     "items": [
+      "/Blogs/permission-to-ignore-the-robot.html",
       "/Blogs/ai-layer-on-r-profiling.html",
       "/Blogs/FreeSecureGitHubActions.html",
       "/Blogs/quarto-email-reports.html",
